@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
+import { ProfileComponent } from './profile/profile.component';
+import { TicketComponent } from './ticket/ticket.component';
+import { SettingComponent } from './setting/setting.component';
+import { ProviderComponent } from './provider/provider.component';
 
 
 
@@ -10,7 +14,11 @@ import { RecoverPasswordComponent } from './recover-password/recover-password.co
   declarations: [
     LoginComponent,
     RegisterComponent,
-    RecoverPasswordComponent
+    RecoverPasswordComponent,
+    ProfileComponent,
+    TicketComponent,
+    SettingComponent,
+    ProviderComponent
   ],
   imports: [
     CommonModule
