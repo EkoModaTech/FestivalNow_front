@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConcertComponent } from './concert.component';
+import { HostEventComponent } from './host-event.component';
 
-describe('ConcertComponent', () => {
-  let component: ConcertComponent;
-  let fixture: ComponentFixture<ConcertComponent>;
+describe('HostEventComponent', () => {
+  let component: HostEventComponent;
+  let fixture: ComponentFixture<HostEventComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ConcertComponent]
+      declarations: [HostEventComponent]
     });
-    fixture = TestBed.createComponent(ConcertComponent);
+    fixture = TestBed.createComponent(HostEventComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
