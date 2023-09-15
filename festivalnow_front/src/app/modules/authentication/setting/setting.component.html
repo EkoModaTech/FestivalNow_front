@@ -1,1 +1,50 @@
-<p>setting works!</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>setting</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+</head>
+
+<body>
+    <div class="titulo">
+        <h2>Administrador de usuarios y roles!!</h2>
+    </div>
+    <hr class="linea">
+    <div class="container_table">
+        <table class="tabla">
+            <thead class="head">
+            <tr>
+                <th>Nombre</th>
+                <th>Rol</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tbody class="body">
+            <tr *ngFor="let user of users">
+                <td>{{ user.nombre }}</td>
+                <td>{{ user.rol }}</td>
+                <td>
+                    <img src="assets/edit.png" class="imagebutton"   (click)="editarUsuario(user)">
+                </td>
+                <td>
+                    <img src="assets/bin.png"  class="imagebutton" (click)="eliminarUsuario(user)">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>
+  
