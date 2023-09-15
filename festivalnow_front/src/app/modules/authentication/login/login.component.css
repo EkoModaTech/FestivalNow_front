@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding-top: 4%;
     padding-bottom: 5%;
-    background: linear-gradient(to right, #ff3d33, #ff5233, #ff7033, #ff8533, #ff9633);
+    background: linear-gradient(to right, #ff6633, #ff7433, #ff8833, #ff8533, #ffa940);
 }
 a{
     color: #ff3d33;
@@ -62,7 +62,7 @@ a{
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
     
-    background-color: #eae8e8;
+    background-color: #ffffff;
 }
 .col-der {
     flex: 2;
