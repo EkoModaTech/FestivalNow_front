@@ -7,7 +7,7 @@ body {
     background: linear-gradient(to right, #ff6633, #ff7433, #ff8833, #ff8533, #ffa940);
 }
 a{
-    color: #ff3d33;
+    color: #ff5c33;
 }
 .row{
     width: 100%;
@@ -17,7 +17,7 @@ a{
 }
 
 .btn-primary{
-    background-color:#ff3d33;
+    background-color:#ff5c33;
     border-radius: 5px;
 }
 
@@ -69,14 +69,14 @@ a{
     width: 50%;
 }
 .form-control{
-    border-color: #ff3d33;
-    color: #ff3d33;
+    border-color: #ff5c33;
+    color: #ff5c33;
 }
 h2{
-    color: #ff3d33;
+    color: #ff5c33;
 }
 label{
-    color: #ff3d33;
+    color: #ff5c33;
 }
 
 
