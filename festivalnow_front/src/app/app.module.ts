@@ -9,28 +9,21 @@ import { ContactModule } from './modules/contact/contact.module';
 import { RequestEventModule } from './modules/request-event/request-event.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
-import { HomeComponent } from './home/home/home.component';
+
 @NgModule({
   declarations: [
-    AppComponent,
-    
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HomeModule,
     AuthenticationModule,
     BuyModule,
     AboutUsModule,
     EventModule,
     RequestEventModule,
-    ContactModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    HomeModule,
-    
-  
+    ContactModule
   ],
   providers: [],
   bootstrap: [AppComponent]
