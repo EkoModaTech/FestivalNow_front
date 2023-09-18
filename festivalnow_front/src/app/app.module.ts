@@ -9,37 +9,36 @@ import { ContactModule } from './modules/contact/contact.module';
 import { RequestEventModule } from './modules/request-event/request-event.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
 import { HeaderComponent } from './header/header.component';
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent
-=======
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserMenuComponent } from './user-menu/user-menu.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu'; // Importa MatMenuModule
 import { MatIconModule } from '@angular/material/icon';
-import { HomeComponent } from './home/home/home.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './footer/footer.component'; // Importa MatIconModule
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
-
->>>>>>> 5b8dd1e376096e7eaa1d910a64da8e5740bc6bc1
+    HeaderComponent,
+    UserMenuComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthenticationModule,
+    MatButtonModule,
+    MatMenuModule, // Agrega MatMenuModule aquí
+    MatIconModule, // Agrega MatIconModule aquí
     BuyModule,
     AboutUsModule,
     EventModule,
     RequestEventModule,
     ContactModule,
-    BrowserAnimationsModule,
-    MatIconModule,
     HomeModule,
+    BrowserAnimationsModule,
 
 
   ],

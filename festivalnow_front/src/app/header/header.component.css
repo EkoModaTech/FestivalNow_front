@@ -1,6 +1,24 @@
 .header-container {
   background: linear-gradient(to right, #F15938, #FFB001);
   margin: none;
+  justify-content: space-between; /* Espaciado uniforme entre elementos */
+  align-items: center;
+  height: 110px;
+  display: flex;
+}
+
+.menu-enlaces {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.menu-enlaces li {
+  margin: 0;
+  color: aliceblue;
 }
 
 .logo {
@@ -8,6 +26,11 @@
 }
 
 .logo img {
-  width: 50px;
+  width: 100px;
   height: auto;
+}
+
+
+.menu-enlaces button {
+  color: white; /* Cambia el color del texto a blanco */
 }
