@@ -22,13 +22,17 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HomeModule,
     AuthenticationModule,
     BuyModule,
     AboutUsModule,
     EventModule,
     RequestEventModule,
-    ContactModule
+    ContactModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    HomeModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
