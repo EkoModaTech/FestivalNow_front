@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FestivalComponent } from './festival.component';
+import { HeaderComponent } from './header.component';
 
-describe('FestivalComponent', () => {
-  let component: FestivalComponent;
-  let fixture: ComponentFixture<FestivalComponent>;
+describe('HeaderComponent', () => {
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FestivalComponent]
+      declarations: [HeaderComponent]
     });
-    fixture = TestBed.createComponent(FestivalComponent);
+    fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
