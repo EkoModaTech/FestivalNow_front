@@ -7,10 +7,12 @@ import { RecoverPasswordComponent } from './modules/authentication/recover-passw
 import { RegisterComponent } from './modules/authentication/register/register.component';
 import { SettingComponent } from './modules/authentication/setting/setting.component';
 import { EditUserComponent } from './modules/authentication/edit-user/edit-user.component';
+import { PseComponent } from './modules/buy/pse/pse.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'Home',pathMatch:'full'},
   {path: 'Home', component: HomeComponent},
+  {path: 'PSE', component: PseComponent},
   {path: 'not-found', component: NotFoundComponent },
   {path: 'login',component: LoginComponent},
   {path: 'recover',component: RecoverPasswordComponent},
