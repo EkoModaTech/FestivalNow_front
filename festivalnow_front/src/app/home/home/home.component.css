@@ -1,13 +1,12 @@
 .stripe-container {
     display: flex;
 }
-
 .image-container {
     position: relative;
     width: 200px;
     height: 200px;
     margin-right: 1rem;
-    
+
 }
 h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -101,7 +100,7 @@ input[type="text"]::placeholder {
 }
 
 .card-container {
-    height: 800px; 
+    height: 800px;
     overflow-y: scroll;
     overflow-x: hidden;
 
@@ -117,14 +116,14 @@ input[type="text"]::placeholder {
     background-color: #f05c44 !important;
     color: white !important;
 }
- 
+
 .date {
     display: flex;
     align-items: flex-end;
     justify-content: center;
     color: #f89474;
 }
-  
+
 .day {
     font-size: 65px;
 }
@@ -134,18 +133,18 @@ input[type="text"]::placeholder {
     flex-direction: column;
     align-items: flex-start;
 }
-  
+
 .month {
     font-size: 20px;
 }
-  
+
 .year {
     font-size: 20px;
 }
 
 .badge{
-    position: absolute; 
-    top: 30px; 
+    position: absolute;
+    top: 30px;
     left: 18px;
 }
 .card-title{
