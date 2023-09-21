@@ -28,6 +28,7 @@ import { FooterComponent } from './footer/footer.component'; // Importa MatIconM
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HomeModule,
     AuthenticationModule,
     MatButtonModule,
     MatMenuModule, // Agrega MatMenuModule aquí
@@ -39,8 +40,6 @@ import { FooterComponent } from './footer/footer.component'; // Importa MatIconM
     ContactModule,
     HomeModule,
     BrowserAnimationsModule,
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]
