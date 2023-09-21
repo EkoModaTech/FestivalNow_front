@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu'; // Importa MatMenuModule
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component'; // Importa MatIconModule
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { FooterComponent } from './footer/footer.component'; // Importa MatIconM
     ContactModule,
     HomeModule,
     BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

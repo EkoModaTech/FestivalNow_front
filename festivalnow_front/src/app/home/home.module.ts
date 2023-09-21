@@ -18,7 +18,12 @@ import { MatMenuModule } from '@angular/material/menu';
     FooterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatIconModule,
+    FormsModule,
+    MatMenuModule
   ]
 })
 export class HomeModule { }
