@@ -1,0 +1,61 @@
+.specific-event{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+section{
+    padding: 1rem;
+    margin: 1rem 4rem;
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 2px 4px 0 rgba(0,0,0,0.19);
+    border-radius: 1rem;
+}
+
+.main_section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 2rem;
+    background-color: antiquewhite;
+}
+
+.buy_container{
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buy_button{
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    border-radius: 25rem;
+    padding: 0.5rem 2rem;
+    border: none;
+    background-color: #FFB001;
+    transition: all 100ms linear;
+}
+.buy_button:hover{
+    background-color: #F15938;
+}
+
+
+.place_map{
+    display: flex;
+    flex-direction: column;
+}
+
+.place_map_image{
+    align-self: center;
+    width: 40vw;
+}
+
+.event_map_section{
+    display: flex;
+    flex-direction: column;
+}
+
+.event_map{
+    align-self: center;
+}

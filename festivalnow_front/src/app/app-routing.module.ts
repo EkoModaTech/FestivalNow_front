@@ -9,9 +9,10 @@ import { SettingComponent } from './modules/authentication/setting/setting.compo
 import { EditUserComponent } from './modules/authentication/edit-user/edit-user.component';
 import { PseComponent } from './modules/buy/pse/pse.component';
 import { GeneralEventComponent } from './modules/event/general-event/general-event.component';
+import { SpecificEventComponent } from './modules/event/specific-event/specific-event.component';
 const routes: Routes = [
-  {path:'', redirectTo:'Home',pathMatch:'full'},
-  {path: 'Home', component: HomeComponent},
+  {path:'', redirectTo:'home',pathMatch:'full'},
+  {path: 'home', component: HomeComponent},
   {path: 'PSE', component: PseComponent},
   {path: 'not-found', component: NotFoundComponent },
   {path: 'login',component: LoginComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'setting', component:SettingComponent},
   {path: 'edit',component:EditUserComponent},
   {path: 'general',component:GeneralEventComponent},
+  {path: 'event/:id',component:SpecificEventComponent},
 ];
 
 @NgModule({
