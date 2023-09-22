@@ -1,0 +1,79 @@
+.stripe-container {
+    display: flex;
+}
+
+h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #f3845e;
+    font-size: 3em;
+    margin-left: 5rem;
+  }
+
+.image-stripe {
+    overflow-x: scroll;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.stripe-container {
+    display: flex;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.stripe-container::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+}
+
+.carousel-container button {
+    margin: 0 20px;
+}
+
+.mat-icon {
+    color: #F58459;
+}
+
+input[type="text"] {
+    border: 2px solid #ef5a40;
+}
+input[type="text"]::placeholder {
+    color: grey;
+}
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(239, 90, 64, 0.3);
+}
+
+.card {
+    margin: 20px;
+
+    height: 25rem;
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 2px 4px 0 rgba(0,0,0,0.19);
+  }
+
+.card-container {
+    height: 800px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+
+.card-img-top {
+    max-width: 100%;
+    height: 200px;
+  }
+
+  .card-title {
+    color: rgb(72, 68, 68);
+  }
+
+  ::ng-deep .orange-button {
+    background-color: #f05c44 !important;
+    color: white !important;
+}

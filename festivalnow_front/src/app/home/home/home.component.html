@@ -1,11 +1,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <section>
-    <div class="container mt-5 mb-5">
-        <div class="text-center">
-        <h1>Eventos</h1>
+    <div class="mt-5 mb-5 ">
+        <div class="text-center ">
+            <h1>Eventos</h1>
         </div>
-        <div class="carousel-container">
+        <div class="carousel-container justify-content-center">
             <button mat-icon-button (click)="scrollLeft()"><mat-icon>keyboard_arrow_left</mat-icon></button>
             <div #stripeContainer class="stripe-container">
                 <div class="image-container" *ngFor="let image of images">
@@ -20,16 +20,39 @@
 
 </section>
 
-<br><br>
+
+<div class="mt-5 mb-5">
+    <div class="slider">
+        <div class="slider-container">
+            <div class="image"
+                style="background-image: url(https://ironmaidencolombiafc.files.wordpress.com/2017/11/flyer-tributo-tbos-lc-horizontal.png); ">
+            </div>
+            <div class="image"
+                style="background-image: url(https://es.concerts-metal.com/images/flyers/202211/1669650565.webp);">
+            </div>
+            <div class="image"
+                style="background-image: url(https://images.unsplash.com/photo-1510682657356-6ee07db8204b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80);">
+            </div>
+            <div class="image"
+                style="background-image: url(https://images.unsplash.com/photo-1470345961863-06d4b12d93b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2664&q=80);">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 
 <section>
-    <div class="container mt-5 mb-5">
+    <div class=" mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-md-6 mb-3 sticky-top">
                 <br>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Buscar Conciertos"
-                        [(ngModel)]="searchTerm">
+                    <input type="text" class="form-control" placeholder="Buscar Conciertos" [(ngModel)]="searchTerm">
                     <div class="input-group-append">
                         <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>toc</mat-icon></button>
                         <mat-menu #menu="matMenu">

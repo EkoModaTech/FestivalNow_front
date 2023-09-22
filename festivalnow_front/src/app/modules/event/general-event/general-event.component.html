@@ -1,1 +1,74 @@
-<p>general-event works!</p>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <section>
+        <div class="container mt-5 mb-5">
+          <div class="row justify-content-start">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Buscar Conciertos" [(ngModel)]="searchText">
+              <div class="input-group-append">
+                <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>location_city</mat-icon></button>
+                <mat-menu #menu="matMenu">
+                  <div class="menu-header">Filtrar por ciudad</div>
+                  <mat-checkbox color="warn" *ngFor="let ciudad of ciudades" [(ngModel)]="ciudad.checked">{{ciudad.name}}</mat-checkbox>
+                </mat-menu>
+                
+                <button mat-icon-button [matMenuTriggerFor]="menu2"><mat-icon>category</mat-icon></button>
+                <mat-menu #menu2="matMenu">
+                  <mat-checkbox color="warn" class="mat-menu-item" [(ngModel)]="conciertosChecked" checked>Conciertos</mat-checkbox>
+                  <mat-checkbox color="warn" class="mat-menu-item" [(ngModel)]="festivalesChecked" checked>Festivales</mat-checkbox>
+                </mat-menu>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section>
+        <div class="mt-5 mb-5 "  *ngIf="conciertosChecked">
+          <h1>Conciertos</h1>
+          <div class="carousel-container justify-content-center">
+            <button mat-icon-button (click)="scrollLeft('conciertos')"><mat-icon>keyboard_arrow_left</mat-icon></button>
+            <div #stripeContainerConciertos class="stripe-container">
+              <div class="image-container" *ngFor="let concierto of conciertosFiltered">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" [src]="concierto.src" [alt]="concierto.alt">
+                  <div class="card-body d-flex flex-column">
+                    <h2 class="card-title">{{concierto.title}}</h2>
+                    <p class="card-text">{{concierto.text}}</p>
+                    <br>
+                    <div class="text-center">
+                      <button mat-raised-button class="orange-button">Ver Detalles</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button mat-icon-button (click)="scrollRight('conciertos')"><mat-icon>keyboard_arrow_right</mat-icon></button>
+          </div>
+        </div>
+      </section>
+      
+      <section>
+        <div class="mt-5 mb-5 " *ngIf="festivalesChecked">
+          <h1>Festivales</h1>
+          <div class="carousel-container justify-content-center">
+            <button mat-icon-button (click)="scrollLeft('festivales')"><mat-icon>keyboard_arrow_left</mat-icon></button>
+            <div #stripeContainerFestivales class="stripe-container">
+              <div class="image-container" *ngFor="let festival of festivalesFiltered">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" [src]="festival.src" [alt]="festival.alt">
+                  <div class="card-body d-flex flex-column">
+                    <h2 class="card-title">{{festival.title}}</h2>
+                    <p class="card-text">{{festival.text}}</p>
+                    <br>
+                    <div class="text-center">
+                      <button mat-raised-button class="orange-button">Ver Detalles</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button mat-icon-button (click)="scrollRight('festivales')"><mat-icon>keyboard_arrow_right</mat-icon></button>
+          </div>
+        </div>
+      </section>

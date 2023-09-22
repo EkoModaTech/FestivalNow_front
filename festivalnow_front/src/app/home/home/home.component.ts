@@ -13,7 +13,9 @@ export class HomeComponent {
     {src: 'https://www.100x100eventos.com/wp-content/uploads/2019/09/fiestas-de-empresas-para-navidad-1.jpg', alt: 'Empresas', text: 'EMPRESAS'},
     {src: 'https://media.ambito.com/p/21d7b7e4011039881433e2e6c95283f9/adjuntos/239/imagenes/040/468/0040468241/karaoke-fotojpg.jpg', alt: 'karaoke', text: 'KARAOKE'},
     {src: 'https://estaticosgn-cdn.deia.eus/clip/a9a5d1bc-8f97-4e44-a98b-68eae954a954_16-9-discover-aspect-ratio_default_0.jpg', alt: 'catas', text: 'CATAS'},
-    {src: 'https://www.eleconomista.com.mx/__export/1660069496696/sites/eleconomista/img/2022/08/09/tomorrowland.jpg_1035515469.jpg', alt: 'festivales', text: 'FESTIVALES'}
+    {src: 'https://www.eleconomista.com.mx/__export/1660069496696/sites/eleconomista/img/2022/08/09/tomorrowland.jpg_1035515469.jpg', alt: 'festivales', text: 'FESTIVALES'},
+    {src: 'https://www.hsbnoticias.com/wp-content/uploads/2023/01/concierto-nw.jpg', alt: 'conciertos', text: 'CONCIERTOS'},
+    {src: 'https://www.seoptimer.com/es/blog/wp-content/uploads/2022/09/event-de-marketing-digital.jpg', alt: 'conferencias', text: 'CONFERENCIAS'}
   ];
   cards = [
     {src: 'https://latiquetera.com/img/attach/Event/2831/43692/event_normal.8dc4a3f2e32c2a63eb20112c7ced3625.png', title: 'METALLICA', day: '01', month: 'sept', year: '2023', genres: ['Rock', 'Metal']},
