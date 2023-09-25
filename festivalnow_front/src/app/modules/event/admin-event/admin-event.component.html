@@ -1,1 +1,32 @@
-<p>admin-event works!</p>
+<div class="container">
+    <h2>Eventos Administrativos</h2>
+    <table class="mat-elevation-z8">
+      <thead>
+        <tr>
+          <th>Fecha y Hora</th>
+          <th>Nombre del Evento</th>
+          <th>Tipo</th>
+          <th>Capacidad</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2023-09-20 14:00</td>
+          <td>Concierto en Vivo</td>
+          <td>Música</td>
+          <td>1000</td>
+          <td>Activo</td>
+          <td>
+            <!-- Agrega aquí tus botones de acciones (Ver Detalle, Editar, Cambiar Estado) -->
+            <button >Ver Detalle</button> <!-- (click)="verDetalleEvento('Concierto en Vivo')" -->
+            <button >Editar</button> <!-- (click)="editarEvento('Concierto en Vivo')"  -->
+            <button >Cambiar Estado</button> <!-- (click)="cambiarEstado('Concierto en Vivo')" -->
+          </td>
+        </tr>
+        <!-- Agrega más filas de datos aquí según tu necesidad -->
+      </tbody>
+    </table>
+  </div>
+  
