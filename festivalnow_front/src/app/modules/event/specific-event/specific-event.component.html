@@ -1,1 +1,62 @@
-<p>specific-event works!</p>
+<div class="specific-event">
+    <img [src]="event.horizontal_img" alt="">
+    <main class="main_section">
+      <img [src]="event.vertical_img" alt="">
+      <section class="event_main_info">
+        <h1>{{ event.general.title }}</h1>
+        <p class="date">{{ event.general.date }}</p>
+        <h2 class="short_place">{{ event.general.place }}</h2>
+        <p class="short_place_details">{{ event.general.place_details }}</p>
+        <article class="ticktes_types_container">
+          <p class="ticket_type_name">{{ event.general.ticket_type_name }}</p>
+          <p class="entrada">Entrada</p>
+          <p class="value">{{ event.general.cost }}</p>
+        </article>
+      </section>
+    </main>
+    <div class="buy_container">
+      <button class="buy_button">COMPRAR BOLETOS</button>
+    </div>
+    <section class="place_map">
+      <h2>Mapa del lugar</h2>
+      <img class="place_map_image" [src]="event.place_map_image" alt="">
+    </section>
+    <section class="general_event_information">
+      <h2>Información adicional del espectáculo</h2>
+      <article class="place">{{ event.general_event_information.place }}</article>
+      <article class="date">{{ event.general_event_information.date }}</article>
+      <article class="hour">{{ event.general_event_information.hour }}</article>
+      <article class="min_age">{{ event.general_event_information.min_age }}</article>
+    </section>
+    <section class="tickets_information">
+      <h2>{{ event.tickets_information.title }}</h2>
+      <table class="tickets_table">
+        <tr>
+          <td>LOCALIDAD</td>
+          <td>Aforo</td>
+          <td>Precio</td>
+          <td>Servicio</td>
+          <td>TOTAL</td>
+        </tr>
+        <tr *ngFor="let ticket of event.tickets_information.values">
+          <td>{{ ticket[0] }}</td>
+          <td>{{ ticket[1] }}</td>
+          <td>{{ ticket[2] }}</td>
+          <td>{{ ticket[3] }}</td>
+          <td>{{ ticket[4] }}</td>
+        </tr>
+      </table>
+    </section>
+    <section class="event_sale_stages">
+      <h2>{{ event.event_sale_stages.title }}</h2>
+      <article *ngFor="let stage of event.event_sale_stages.stages">
+        <h3>{{ stage.title }}</h3>
+        <p>{{ stage.description }}</p>
+      </article>
+    </section>
+    <section class="event_map_section">
+      <h2>{{ event.event_map_section.title }}</h2>
+      <iframe class="event_map" [src]="mapUri" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+  </div>
+  
