@@ -6,7 +6,7 @@ services:
     hostname: frontend
     ports:
       - "80:80"
-  
+
 #Qa
   frontend_qa:
     build: .
