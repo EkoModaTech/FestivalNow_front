@@ -10,8 +10,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
-import { DatePipe } from '@angular/common';
-import { EventService } from 'src/app/services/event.service';
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [

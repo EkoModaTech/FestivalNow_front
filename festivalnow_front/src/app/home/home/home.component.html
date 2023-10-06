@@ -39,25 +39,18 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
 <section>
     <div class=" mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-md-6 mb-3 sticky-top">
                 <br>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Buscar Conciertos" [(ngModel)]="searchTerm">
+                    <input type="text" class="form-control" placeholder="Buscar Eventos" [(ngModel)]="searchTerm">
                     <div class="input-group-append">
                         <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>toc</mat-icon></button>
                         <mat-menu #menu="matMenu">
-                            <div class="menu-header">Filtrar por género</div>
-                            <mat-checkbox color="warn" *ngFor="let genre of genres"
+                            <div class="menu-header">Filtrar por Tipo</div>
+                            <mat-checkbox color="warn" *ngFor="let genre of types"
                                 [(ngModel)]="genre.checked">{{genre.name}}</mat-checkbox>
                         </mat-menu>
                     </div>
@@ -68,20 +61,20 @@
             <div class="row justify-content-center">
                 <div class="card" *ngFor="let card of filteredCards">
                     <br>
-                    <img class="card-img-top" [src]="card.src" alt="Card image cap">
+                    <img class="card-img-top" src="https://edit.org/photos/img/blog/vja-poster-conciertos-gratis-imprimir-bar.jpg-840.jpg" alt="Card image cap">
                     <h3><span class="badge bg-success">Disponible</span></h3>
                     <div class="card-body">
                         <div class="text-center">
-                            <h2 class="card-title">{{card.title}}</h2>
+                            <h2 class="card-title">{{card.name}}</h2>
                             <button mat-raised-button class="orange-button">Comprar Boletas</button>
                             <p></p>
                             <div class="date">
-                                <div class="day">{{card.day}}</div>
+                                <div class="day">{{card.date.substr(8, 2)}}</div>
                                 <div class="month-year">
-                                    <div class="month">{{card.month}}</div>
-                                    <div class="year">{{card.year}}</div>
+                                  <div class="month">{{card.date.substr(5, 2)}}</div>
+                                  <div class="year">{{card.date.substr(0, 4)}}</div>
                                 </div>
-                            </div>
+                              </div>
                             <br><br>
                         </div>
                     </div>
