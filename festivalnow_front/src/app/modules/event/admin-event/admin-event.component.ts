@@ -58,8 +58,7 @@ export class AdminEventComponent {
   }
 
   editarEvento(evento: any) {
-    // Lógica para editar el evento en el frontend
-    console.log(evento)
+    this.router.navigate(['customize', {evento: JSON.stringify(evento)}]);
   }
 
   cambiarEstado(evento: any) {

@@ -57,7 +57,7 @@ export class HostEventComponent {
   }
 
   editarEvento(evento: any) {
-    // Lógica para editar el evento en el frontend
+    this.router.navigate(['customize', {evento: JSON.stringify(evento)}]);
   }
 
   promocionarEvento(evento: any) {
