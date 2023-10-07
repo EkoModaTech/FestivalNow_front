@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CalendarComponent } from '../calendar/calendar.component';
 
 @Component({
   selector: 'app-customize',
@@ -7,9 +6,27 @@ import { CalendarComponent } from '../calendar/calendar.component';
   styleUrls: ['./customize.component.css']
 })
 export class CustomizeComponent {
-  nuevoEvento: any = {};
 
-  crearEvento() {
+  nuevoEvento: any = {
+    // Otras propiedades si las tienes...
+    imagenURL: ''
+  };
+
+  isURLValid: boolean = true;
+
+  crearEvento(): void {
+    this.validateImageURL();
+
+    if (!this.isURLValid) {
+      alert('Por favor, corrija los errores en el formulario.');
+      return;
+    }
+
     console.log(this.nuevoEvento);
+  }
+
+  validateImageURL(): void {
+    const urlPattern = /^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)$/;
+    this.isURLValid = urlPattern.test(this.nuevoEvento.imagenURL);
   }
 }

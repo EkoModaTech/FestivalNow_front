@@ -2,6 +2,14 @@
     <h2>Crear un Evento</h2>
     <form (submit)="crearEvento()">
       <div class="form-group">
+        <label for="imagenURL">URL de la Imagen:</label>
+        <input type="text" id="imagenURL" class="form-control" name="imagenURL" [(ngModel)]="nuevoEvento.imagenURL" (blur)="validateImageURL()">
+        <div>
+          <small *ngIf="!isURLValid" class="text-danger">Por favor, ingresa una URL válida para una imagen (.jpg, .jpeg, .png, etc.).</small>
+        </div>
+       </div>
+
+      <div class="form-group">
         <label for="tipoEvento">Tipo de Evento:</label>
         <select id="tipoEvento" class="form-control"  name="tipoEvento">  <!-- [(ngModel)]="nuevoEvento.tipoEvento" -->
           <option value="Concierto">Concierto</option>

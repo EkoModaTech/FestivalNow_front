@@ -5,7 +5,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     CustomizeComponent,
@@ -15,7 +15,8 @@ import { MatInputModule } from '@angular/material/input';
     CommonModule,
     MatDatepickerModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule
   ],
   exports: [
     CalendarComponent

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCalendarCellCssClasses, MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-calendar',
@@ -7,14 +8,20 @@ import { MatCalendarCellCssClasses, MatDatepickerInputEvent } from '@angular/mat
   styleUrls: ['./calendar.component.css']
 })
 
-export class CalendarComponent {
+export class CalendarComponent implements OnInit{
 
   selectedDate!: Date;
   disabledDates = [
     new Date(Date.UTC(2023, 9, 5)),  // Octubre 5
     new Date(Date.UTC(2023, 9, 7)),  // Octubre 7
   ];
+  loading: boolean = true;
 
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.fetchDisabledDates();
+  }
 
   addEvent(event: MatDatepickerInputEvent<Date>) {
     if (event.value)
@@ -46,4 +53,14 @@ export class CalendarComponent {
 
     return isDisabled ? 'disabled-date' : '';
   };
+
+  fetchDisabledDates(): void {
+    this.http.get<any[]>('http://ns.qa.10.43.101.226.nip.io/event/event/list').subscribe(events => {
+      this.disabledDates = events.map(event => new Date(event.date));
+      this.loading = false;
+    }, error => {
+      console.error("Error fetching events:", error);
+      this.loading = false;
+    });
+  }
 }
