@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatCalendarCellCssClasses, MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-calendar',
@@ -35,5 +35,15 @@ export class CalendarComponent {
     );
 
     return !isDisabled;
+  };
+
+  dateClass = (date: Date): MatCalendarCellCssClasses => {
+    const isDisabled = this.disabledDates.some(d =>
+      d.getUTCFullYear() === date.getUTCFullYear() &&
+      d.getUTCMonth() === date.getUTCMonth() &&
+      d.getUTCDate() === date.getUTCDate()
+    );
+
+    return isDisabled ? 'disabled-date' : '';
   };
 }
