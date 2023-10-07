@@ -1,20 +1,54 @@
 import { Component } from '@angular/core';
+import { EventService } from 'src/app/services/event.service';
+import { Event } from 'src/app/models/event.interface';
 
 @Component({
   selector: 'app-client-event',
-  templateUrl: './client-event.component.html',
-  styleUrls: ['./client-event.component.css']
+  styleUrls: ['./client-event.component.css'],
+  template: 
+  `
+  <div class="container">
+    <h2>Tus Eventos</h2>
+    <table class="mat-elevation-z8">
+      <thead>
+        <tr>
+          <th>Fecha y Hora</th>
+          <th>Nombre del Evento</th>
+          <th>Capacidad</th>
+          <th>Dirección</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evento of eventos">
+          <td>{{evento.date}}</td>
+          <td>{{evento.name}}</td>
+          <td>{{evento.ability}}</td>
+          <td>{{evento.city}}</td>
+          <td>
+            <!-- Agrega aquí tus botones de acciones (Ver Detalle, Editar, Cambiar Estado) -->
+            <button (click)="verDetalleBoleto({evento})">Ver Boleto</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+`,
 })
 export class ClientEventComponent {
-  eventos = [
-    { fechaHora: '2023-09-20 14:00', nombre: 'Concierto en Vivo', direccion: '123 Calle Principal' },
-    { fechaHora: '2023-09-25 19:30', nombre: 'Festival de Arte', direccion: '456 Avenida Secundaria' },
-    // Agrega más eventos asociados al cliente según tus datos
-  ];
 
-  columns: string[] = ['fechaHora', 'nombre', 'direccion', 'acciones'];
+  constructor(private eventService: EventService) { }
 
-  verBoletos(evento: any) {
+  eventos: Event[] = [];
+
+  ngOnInit(): void {
+    this.eventService.getEventos().subscribe(eventos => {
+      this.eventos = eventos;
+      console.log(eventos);
+    });
+  }
+
+  verDetalleBoleto(evento: any) {
     // Aquí debes agregar la lógica para llevar al usuario a la vista de boletos del evento en específico.
     // Esto podría incluir la navegación a una nueva ruta.
   }
