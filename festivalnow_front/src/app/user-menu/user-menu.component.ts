@@ -9,6 +9,6 @@ export class UserMenuComponent {
   menuItems = [
     { label: 'Perfil', link: '/perfil' },
     { label: 'Configuración', link: '/setting' },
-    { label: 'Cerrar sesión', link: '/logout' }
+    { label: 'Iniciar sesion', link: '/login' }
   ];
 }
