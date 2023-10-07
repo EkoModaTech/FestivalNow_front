@@ -1,0 +1,21 @@
+.calendario {
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.dia {
+  padding: 5px;
+  text-align: center;
+}
