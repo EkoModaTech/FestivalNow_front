@@ -42,7 +42,7 @@ export class SettingComponent {
     // Personaliza la posición del diálogo
     dialogConfig.position = {
       left: '800px',
-      top: '-500px',
+      top: '300px',
     };
   
     // Personaliza el estilo del diálogo

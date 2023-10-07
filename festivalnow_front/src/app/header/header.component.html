@@ -1,11 +1,13 @@
 <header class="header-container">
   <div class="logo">
-    <img src = 'assets/logo-festivanow.png' alt="Festiva Now">
+    <a [routerLink]="['/home']">
+      <img src = 'assets/logo-festivanow.png' alt="Festiva Now">
+    </a>
   </div>
   <div class="menu-enlaces">
     <button mat-button [routerLink]="['/pagina1']">Quienes Somos</button>
-    <button mat-button [routerLink]="['/pagina2']">Eventos</button>
-    <button mat-button [routerLink]="['/pagina2']">Crear Evento</button>
+    <button mat-button [routerLink]="['/general']">Eventos</button>
+    <button mat-button [routerLink]="['/customize']">Crear Evento</button>
     <button mat-button [routerLink]="['/pagina2']">Contacto</button>
   </div>
   <app-user-menu></app-user-menu>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GeneralEventComponent } from './general-event/general-event.component';
 import { SpecificEventComponent } from './specific-event/specific-event.component';
@@ -10,9 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
-
-
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     GeneralEventComponent,
@@ -27,7 +25,12 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatMenuModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es', }
   ]
+
 })
 export class EventModule { }
