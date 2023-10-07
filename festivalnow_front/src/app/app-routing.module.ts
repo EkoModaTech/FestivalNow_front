@@ -15,6 +15,8 @@ import { ClientEventComponent } from './modules/event/client-event/client-event.
 import { HostEventComponent } from './modules/event/host-event/host-event.component';
 import { CustomizeComponent } from './modules/request-event/customize/customize.component';
 import { CalendarComponent } from './modules/request-event/calendar/calendar.component';
+import { PresentationComponent } from './modules/about-us/presentation/presentation.component';
+import { ContactUsComponent } from './modules/contact/contact-us/contact-us.component';
 const routes: Routes = [
   {path:'', redirectTo:'home',pathMatch:'full'},
   {path: 'home', component: HomeComponent},
@@ -31,7 +33,9 @@ const routes: Routes = [
   {path: 'clientEvent',component:ClientEventComponent},
   {path: 'hostEvent',component:HostEventComponent},
   {path: 'customize',component:CustomizeComponent},
-  {path: 'calendar',component:CalendarComponent}
+  {path: 'calendar',component:CalendarComponent},
+  {path: 'presentation',component:PresentationComponent},
+  {path: 'contact',component:ContactUsComponent}
 ];
 
 @NgModule({
