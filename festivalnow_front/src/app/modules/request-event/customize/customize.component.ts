@@ -62,22 +62,26 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CustomizeComponent {
 
-  nuevoEvento: any = {}; // Objeto para almacenar los datos del nuevo evento
+  nuevoEvento: any = {
+    // Otras propiedades si las tienes...
+    imagenURL: ''
+  };
 
-  constructor(private route: ActivatedRoute) { }
+  isURLValid: boolean = true;
 
-  ngOnInit(): void {
-    if (this.route.snapshot.paramMap.get('evento')) {
-      this.nuevoEvento = JSON.parse(this.route.snapshot.paramMap.get('evento') || '')
-      
-      // Debug log
-      console.log(this.nuevoEvento)
+  crearEvento(): void {
+    this.validateImageURL();
+
+    if (!this.isURLValid) {
+      alert('Por favor, corrija los errores en el formulario.');
+      return;
     }
+
+    console.log(this.nuevoEvento);
   }
 
-  crearEvento() {
-    // Aquí puedes agregar la lógica para enviar los datos del evento al servidor
-    // Por ahora, solo mostraremos los datos en la consola
-    console.log(this.nuevoEvento);
+  validateImageURL(): void {
+    const urlPattern = /^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)$/;
+    this.isURLValid = urlPattern.test(this.nuevoEvento.imagenURL);
   }
 }
