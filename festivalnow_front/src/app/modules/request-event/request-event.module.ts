@@ -1,14 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomizeComponent } from './customize/customize.component';
-
+import { CalendarComponent } from './calendar/calendar.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     CustomizeComponent,
+    CalendarComponent,
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule
+  ],
+  exports: [
+    CalendarComponent
+  ],
 })
 export class RequestEventModule { }

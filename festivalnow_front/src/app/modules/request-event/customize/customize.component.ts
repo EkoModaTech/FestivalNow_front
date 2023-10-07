@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CalendarComponent } from '../calendar/calendar.component';
 
 @Component({
   selector: 'app-customize',
@@ -6,11 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./customize.component.css']
 })
 export class CustomizeComponent {
-  nuevoEvento: any = {}; // Objeto para almacenar los datos del nuevo evento
+  nuevoEvento: any = {};
 
   crearEvento() {
-    // Aquí puedes agregar la lógica para enviar los datos del evento al servidor
-    // Por ahora, solo mostraremos los datos en la consola
     console.log(this.nuevoEvento);
   }
 }

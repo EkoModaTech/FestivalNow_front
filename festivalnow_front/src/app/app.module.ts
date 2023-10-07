@@ -18,7 +18,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component'; // Importa MatIconModule
 import { MatDialogModule } from '@angular/material/dialog';
 
-
 @NgModule({
   declarations: [
     AppComponent,
