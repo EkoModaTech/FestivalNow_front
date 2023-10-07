@@ -7,6 +7,7 @@ import { MatButtonModule }  from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatCheckboxModule,
     MatIconModule,
     FormsModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule
   ]
 })
 export class HomeModule { }

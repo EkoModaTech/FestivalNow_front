@@ -1,0 +1,44 @@
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  /* Estilos para las tablas con fondo negro */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: black; /* Fondo negro */
+  color: white; /* Texto en blanco */
+}
+
+/* Estilos para las celdas de encabezado */
+th {
+  border: 1px solid white; /* Borde blanco */
+  padding: 8px;
+  text-align: left;
+}
+
+/* Estilos para las celdas de datos */
+td {
+  border: 1px solid white; /* Borde blanco */
+  padding: 8px;
+  text-align: left;
+}
+
+/* Estilos para las filas impares (opcional, para mayor claridad) */
+tr:nth-child(odd) {
+  background-color: #f09c4e; /* Fondo gris oscuro para filas impares */
+}
+
+/* Estilos para los botones de acciones */
+button {
+  background-color: #141414; /* Fondo transparente */
+  color: white; /* Texto en blanco */
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+}

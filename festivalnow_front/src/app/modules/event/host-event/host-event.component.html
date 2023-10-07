@@ -1,1 +1,31 @@
-<p>host-event works!</p>
+<div class="container">
+    <h2>Eventos del Anfitrión</h2>
+    <table class="mat-elevation-z8">
+      <thead>
+        <tr>
+          <th>Fecha y Hora</th>
+          <th>Nombre del Evento</th>
+          <th>Capacidad</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2023-10-15 18:00</td>
+          <td>Fiesta en el Jardín</td>
+          <td>200</td>
+          <td>Activo</td>
+          <td>
+            <!-- Agrega aquí tus botones de acciones (Ver Detalle, Editar, Promocionar, Cambiar Estado) -->
+            <button >Ver Detalle</button> <!-- (click)="verDetalleEvento('Fiesta en el Jardín')" -->
+            <button >Editar</button> <!-- (click)="editarEvento('Fiesta en el Jardín')" -->
+            <button >Promocionar</button> <!--  (click)="promocionarEvento('Fiesta en el Jardín')"-->
+            <button >Cambiar Estado</button> <!--(click)="cambiarEstado('Fiesta en el Jardín')"  -->
+          </td>
+        </tr>
+        <!-- Agrega más filas de datos aquí según tu necesidad -->
+      </tbody>
+    </table>
+  </div>
+  
