@@ -1,21 +1,59 @@
 import { Component } from '@angular/core';
+import { EventService } from 'src/app/services/event.service';
+import { Event } from 'src/app/models/event.interface';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-host-event',
-  templateUrl: './host-event.component.html',
-  styleUrls: ['./host-event.component.css']
+  styleUrls: ['./host-event.component.css'],
+  template: 
+  `
+  <div class="container">
+    <h2>Eventos del Anfitrión</h2>
+    <table class="mat-elevation-z8">
+      <thead>
+        <tr>
+          <th>Fecha y Hora</th>
+          <th>Nombre del Evento</th>
+          <th>Capacidad</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evento of eventos">
+          <td>{{evento.date}}</td>
+          <td>{{evento.name}}</td>
+          <td>{{evento.ability}}</td>
+          <td>Activo</td>
+          <td>
+            <!-- Agrega aquí tus botones de acciones (Ver Detalle, Editar, Cambiar Estado) -->
+            <button (click)="verDetalle({evento})">Ver Detalle</button>
+            <button (click)="editarEvento({evento})">Editar</button>
+            <button (click)="promocionarEvento({evento})">Promocionar</button>
+            <button (click)="cambiarEstado({evento})">Cambiar Estado</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+`,
 })
 export class HostEventComponent {
-  eventos = [
-    { fechaHora: '2023-09-20 14:00', nombre: 'Concierto en Vivo' },
-    { fechaHora: '2023-09-25 19:30', nombre: 'Festival de Arte' },
-    // Agrega más eventos según tu necesidad
-  ];
 
-  columns: string[] = ['fechaHora', 'nombre', 'acciones'];
+  constructor(private eventService: EventService, private router: Router) { }
+
+  eventos: Event[] = [];
+
+  ngOnInit(): void {
+    this.eventService.getEventos().subscribe(eventos => {
+      this.eventos = eventos;
+      console.log(eventos);
+    });
+  }
 
   verDetalle(evento: any) {
-    // Lógica para ver el detalle del evento en el frontend
+    this.router.navigate(['event', evento.idEvent]);
   }
 
   editarEvento(evento: any) {
