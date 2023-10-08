@@ -11,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeModule } from 'src/app/home/home.module';
 @NgModule({
   declarations: [
     GeneralEventComponent,
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     HostEventComponent
   ],
   imports: [
+    HomeModule,
     CommonModule,
     MatButtonModule,
     MatIconModule,

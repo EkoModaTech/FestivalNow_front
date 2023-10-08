@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home/home.component';
 import { NotFoundComponent } from './home/not-found/not-found.component';
@@ -19,7 +19,6 @@ const routes: Routes = [
   {path:'', redirectTo:'home',pathMatch:'full'},
   {path: 'home', component: HomeComponent},
   {path: 'PSE', component: PseComponent},
-  {path: 'not-found', component: NotFoundComponent },
   {path: 'login',component: LoginComponent},
   {path: 'recover',component: RecoverPasswordComponent},
   {path: 'register',component:RegisterComponent},
@@ -31,7 +30,8 @@ const routes: Routes = [
   {path: 'clientEvent',component:ClientEventComponent},
   {path: 'hostEvent',component:HostEventComponent},
   {path: 'customize',component:CustomizeComponent},
-  {path: 'calendar',component:CalendarComponent}
+  {path: 'calendar',component:CalendarComponent},
+  {path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
