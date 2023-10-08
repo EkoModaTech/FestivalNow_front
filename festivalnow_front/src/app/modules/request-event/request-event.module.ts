@@ -5,10 +5,11 @@ import { CustomizeComponent } from './customize/customize.component';
 
 @NgModule({
   declarations: [
-    CustomizeComponent,
+    
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CustomizeComponent
   ]
 })
 export class RequestEventModule { }

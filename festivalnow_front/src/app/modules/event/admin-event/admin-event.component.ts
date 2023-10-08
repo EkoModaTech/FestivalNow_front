@@ -27,7 +27,7 @@ import { Router } from '@angular/router';
           <td>{{evento.name}}</td>
           <td>{{evento.type}}</td>
           <td>{{evento.ability}}</td>
-          <td>Activo</td>
+          <td>{{evento.state}}</td>
           <td>
             <!-- Agrega aquí tus botones de acciones (Ver Detalle, Editar, Cambiar Estado) -->
             <button (click)="verDetalle({evento})">Ver Detalle</button>
@@ -49,6 +49,8 @@ export class AdminEventComponent {
   ngOnInit(): void {
     this.eventService.getEventos().subscribe(eventos => {
       this.eventos = eventos;
+
+      // Debug log
       console.log(eventos);
     });
   }

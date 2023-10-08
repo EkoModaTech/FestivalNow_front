@@ -1,17 +1,23 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; 
+import { FormBuilder, FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
+  standalone: true,
   selector: 'app-customize',
   styleUrls: ['./customize.component.css'],
+  imports: [ 
+    FormsModule, 
+    ReactiveFormsModule 
+  ],
   template:
   `
   <div class="container">
     <h2>Crear un Evento</h2>
-    <form (submit)="crearEvento()">
+    <form (submit)="crearEvento()" [formGroup]="eventForm">
       <div class="form-group">
         <label for="tipoEvento">Tipo de Evento:</label>
-        <select id="tipoEvento" class="form-control" name="tipoEvento">  <!--[(ngModel)]="nuevoEvento.tipoEvento"-->
+        <select id="tipoEvento" class="form-control" name="tipoEvento" formControlName="typeControl" (change)="updateType()">  <!--[(ngModel)]="nuevoEvento.tipoEvento"-->
           <option value="Concierto">Concierto</option>
           <option value="Festival">Festival</option>
           <option value="Deportes">Deportes</option>
@@ -31,7 +37,7 @@ import { ActivatedRoute } from '@angular/router';
   
       <div class="form-group">
         <label for="municipio">Municipio:</label>
-        <select id="municipio" class="form-control" name="municipio"> <!--[(ngModel)]="nuevoEvento.municipio" -->
+        <select id="municipio" class="form-control" name="municipio" formControlName="cityControl" (change)="updateCity()"> <!--[(ngModel)]="nuevoEvento.municipio" -->
           <option value="Medellín">Medellín</option>
           <option value="Cali">Cali</option>
           <option value="Bogotá">Bogotá</option>
@@ -64,14 +70,32 @@ export class CustomizeComponent {
 
   nuevoEvento: any = {}; // Objeto para almacenar los datos del nuevo evento
 
+  eventForm: FormGroup = new FormGroup(
+    {
+      typeControl: new FormControl(),
+      cityControl: new FormControl()
+    }
+    );
+
+  private typeArr = ["Concierto", "Festival", "Deportes"]
+  private cityArr = ["Medellín", "Cali", "Bogotá"]
+
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.get('evento')) {
-      this.nuevoEvento = JSON.parse(this.route.snapshot.paramMap.get('evento') || '')
-      
+      this.nuevoEvento = JSON.parse(this.route.snapshot.paramMap.get('evento') || '').evento
       // Debug log
-      console.log(this.nuevoEvento)
+      console.log(this.nuevoEvento.type)
+    }
+  }
+
+  ngAfterViewInit() {
+    if (this.typeArr.indexOf(this.nuevoEvento.type) != -1) {
+      this.eventForm.controls['typeControl'].setValue(this.typeArr[this.typeArr.indexOf(this.nuevoEvento.type)]);
+    }
+    if (this.cityArr.indexOf(this.nuevoEvento.city) != -1) {
+      this.eventForm.controls['cityControl'].setValue(this.cityArr[this.cityArr.indexOf(this.nuevoEvento.city)]);
     }
   }
 
@@ -80,4 +104,13 @@ export class CustomizeComponent {
     // Por ahora, solo mostraremos los datos en la consola
     console.log(this.nuevoEvento);
   }
+
+  updateType() {
+    this.nuevoEvento.type = this.eventForm.controls['type'].value;
+  }
+
+  updateCity() {
+    this.nuevoEvento.city = this.eventForm.controls['city'].value;
+  }
+
 }

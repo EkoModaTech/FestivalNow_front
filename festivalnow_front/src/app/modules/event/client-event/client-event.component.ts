@@ -44,6 +44,8 @@ export class ClientEventComponent {
   ngOnInit(): void {
     this.eventService.getEventos().subscribe(eventos => {
       this.eventos = eventos;
+
+       // Debug log
       console.log(eventos);
     });
   }
