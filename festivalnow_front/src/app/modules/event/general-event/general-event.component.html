@@ -34,7 +34,7 @@
         <div #stripeContainerConciertos class="stripe-container">
           <div class="image-container" *ngFor="let concierto of bodasFiltered">
             <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="https://cdn0.bodas.com.mx/article/3583/3_2/960/jpg/53853-boda.jpeg" alt="concierto">
+              <img class="card-img-top" [src]="concierto.url ? concierto.url : 'https://cdn0.bodas.com.mx/article/3583/3_2/960/jpg/53853-boda.jpeg'" alt="concierto">
               <div class="card-body d-flex flex-column">
                 <h2 class="card-title">{{concierto.name}}</h2>
                 <p class="card-text">{{concierto.date | date:'EEEE d \'DE\' MMMM \'DE\' y':'es' | uppercase}}</p>              <br>
@@ -58,7 +58,7 @@
         <div #stripeContainerFestivales class="stripe-container">
           <div class="image-container" *ngFor="let festival of festivalesFiltered">
             <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="https://img.freepik.com/vector-premium/banner-horizontal-carnival-brazilian-festival-diseno-plantilla-portada-redes-sociales_288411-1953.jpg?w=2000" alt="festivales">
+              <img class="card-img-top" [src]="festival.url ? festival.url : 'https://img.freepik.com/vector-premium/banner-horizontal-carnival-brazilian-festival-diseno-plantilla-portada-redes-sociales_288411-1953.jpg?w=2000'" alt="festivales">
               <div class="card-body d-flex flex-column">
                 <h2 class="card-title">{{festival.name}}</h2>
                 <p class="card-text">{{festival.date | date:'EEEE d \'DE\' MMMM \'DE\' y':'es' | uppercase}}</p>              <br>

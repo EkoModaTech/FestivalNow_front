@@ -40,6 +40,7 @@ export class HomeComponent {
   scrollLeft() {
     this.stripeContainer.nativeElement.scrollLeft -= 200;
   }
+  
 
   scrollRight() {
     this.stripeContainer.nativeElement.scrollLeft += 200;
