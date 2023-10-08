@@ -57,7 +57,7 @@ import { FormBuilder, FormGroup, FormControl, FormsModule, ReactiveFormsModule }
   
       <div class="form-group">
         <label for="capacidad">Capacidad:</label>
-        <input type="number" id="capacidad" class="form-control"name="capacidad"> <!--  [(ngModel)]="nuevoEvento.capacidad" -->
+        <input type="number" id="capacidad" class="form-control"name="capacidad" value={{nuevoEvento.ability}}> <!--  [(ngModel)]="nuevoEvento.capacidad" -->
       </div>
   
       <button type="submit" class="btn btn-primary">Listo</button>
@@ -85,8 +85,6 @@ export class CustomizeComponent {
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.get('evento')) {
       this.nuevoEvento = JSON.parse(this.route.snapshot.paramMap.get('evento') || '').evento
-      // Debug log
-      console.log(this.nuevoEvento.type)
     }
   }
 
