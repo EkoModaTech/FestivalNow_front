@@ -19,6 +19,11 @@ section{
     background-color: antiquewhite;
 }
 
+.event_main_info{
+    width: 30%;
+}
+
+
 .buy_container{
     margin: 1rem 0;
     display: flex;
