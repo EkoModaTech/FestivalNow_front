@@ -40,7 +40,7 @@ import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
     BuyModule,
     AboutUsModule,
     EventModule,
-    RequestEventModule,
+    //RequestEventModule,
     ContactModule,
     HomeModule,
     MatDatepickerModule,
