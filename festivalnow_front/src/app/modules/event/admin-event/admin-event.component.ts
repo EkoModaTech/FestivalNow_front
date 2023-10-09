@@ -56,7 +56,8 @@ export class AdminEventComponent {
   }
 
   verDetalle(evento: any) {
-    this.router.navigate(['event', evento.idEvent]);
+    evento = evento.evento.idEvent
+    this.router.navigate(['event', evento]);
   }
 
   editarEvento(evento: any) {
@@ -65,6 +66,7 @@ export class AdminEventComponent {
 
   cambiarEstado(evento: any) {
     // Lógica para cambiar el estado del evento en el frontend (por ejemplo, cambiar un campo en el objeto 'evento')
+    // TODO: Pantalla de cambio de Estado
     console.log(evento)
   }
 

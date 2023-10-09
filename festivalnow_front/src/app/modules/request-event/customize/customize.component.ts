@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; 
+import { EventService } from 'src/app/services/event.service';
 import { FormBuilder, FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {Location} from '@angular/common';
 
 @Component({
   standalone: true,
@@ -14,7 +16,7 @@ import { FormBuilder, FormGroup, FormControl, FormsModule, ReactiveFormsModule }
   `
   <div class="container">
     <h2>Crear un Evento</h2>
-    <form (submit)="crearEvento()" [formGroup]="eventForm">
+    <form (submit)="submitEvent()" [formGroup]="eventForm">
       <div class="form-group">
         <label for="tipoEvento">Tipo de Evento:</label>
         <select id="tipoEvento" class="form-control" name="tipoEvento" formControlName="typeControl" (change)="updateType()">  <!--[(ngModel)]="nuevoEvento.tipoEvento"-->
@@ -57,7 +59,7 @@ import { FormBuilder, FormGroup, FormControl, FormsModule, ReactiveFormsModule }
   
       <div class="form-group">
         <label for="capacidad">Capacidad:</label>
-        <input type="number" id="capacidad" class="form-control"name="capacidad" value={{nuevoEvento.ability}}> <!--  [(ngModel)]="nuevoEvento.capacidad" -->
+        <input #box type="number" id="capacidad" class="form-control"name="capacidad" value={{nuevoEvento.ability}} (keyup)="onKey(box.value)"> <!--  [(ngModel)]="nuevoEvento.capacidad" -->
       </div>
   
       <button type="submit" class="btn btn-primary">Listo</button>
@@ -80,10 +82,13 @@ export class CustomizeComponent {
   private typeArr = ["Concierto", "Festival", "Deportes"]
   private cityArr = ["Medellín", "Cali", "Bogotá"]
 
-  constructor(private route: ActivatedRoute) { }
+  private eventoNuevo = true
+
+  constructor(private route: ActivatedRoute, private eventService: EventService, private _location: Location) { }
 
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.get('evento')) {
+      this.eventoNuevo = false
       this.nuevoEvento = JSON.parse(this.route.snapshot.paramMap.get('evento') || '').evento
     }
   }
@@ -97,18 +102,36 @@ export class CustomizeComponent {
     }
   }
 
+  submitEvent() {
+    if(this.eventoNuevo){
+      this.crearEvento()
+    }
+    else {
+      this.actualizarEvento()
+      console.log(this._location)
+      this._location.back();
+      
+    }  
+  }
+
   crearEvento() {
-    // Aquí puedes agregar la lógica para enviar los datos del evento al servidor
-    // Por ahora, solo mostraremos los datos en la consola
-    console.log(this.nuevoEvento);
+    this.eventService.createEvent(this.nuevoEvento).subscribe(resp => console.log(resp));
+  }
+
+  actualizarEvento() {
+    this.eventService.updateEvent(this.nuevoEvento).subscribe(resp => console.log(resp));
   }
 
   updateType() {
-    this.nuevoEvento.type = this.eventForm.controls['type'].value;
+    this.nuevoEvento.type = this.eventForm.controls['typeControl'].value;
   }
 
   updateCity() {
-    this.nuevoEvento.city = this.eventForm.controls['city'].value;
+    this.nuevoEvento.city = this.eventForm.controls['cityControl'].value;
+  }
+
+  onKey(value: string) {
+    this.nuevoEvento.ability = Number(value);
   }
 
 }

@@ -4,9 +4,7 @@ import { CustomizeComponent } from './customize/customize.component';
 
 
 @NgModule({
-  declarations: [
-    
-  ],
+  
   imports: [
     CommonModule,
     CustomizeComponent
