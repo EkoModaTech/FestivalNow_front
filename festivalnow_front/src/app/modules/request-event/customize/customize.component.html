@@ -1,61 +1,76 @@
 <div class="container">
-    <h2>Crear un Evento</h2>
-    <form (submit)="crearEvento()">
-      <div class="form-group">
-        <label for="imagenURL">URL de la Imagen:</label>
-        <input type="text" id="imagenURL" class="form-control" name="imagenURL" [(ngModel)]="nuevoEvento.imagenURL" (blur)="validateImageURL()">
-        <div>
-          <small *ngIf="!isURLValid" class="text-danger">Por favor, ingresa una URL válida para una imagen (.jpg, .jpeg, .png, etc.).</small>
-        </div>
-       </div>
+  <h2>Crear un Evento</h2>
+  <form (submit)="crearEvento()">
 
-      <div class="form-group">
-        <label for="tipoEvento">Tipo de Evento:</label>
-        <select id="tipoEvento" class="form-control"  name="tipoEvento">  <!-- [(ngModel)]="nuevoEvento.tipoEvento" -->
-          <option value="Concierto">Concierto</option>
-          <option value="Festival">Festival</option>
-          <option value="Deportes">Deportes</option>
-          <!-- Agrega más opciones según tus necesidades -->
-        </select>
+    <div class="form-group">
+      <label for="imagenURL">URL de la Imagen:</label>
+      <input type="text" id="imagenURL" class="form-control" name="imagenURL" [(ngModel)]="nuevoEvento.imagenURL" (blur)="validateImageURL()">
+      <div>
+        <small *ngIf="!isURLValid" class="text-danger">Por favor, ingresa una URL válida para una imagen (.jpg, .jpeg, .png, etc.).</small>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="departamento">Departamento:</label>
-        <select id="departamento" class="form-control"  name="departamento">  <!-- [(ngModel)]="nuevoEvento.departamento" -->
-          <option value="Antioquia">Antioquia</option>
-          <option value="Bogotá">Bogotá</option>
-          <option value="Valle del Cauca">Valle del Cauca</option>
-          <!-- Agrega más opciones según tus necesidades -->
-        </select>
-      </div>
+    <div class="form-group">
+      <label for="name">Nombre del Evento:</label>
+      <input type="text" id="name" class="form-control" name="name" [(ngModel)]="nuevoEvento.name">
+    </div>
 
-      <div class="form-group">
-        <label for="municipio">Municipio:</label>
-        <select id="municipio" class="form-control" name="municipio"> <!--[(ngModel)]="nuevoEvento.municipio" -->
-          <option value="Medellín">Medellín</option>
-          <option value="Cali">Cali</option>
-          <option value="Bogotá">Bogotá</option>
-          <!-- Agrega más opciones según tus necesidades -->
-        </select>
-      </div>
+    <div class="form-group">
+      <label for="description">Descripción:</label>
+      <textarea id="description" class="form-control" name="description" [(ngModel)]="nuevoEvento.description"></textarea>
+    </div>
 
-      <div class="form-group">
-        <label for="entretenimiento">Entretenimiento:</label>
-        <select id="entretenimiento" class="form-control"  name="entretenimiento"> <!-- [(ngModel)]="nuevoEvento.entretenimiento" -->
-          <option value="Música">Música</option>
-          <option value="Deportes">Deportes</option>
-          <option value="Cine">Cine</option>
-          <!-- Agrega más opciones según tus necesidades -->
-        </select>
-      </div>
+    <div class="form-group">
+      <label for="tipoEvento">Tipo de Evento:</label>
+      <select id="tipoEvento" class="form-control" name="tipoEvento" [(ngModel)]="nuevoEvento.type">
+        <option value="Concierto">Concierto</option>
+        <option value="Festival">Festival</option>
+        <option value="Deportes">Deportes</option>
+        <!-- Agrega más opciones según tus necesidades -->
+      </select>
+    </div>
 
-      <div class="form-group">
-        <label for="capacidad">Capacidad:</label>
-        <input type="number" id="capacidad" class="form-control"name="capacidad"> <!--  [(ngModel)]="nuevoEvento.capacidad" -->
-      </div>
-      <div class="date">
-        <app-calendar></app-calendar>
-      </div>
-      <button type="submit" class="btn btn-primary">Crear Evento</button>
-    </form>
-  </div>
+    <div class="form-group">
+      <label for="departamento">Departamento:</label>
+      <select id="departamento" class="form-control" name="departamento">
+        <option value="Antioquia">Antioquia</option>
+        <option value="Bogotá">Bogotá</option>
+        <option value="Valle del Cauca">Valle del Cauca</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="municipio">Municipio:</label>
+      <select id="municipio" class="form-control" name="municipio">
+        <option value="Medellín">Medellín</option>
+        <option value="Cali">Cali</option>
+        <option value="Bogotá">Bogotá</option>
+        <!-- Agrega más opciones según tus necesidades -->
+      </select>
+    </div>
+
+    <!-- Nota: El campo "entretenimiento" tampoco está vinculado al modelo "nuevoEvento". Lo dejo sin vinculación. -->
+
+    <div class="form-group">
+      <label for="entretenimiento">Entretenimiento:</label>
+      <select id="entretenimiento" class="form-control" name="entretenimiento">
+        <option value="Música">Música</option>
+        <option value="Deportes">Deportes</option>
+        <option value="Cine">Cine</option>
+        <!-- Agrega más opciones según tus necesidades -->
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="ability">Capacidad:</label>
+      <input type="number" id="ability" class="form-control" name="ability" [(ngModel)]="nuevoEvento.ability">
+    </div>
+
+    <div class="date">
+      <app-calendar></app-calendar>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Crear Evento</button>
+  </form>
+</div>
+
