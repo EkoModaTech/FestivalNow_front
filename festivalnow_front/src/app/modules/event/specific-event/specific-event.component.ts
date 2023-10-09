@@ -1,26 +1,45 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { NotFoundComponent } from 'src/app/home/not-found/not-found.component';
+
+const URL = "http://ns.qa.10.43.101.226.nip.io/event/event/"
+
+type Event = {
+  // Basic
+  idEvent: number,
+  name: string,
+  description: string,
+  date: string,// Standard date format with hour
+  city: string,
+  place: string, // Specific place
+  type: string,
+  ability: number,
+  img_url: string,
+
+  // About bussiness
+  url: string,
+  logistic: string
+  state: string,
+
+  // Optional
+  place_map_image: string,
+
+}
 
 
 const MockEvent: any = {
-  general: {
-    title: "FESTIVAL CORDILLERA - COMBO 2 DIAS",
-    date: "SEPTIEMBRE 23 Y 24 13:00 HRS",
-    place: "Parque Metropolitano Simón Bolívar",
-    place_details: "Bogotá, Cundinamarca Calle 63 y 53 entre carreras 48 y 68",
-    ticket_type_name: "COMBO VIP ETAPA 4",
-    cost: "$1.354.000,00"
-  },
-  title: "FESTIVAL CORDILLERA",
-  horizontal_img: "https://cdn.eticket.co/imagenes/imgEventos/230626165607652_estelar_Cat1.jpg",
-  vertical_img: "https://cdn.eticket.co/imagenes/imgEventos/230802095436364_poster_cartel_combos.jpg",
-  place_map_image: "https://api.eticket.com.co/v2/structures/mappingImage/14021",
-  general_event_information: {
-    "place": "Parque Simón Bolivar",
-    "date": "23 y 24 de septiembre de 2023",
-    "hour": "13:00 HRS",
-    "min_age": "18 años en todas las localidades"
-  },
+  name: "FESTIVAL CORDILLERA",
+  description: "a description",
+  type: "a type",
+  city: "Bogotá",
+  url: "https://cdn.eticket.co/imagenes/imgEventos/230802095436364_poster_cartel_combos.jpg",
+  place_map_image: "https://api.eticket.com.co/v2/structures/mappingImage/14013",
+  "place": "Parque Simón Bolivar",
+  "date": "23 y 24 de septiembre de 2023",
+  "hour": "13:00 HRS",
+  "min_age": "18 años en todas las localidades",
   tickets_information:{
     "title":"LOCALIDADES, AFORO Y PRECIO BOLETERÍA",
     headers: [
@@ -49,7 +68,15 @@ const MockEvent: any = {
     value : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.6379687692615!2d-74.09603282537083!3d4.6584795953163605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f85921810393d%3A0x1d953f644042b03b!2sParque%20Metropolitano%20Sim%C3%B3n%20Bol%C3%ADvar!5e0!3m2!1sen!2sco!4v1695358007497!5m2!1sen!2sco",
   }
 }
-
+ function defaultObject(event: any, defaults: any): any{
+  const object = defaults;
+  for (const key in defaults) {
+    if (event[key] !== null && event[key] !== undefined) {
+      object[key] = event[key];
+    }
+  }
+  return object;
+ }
 
 @Component({
   selector: 'app-specific-event',
@@ -57,14 +84,44 @@ const MockEvent: any = {
   styleUrls: ['./specific-event.component.css']
 })
 export class SpecificEventComponent {
-  event:any
-  mapUri: SafeResourceUrl
-  constructor(public sanitizer: DomSanitizer){
-    this.event = MockEvent
-    this.mapUri = this.sanitizer.bypassSecurityTrustResourceUrl(this.event.event_map_section.value)
+  
+  event?:any
+  loading: boolean = true
+  error: boolean = false
+  notFound: boolean = false
+
+  mapUri?: SafeResourceUrl
+
+  constructor(public sanitizer: DomSanitizer,private route: ActivatedRoute, private http: HttpClient){
+
+  }
+  
+  
+  getEvent = async (id: string) => {
+    this.http.get(URL + id).subscribe({
+      next: (data: any) => {
+        this.event = defaultObject(data, MockEvent)
+        this.mapUri = this.sanitizer.bypassSecurityTrustResourceUrl(this.event.event_map_section.value)
+        this.loading = false
+      },
+      error: (error: any) => {
+          console.log("ERROR: ", error)
+          this.error = error.error.error
+          this.notFound = error.status === 404
+          this.loading = false
+        },
+      });
   }
 
+  ngOnInit() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      const id = params.get('id');
 
+      if (id) {
+        this.getEvent(id);
+      }
+    });
+  }
 }
 
 

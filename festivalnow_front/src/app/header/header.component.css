@@ -5,6 +5,7 @@
   align-items: center;
   height: 110px;
   display: flex;
+  position:sticky;
 }
 
 .menu-enlaces {
@@ -22,7 +23,7 @@
 }
 
 .logo {
-  margin-right: 20px;
+  margin-left: 30px;
 }
 
 .logo img {

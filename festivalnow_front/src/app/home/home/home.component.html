@@ -61,8 +61,7 @@
             <div class="row justify-content-center">
                 <div class="card" *ngFor="let card of filteredCards">
                     <br>
-                    <img class="card-img-top" src="https://edit.org/photos/img/blog/vja-poster-conciertos-gratis-imprimir-bar.jpg-840.jpg" alt="Card image cap">
-                    <h3><span class="badge bg-success">Disponible</span></h3>
+                    <img class="card-img-top" [src]="card.url ? card.url : 'https://edit.org/photos/img/blog/vja-poster-conciertos-gratis-imprimir-bar.jpg-840.jpg'" alt="Card image cap">                    <h3><span class="badge bg-success">Disponible</span></h3>
                     <div class="card-body">
                         <div class="text-center">
                             <h2 class="card-title">{{card.name}}</h2>

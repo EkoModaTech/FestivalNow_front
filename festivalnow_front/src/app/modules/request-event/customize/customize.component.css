@@ -3,7 +3,7 @@
     margin: 0 auto;
     padding: 20px;
   }
-  
+
   .form-group {
     margin-bottom: 15px;
   }
@@ -41,4 +41,9 @@ button {
   border: none;
   cursor: pointer;
   padding: 4px 8px;
+}
+
+.text-danger {
+  font-size: 8pt;
+  color: red;
 }

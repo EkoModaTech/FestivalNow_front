@@ -22,6 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatMenuModule,
     HttpClientModule
+  ],
+  exports: [
+    NotFoundComponent
   ]
 })
 export class HomeModule { }

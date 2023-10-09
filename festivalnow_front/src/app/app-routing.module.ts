@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home/home.component';
 import { NotFoundComponent } from './home/not-found/not-found.component';
@@ -14,11 +14,13 @@ import { AdminEventComponent } from './modules/event/admin-event/admin-event.com
 import { ClientEventComponent } from './modules/event/client-event/client-event.component';
 import { HostEventComponent } from './modules/event/host-event/host-event.component';
 import { CustomizeComponent } from './modules/request-event/customize/customize.component';
+import { CalendarComponent } from './modules/request-event/calendar/calendar.component';
+import { PresentationComponent } from './modules/about-us/presentation/presentation.component';
+import { ContactUsComponent } from './modules/contact/contact-us/contact-us.component';
 const routes: Routes = [
   {path:'', redirectTo:'home',pathMatch:'full'},
   {path: 'home', component: HomeComponent},
   {path: 'PSE', component: PseComponent},
-  {path: 'not-found', component: NotFoundComponent },
   {path: 'login',component: LoginComponent},
   {path: 'recover',component: RecoverPasswordComponent},
   {path: 'register',component:RegisterComponent},
@@ -29,8 +31,11 @@ const routes: Routes = [
   {path: 'adminEvent',component:AdminEventComponent},
   {path: 'clientEvent',component:ClientEventComponent},
   {path: 'hostEvent',component:HostEventComponent},
-  {path: 'customize',component:CustomizeComponent}
-
+  {path: 'customize',component:CustomizeComponent},
+  {path: 'calendar',component:CalendarComponent},
+  {path: 'presentation',component:PresentationComponent},
+  {path: 'contact',component:ContactUsComponent},
+  {path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

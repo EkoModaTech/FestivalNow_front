@@ -16,33 +16,39 @@ table {
   width: 100%;
   border-collapse: collapse;
   background-color: black; /* Fondo negro */
-  color: white; /* Texto en blanco */
+  color: rgb(0, 0, 0); /* Texto en blanco */
 }
 
 /* Estilos para las celdas de encabezado */
 th {
-  border: 1px solid white; /* Borde blanco */
+  border: 1px solid  #e27d2a; /* Borde blanco */
   padding: 8px;
   text-align: left;
+}
+.acciones{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Estilos para las celdas de datos */
 td {
-  border: 1px solid white; /* Borde blanco */
+  border: 1px solid  #e27d2a; /* Borde blanco */
   padding: 8px;
   text-align: left;
 }
 
 /* Estilos para las filas impares (opcional, para mayor claridad) */
 tr:nth-child(odd) {
-  background-color: #f09c4e; /* Fondo gris oscuro para filas impares */
+  background-color: #ffffff; /* Fondo gris oscuro para filas impares */
 }
 
 /* Estilos para los botones de acciones */
 button {
-  background-color: #141414; /* Fondo transparente */
-  color: white; /* Texto en blanco */
+  background-color: #eec7a8; /* Fondo transparente */
+  color: rgb(10, 10, 10); /* Texto en blanco */
   border: none;
   cursor: pointer;
   padding: 4px 8px;
+  border-radius: 10px;
 }

@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class UserMenuComponent {
   menuItems = [
-    { label: 'Perfil', link: '/perfil' },
-    { label: 'Configuración', link: '/setting' },
-    { label: 'Cerrar sesión', link: '/logout' }
+    { label: 'Mis Boletos', link: '/clientEvent' },
+    { label: 'Mis eventos', link: '/hostEvent' },
+    { label: 'Iniciar sesion', link: '/login' }
   ];
 }

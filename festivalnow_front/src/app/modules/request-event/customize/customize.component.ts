@@ -70,7 +70,12 @@ import {Location} from '@angular/common';
 })
 export class CustomizeComponent {
 
-  nuevoEvento: any = {}; // Objeto para almacenar los datos del nuevo evento
+  nuevoEvento: any = {
+    // Otras propiedades si las tienes...
+    imagenURL: ''
+  };
+
+  isURLValid: boolean = true;
 
   eventForm: FormGroup = new FormGroup(
     {
@@ -115,6 +120,11 @@ export class CustomizeComponent {
   }
 
   crearEvento() {
+    this.validateImageURL();
+    if (!this.isURLValid) {
+      alert('Por favor, corrija los errores en el formulario.');
+      return;
+    }
     this.eventService.createEvent(this.nuevoEvento).subscribe(resp => console.log(resp));
   }
 
@@ -134,4 +144,8 @@ export class CustomizeComponent {
     this.nuevoEvento.ability = Number(value);
   }
 
+  validateImageURL(): void {
+    const urlPattern = /^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)$/;
+    this.isURLValid = urlPattern.test(this.nuevoEvento.imagenURL);
+  }
 }
