@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EventService } from 'src/app/services/event.service';
 import { Event } from 'src/app/models/event.interface';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-client-event',
@@ -37,13 +38,15 @@ import { Event } from 'src/app/models/event.interface';
 })
 export class ClientEventComponent {
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService, private router: Router) { }
 
   eventos: Event[] = [];
 
   ngOnInit(): void {
     this.eventService.getEventos().subscribe(eventos => {
       this.eventos = eventos;
+
+       // Debug log
       console.log(eventos);
     });
   }
@@ -51,5 +54,8 @@ export class ClientEventComponent {
   verDetalleBoleto(evento: any) {
     // Aquí debes agregar la lógica para llevar al usuario a la vista de boletos del evento en específico.
     // Esto podría incluir la navegación a una nueva ruta.
+    // TODO: Pantalla del Boleto de Evento
+    evento = evento.evento.idEvent
+    this.router.navigate(['event', evento]);
   }
 }
