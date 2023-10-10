@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCalendarCellCssClasses, MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-calendar',
@@ -55,7 +56,7 @@ export class CalendarComponent implements OnInit{
   };
 
   fetchDisabledDates(): void {
-    this.http.get<any[]>('http://ns.qa.10.43.101.226.nip.io/event/event/list').subscribe(events => {
+    this.http.get<any[]>( `${environment.backendAPI}/event/event/list`).subscribe(events => {
       this.disabledDates = events.map(event => new Date(event.date));
       this.loading = false;
     }, error => {
