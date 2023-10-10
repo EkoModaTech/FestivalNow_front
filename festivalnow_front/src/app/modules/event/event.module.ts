@@ -12,6 +12,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from 'src/app/home/home.module';
+import { RouterModule, Routes } from '@angular/router';
+
 @NgModule({
   declarations: [
     GeneralEventComponent,
@@ -28,7 +30,8 @@ import { HomeModule } from 'src/app/home/home.module';
     MatMenuModule,
     MatCheckboxModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es', }
