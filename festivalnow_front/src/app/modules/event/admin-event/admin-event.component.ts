@@ -27,7 +27,7 @@ import { Router } from '@angular/router';
           <td>{{evento.name}}</td>
           <td>{{evento.type}}</td>
           <td>{{evento.ability}}</td>
-          <td>Activo</td>
+          <td>{{evento.state}}</td>
           <td>
             <!-- Agrega aquí tus botones de acciones (Ver Detalle, Editar, Cambiar Estado) -->
             <button (click)="verDetalle({evento})">Ver Detalle</button>
@@ -49,12 +49,15 @@ export class AdminEventComponent {
   ngOnInit(): void {
     this.eventService.getEventos().subscribe(eventos => {
       this.eventos = eventos;
+
+      // Debug log
       console.log(eventos);
     });
   }
 
   verDetalle(evento: any) {
-    this.router.navigate(['event', evento.idEvent]);
+    evento = evento.evento.idEvent
+    this.router.navigate(['event', evento]);
   }
 
   editarEvento(evento: any) {
@@ -63,6 +66,7 @@ export class AdminEventComponent {
 
   cambiarEstado(evento: any) {
     // Lógica para cambiar el estado del evento en el frontend (por ejemplo, cambiar un campo en el objeto 'evento')
+    // TODO: Pantalla de cambio de Estado
     console.log(evento)
   }
 

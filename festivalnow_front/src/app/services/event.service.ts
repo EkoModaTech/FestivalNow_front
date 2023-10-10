@@ -13,4 +13,12 @@ export class EventService {
   getEventos(): Observable<any[]> {
     return this.http.get<any[]>(environment.backendAPI+"/event/event/list");
   }
+
+  createEvent(event: Event): Observable<Event> {
+    return this.http.post<Event>(this.postEventApiUrl, event)
+  }
+
+  updateEvent(event: Event): Observable<Event> {
+    return this.http.put<Event>(this.putEventApiUrl +event.idEvent, event)
+  }
 }
