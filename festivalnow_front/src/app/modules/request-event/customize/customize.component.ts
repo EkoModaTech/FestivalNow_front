@@ -20,9 +20,7 @@ export class CustomizeComponent {
     city: {
       idCity: 1
     },
-    logistic: {
-      idLogistic: 1
-    },
+   
     imagenURL: ''
   };
 
@@ -36,13 +34,18 @@ export class CustomizeComponent {
       return;
     }
 
-    this.http.post(`${environment.backendAPI}/event/event/list`, this.nuevoEvento).subscribe(response => {
-      console.log(response);
-      alert('Evento creado con éxito!');
-    }, error => {
-      console.error(error);
-      alert('Hubo un error al crear el evento.');
-    });
+
+    this.http.post(`${environment.backendAPI}/event/event/create`, this.nuevoEvento).subscribe(
+      response => {
+        console.log(response);
+        alert('Evento creado con éxito!');
+      },
+      error => {
+        console.error(error); // Imprime el error en la consola para depuración
+        alert('Hubo un error al crear el evento. Detalles: ' + error.message); // Muestra una alerta con el mensaje de error
+      }
+    );
+    
   }
 
   validateImageURL(): void {
