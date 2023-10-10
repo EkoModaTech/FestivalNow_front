@@ -1,85 +1,69 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map, of } from 'rxjs';
-import { User } from 'src/app/models/user.models';
-import { AuthenticationResponse } from 'src/app/models/auth/authentication.response';
+import { BehaviorSubject, map } from 'rxjs';
 import { RegisterRequest } from 'src/app/models/auth/register.request';
 import { environment } from 'src/environments/environment';
+import { OIDCEntity } from '../model/oidc.entity';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private authenticationResponseSubject: BehaviorSubject<AuthenticationResponse>
+  private authenticationResponseSubject: BehaviorSubject<OIDCEntity>
 
   public get isLogged(){
     return this.authenticationResponseSubject
   }
 
   constructor(private http: HttpClient) {
-    let user = localStorage.getItem('currentUser')
-    if(user === null){
-      this.authenticationResponseSubject = new BehaviorSubject<AuthenticationResponse>(new AuthenticationResponse)
+    let oidc = localStorage.getItem('currentOIDC')
+    if(oidc === null){
+      this.authenticationResponseSubject = new BehaviorSubject<OIDCEntity>(new OIDCEntity)
     }else{
-      this.authenticationResponseSubject = new BehaviorSubject<AuthenticationResponse>(JSON.parse(user))
+      this.authenticationResponseSubject = new BehaviorSubject<OIDCEntity>(JSON.parse(oidc))
     }
   }
-/*
-  public get currentUserValue(): User {
-    let user = new User
 
-    user.nombre = this.authenticationResponseSubject.value.nombre
-    user.rol = this.authenticationResponseSubject.value.rol
-    
-    return user
-  }
-
-  public get isLoggedIn(): boolean {
-    //let authToken = localStorage.getItem('currentUser');
-    return this.currentUserValue.id !== 0
-  }
-*/
   public get token(): string {
-    return this.authenticationResponseSubject.value.token
+    return this.authenticationResponseSubject.value.access_token
   }
 
-  t(){}
   login(username: string, password: string) {
-    return this.http.post<any>(`${environment.backendAPI}/auth/authenticate`, {
+    return this.http.post<any>(`${environment.backendAPI}/user/auth/login`, {
       "username": username,
       "password": password
     })
-      .pipe(map(user => {
+      .pipe(map((oidc: OIDCEntity) => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.authenticationResponseSubject.next(user);
-        return user;
+        localStorage.setItem('currentOIDC', JSON.stringify(oidc));
+        this.authenticationResponseSubject.next(oidc);
+        return oidc;
       }));
   }
 
   signup(user: RegisterRequest) {
-    return this.http.post<any>(`${environment.backendAPI}/auth/register`, user).pipe(map(u => {
+    return this.http.post<any>(`${environment.backendAPI}(/user/auth/register`, user).pipe(map(u => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('currentUser', JSON.stringify(u));
+      localStorage.setItem('currentOIDC', JSON.stringify(u));
       this.authenticationResponseSubject.next(u);
       return u;
     }));
   }
 
   logout() {
-    return this.http.post(`${environment.backendAPI}/auth/logout`, {}).pipe(
+    return this.http.post(`${environment.backendAPI}/user/auth/logout`, {}).pipe(
       map(v => {
         this.removeToken()
-        this.authenticationResponseSubject.next(new AuthenticationResponse);
+        this.authenticationResponseSubject.next(new OIDCEntity);
       })
     )
   }
 
   loginError(){
-    this.authenticationResponseSubject.next(new AuthenticationResponse)
+    this.authenticationResponseSubject.next(new OIDCEntity)
   }
 
   private removeToken(){
-    localStorage.removeItem("currentUser")
+    localStorage.removeItem("currentOIDC")
   }
 }

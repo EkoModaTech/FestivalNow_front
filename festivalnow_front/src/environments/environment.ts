@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    backendAPI: "http://192.168.193.253:29080"
+    backendAPI: "http://ns.qa.10.43.101.226.nip.io"
     //fieldAPI: "" 
 };
