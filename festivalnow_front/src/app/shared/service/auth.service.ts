@@ -42,12 +42,7 @@ export class AuthService {
   }
 
   signup(user: RegisterRequest) {
-    return this.http.post<any>(`${environment.backendAPI}/user/`, user).pipe(map(u => {
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem('currentOIDC', JSON.stringify(u));
-      this.authenticationResponseSubject.next(u);
-      return u;
-    }));
+    return this.http.post(`${environment.backendAPI}/user/`, user, {responseType: 'text'})
   }
 
   logout() {

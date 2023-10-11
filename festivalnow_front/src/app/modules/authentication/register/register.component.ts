@@ -27,10 +27,9 @@ export class RegisterComponent {
 
     this.auth.signup(this.user)
       .subscribe(_ => {
+        this.successMessageVisible = true;
         this.router.navigate(['/login']);
       })
-      this.successMessageVisible = true;
-      console.log(this.user)
   }
 
 }
