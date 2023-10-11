@@ -9,14 +9,15 @@
           <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>location_city</mat-icon></button>
           <mat-menu #menu="matMenu">
             <div class="menu-header">Filtrar por ciudad</div>
-            <mat-checkbox color="warn" *ngFor="let ciudad of ciudades"
-              [(ngModel)]="ciudad.checked">{{ciudad.name}}</mat-checkbox>
+           <mat-checkbox color="warn" *ngFor="let ciudad of ciudades"
+            [(ngModel)]="ciudad.checked">{{ciudad.name}}</mat-checkbox>
           </mat-menu>
 
           <button mat-icon-button [matMenuTriggerFor]="menu2"><mat-icon>category</mat-icon></button>
           <mat-menu #menu2="matMenu">
             <ng-container *ngIf="bodasFiltered.length > 0">
-              <mat-checkbox color="warn" class="mat-menu-item" [(ngModel)]="bodasChecked" checked>Bodas</mat-checkbox>
+              <mat-checkbox color="warn" class="mat-menu-item" [(ngModel)]="bodasChecked" 
+              checked>Bodas</mat-checkbox>
             </ng-container>
             <ng-container *ngIf="festivalesFiltered.length > 0">
               <mat-checkbox color="warn" class="mat-menu-item" [(ngModel)]="festivalesChecked"
@@ -29,6 +30,11 @@
             <ng-container *ngIf="cumpleanosFiltered.length > 0">
               <mat-checkbox color="warn" class="mat-menu-item" [(ngModel)]="cumpleanosChecked"
                 checked>Cumpleaños</mat-checkbox>
+            </ng-container>
+
+            <ng-container *ngIf="deportesFiltered.length > 0">
+              <mat-checkbox color="warn" class="mat-menu-item" [(ngModel)]="deportesChecked" 
+              checked>Deportes</mat-checkbox>
             </ng-container>
           </mat-menu>
         </div>
@@ -135,6 +141,30 @@
         </div>
       </div>
       <button mat-icon-button (click)="scrollRight('cumpleanos')"><mat-icon>keyboard_arrow_right</mat-icon></button>
+    </div>
+  </div>
+  <div class="mt-5 mb-5 " *ngIf="deportesChecked && deportesFiltered.length > 0">
+    <h1>Deportes</h1>
+    <div class="carousel-container justify-content-center">
+      <button mat-icon-button (click)="scrollLeft('deportes')"><mat-icon>keyboard_arrow_left</mat-icon></button>
+      <div #stripeContainerDeportes class="stripe-container">
+        <div class="image-container" *ngFor="let deporte of deportesFiltered">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top"
+              [src]="deporte.url ? deporte.url : 'https://cdn0.bodas.com.mx/article/3583/3_2/960/jpg/53853-boda.jpeg'"
+              alt="deporte">
+            <div class="card-body d-flex flex-column">
+              <h2 class="card-title">{{deporte.name}}</h2>
+              <p class="card-text">{{deporte.date | date:'EEEE d \'DE\' MMMM \'DE\' y':'es' | uppercase}}</p> <br>
+              <div class="text-center">
+                <a [routerLink]="['/event', deporte.idEvent]"><button mat-raised-button class="orange-button">Ver
+                    Detalles</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button mat-icon-button (click)="scrollRight('deportes')"><mat-icon>keyboard_arrow_right</mat-icon></button>
     </div>
   </div>
   <br> <br>

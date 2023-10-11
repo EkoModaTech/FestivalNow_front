@@ -68,13 +68,13 @@
                         <h2 class="card-title">{{card.name}}</h2>
                         <a [routerLink]="['/event', card.idEvent]"><button mat-raised-button class="orange-button">Comprar Boletas</button></a>
                         <p></p>
-                        <div class="date">
-                          <div class="day">{{card.date.substr(8, 2)}}</div>
-                          <div class="month-year">
-                            <div class="month">{{card.date.substr(5, 2)}}</div>
-                            <div class="year">{{card.date.substr(0, 4)}}</div>
+                        <div class="date" *ngIf="card?.date">
+                            <div class="day">{{card.date?.substr(8, 2)}}</div>
+                            <div class="month-year">
+                              <div class="month">{{card.date?.substr(5, 2)}}</div>
+                              <div class="year">{{card.date?.substr(0, 4)}}</div>
+                            </div>
                           </div>
-                        </div>
                         <br><br>
                       </div>
                     </div>
@@ -82,4 +82,5 @@
             </div>
         </div>
     </div>
+    <br><br>
 </section>
