@@ -6,7 +6,7 @@ export const AuthGuard = () => {
     const authService = inject(AuthService)
     const router = inject(Router)
 
-    if(authService.isLoggedIn){
+    if(authService.isLogged){
         return true
     }
 

@@ -1,11 +1,19 @@
 .container {
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 500px;
+    padding-left: 200px;
     padding: 20px;
+    background-color: #db722c;
+    border-radius: 10px;
+    margin: 30px;
+    margin-left: 30%;
+    margin-bottom: 150px;
   }
 
   .form-group {
     margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   /* Estilos para las tablas con fondo negro */
 table {
@@ -36,8 +44,8 @@ tr:nth-child(odd) {
 
 /* Estilos para los botones de acciones */
 button {
-  background-color: #141414; /* Fondo transparente */
-  color: white; /* Texto en blanco */
+  background-color: #ffffff; /* Fondo transparente */
+  color: rgb(0, 0, 0); /* Texto en blanco */
   border: none;
   cursor: pointer;
   padding: 4px 8px;
