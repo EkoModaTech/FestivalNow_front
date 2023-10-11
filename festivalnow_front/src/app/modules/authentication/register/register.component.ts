@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/service/auth.service';
+import { RegisterRequest } from 'src/app/models/auth/register.request';
 
 @Component({
   selector: 'app-register',
@@ -6,14 +9,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor() {}
+  
+  user:RegisterRequest = new RegisterRequest
+
+  constructor(private auth: AuthService, private router: Router) {}
 
   username: string = '';
   password: string = '';
 
   registrarse(): void {
-    console.log(this.username)
-    console.log(this.password)
+
+    this.user.username = this.username;
+    this.user.password = this.password;
+
+    this.auth.signup(this.user)
+      .subscribe(v => {
+        this.router.navigate(['/home'])
+      })
   }
 
 }
