@@ -15,7 +15,7 @@ button {
 table {
 width: 100%;
 border-collapse: collapse;
-background-color: black; /* Fondo negro */
+background-color: rgb(255, 255, 255); /* Fondo negro */
 color: rgb(0, 0, 0); /* Texto en blanco */
 }
 
