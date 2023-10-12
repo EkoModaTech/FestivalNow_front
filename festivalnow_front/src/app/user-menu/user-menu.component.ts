@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class UserMenuComponent {
   menuItems = [
-    { label: 'Mis Boletos', link: '/clientEvent' },
-    { label: 'Mis eventos', link: '/hostEvent' },
+   /* { label: 'Mis Boletos', link: '/clientEvent' },
+    { label: 'Mis eventos', link: '/hostEvent' },*/
     { label: 'Iniciar sesion', link: '/login' }
   ];
 }

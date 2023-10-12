@@ -15,19 +15,23 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu'; // Importa MatMenuModule
 import { MatIconModule } from '@angular/material/icon';
-import { FooterComponent } from './footer/footer.component'; // Importa MatIconModule
+import { FooterComponent } from './footer/footer.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     UserMenuComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -35,8 +39,8 @@ import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
     HomeModule,
     AuthenticationModule,
     MatButtonModule,
-    MatMenuModule, // Agrega MatMenuModule aquí
-    MatIconModule, // Agrega MatIconModule aquí
+    MatMenuModule,
+    MatIconModule,
     BuyModule,
     AboutUsModule,
     EventModule,
@@ -48,7 +52,9 @@ import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

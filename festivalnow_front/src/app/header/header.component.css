@@ -1,7 +1,7 @@
 .header-container {
   background: linear-gradient(to right, #F15938, #FFB001);
   margin: none;
-  justify-content: space-between; /* Espaciado uniforme entre elementos */
+  justify-content: space-between;
   align-items: center;
   height: 110px;
   display: flex;
@@ -23,15 +23,27 @@
 }
 
 .logo {
-  margin-left: 30px;
+  margin-left: 50px;
+  height: 110px; 
+  display: flex;
+  align-items: center; 
+  justify-content: flex-start; 
 }
 
 .logo img {
   width: 100px;
   height: auto;
+  margin-left: 30px;
 }
 
 
 .menu-enlaces button {
-  color: white; /* Cambia el color del texto a blanco */
+  color: white; 
+}
+.custom-button {
+  transform: scale(1.8);
+
+}
+mat-icon{
+  color: white;
 }

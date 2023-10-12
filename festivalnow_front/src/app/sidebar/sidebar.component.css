@@ -1,0 +1,25 @@
+:host{
+    .mat-icon{
+        vertical-align: middle;
+        margin-right: 20px;
+    }
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.color{
+    color: white;
+}
+mat-icon{
+    color: white;
+}
+.inblock{
+    display: inline-block;
+}
+.matSubheader {
+    color: white;
+    text-align: center;
+    width: 100%;
+}
