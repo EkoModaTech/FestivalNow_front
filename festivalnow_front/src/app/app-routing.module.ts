@@ -17,6 +17,8 @@ import { CustomizeComponent } from './modules/request-event/customize/customize.
 import { CalendarComponent } from './modules/request-event/calendar/calendar.component';
 import { PresentationComponent } from './modules/about-us/presentation/presentation.component';
 import { ContactUsComponent } from './modules/contact/contact-us/contact-us.component';
+import { PowerBIComponent } from './power-bi/power-bi.component';
+
 const routes: Routes = [
   {path:'', redirectTo:'home',pathMatch:'full'},
   {path: 'home', component: HomeComponent},
@@ -35,6 +37,7 @@ const routes: Routes = [
   {path: 'calendar',component:CalendarComponent},
   {path: 'presentation',component:PresentationComponent},
   {path: 'contact',component:ContactUsComponent},
+  {path: 'report', component: PowerBIComponent},
   {path: '**', component: NotFoundComponent }
 ];
 

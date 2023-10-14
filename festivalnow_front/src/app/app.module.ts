@@ -22,12 +22,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
+import { PowerBIComponent } from './power-bi/power-bi.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     UserMenuComponent,
-    FooterComponent
+    FooterComponent,
+    PowerBIComponent
   ],
   imports: [
     BrowserModule,
