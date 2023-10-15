@@ -14,7 +14,7 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   getEventos(): Observable<any[]> {
-    return this.http.get<any[]>(environment.backendAPI + "/event/event/list");
+    return this.http.get<any[]>(environment.backendAPI + "/event/event/list/public");
   }
 
   createEvento(event: Event): Observable<Event> {
