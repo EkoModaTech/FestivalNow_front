@@ -16,9 +16,14 @@ export class RegisterComponent {
 
   username: string = '';
   password: string = '';
+  confirmPassword: string = '';
   email: string = '';
 
   registrarse(): void {
+
+    if (this.password !== this.confirmPassword) {
+      return;
+    }
 
     this.user.username = this.username;
     this.user.password = this.password;
