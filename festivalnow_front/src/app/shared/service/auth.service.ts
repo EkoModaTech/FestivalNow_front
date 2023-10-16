@@ -10,11 +10,13 @@ import { OIDCEntity } from '../model/oidc.entity';
 })
 export class AuthService {
   private authenticationResponseSubject: BehaviorSubject<OIDCEntity>
+  public isLoggedIn: boolean = false;
 
   public get isLogged(){
     return this.authenticationResponseSubject
   }
 
+  
   constructor(private http: HttpClient) {
     let oidc = localStorage.getItem('currentOIDC')
     if(oidc === null){
@@ -37,6 +39,7 @@ export class AuthService {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentOIDC', JSON.stringify(oidc));
         this.authenticationResponseSubject.next(oidc);
+        this.isLoggedIn = true;
         return oidc;
       }));
   }
@@ -50,12 +53,14 @@ export class AuthService {
       map(v => {
         this.removeToken()
         this.authenticationResponseSubject.next(new OIDCEntity);
+        this.isLoggedIn = false;
       })
     )
   }
 
   loginError(){
-    this.authenticationResponseSubject.next(new OIDCEntity)
+    this.authenticationResponseSubject.next(new OIDCEntity);
+    this.isLoggedIn = false;
   }
 
   private removeToken(){

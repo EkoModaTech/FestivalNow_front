@@ -11,7 +11,6 @@ import { RegisterRequest } from 'src/app/models/auth/register.request';
 export class RegisterComponent {
   
   user:RegisterRequest = new RegisterRequest
-  successMessageVisible: boolean = false
 
   constructor(private auth: AuthService, private router: Router) {}
 
@@ -27,7 +26,6 @@ export class RegisterComponent {
 
     this.auth.signup(this.user)
       .subscribe(_ => {
-        this.successMessageVisible = true;
         this.router.navigate(['/login']);
       })
   }
