@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'setting', component:SettingComponent, canActivate:[AuthGuard]},
   {path: 'edit',component:EditUserComponent},
   {path: 'general',component:GeneralEventComponent},
-  {path: 'event/:id',component:SpecificEventComponent, canActivate:[AuthGuard]},
+  {path: 'event/:id',component:SpecificEventComponent},
   {path: 'adminEvent',component:AdminEventComponent, canActivate:[AuthGuard]},
   {path: 'clientEvent',component:ClientEventComponent, canActivate:[AuthGuard]},
   {path: 'hostEvent',component:HostEventComponent,canActivate:[AuthGuard]},

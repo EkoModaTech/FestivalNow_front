@@ -37,7 +37,19 @@ position:sticky;
   color: white; /* Cambia el color del texto a blanco */
 }
 .logout-button mat-icon{
+  width: 50px;
+  height: 50px;
+  font-size: 48px;
   color: white;
+}
+.logout-button{
+  margin: 0px;
+  cursor: pointer;
+  margin-right: -350px;
+  width: 80px;
+  height: 80px;
+  color: aliceblue;
+  
 }
 .logo mat-icon{
   color: white;
@@ -47,3 +59,4 @@ position:sticky;
   display: flex;
   align-items: center;
 }
+

@@ -1,6 +1,6 @@
 <app-header (toggleSideBarForMe)="sideBarToggler($event)" *ngIf="!isSpecialPage()"></app-header>
 <mat-drawer-container>
-    <mat-drawer mode="side" [opened]="sideBarOpen" *ngIf="isLoginPage()">
+    <mat-drawer mode="side" [opened]="sideBarOpen" *ngIf="!isSpecialPage()">
         <app-sidebar></app-sidebar>
     </mat-drawer>
     <mat-drawer-content>
