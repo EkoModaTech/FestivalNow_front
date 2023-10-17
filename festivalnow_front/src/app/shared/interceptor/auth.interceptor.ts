@@ -9,8 +9,11 @@ export class AuthInterceptor implements HttpInterceptor {
     constructor(private auth: AuthService) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log("Interceptor")
         const token = this.auth.token
+        if(token == ""){
+            //Return inmedialy to avoid 401 errors with oauth2 resource servers
+            return next.handle(req)
+        }
         req = req.clone({
             setHeaders: {
                 Authorization: "Bearer " + token
