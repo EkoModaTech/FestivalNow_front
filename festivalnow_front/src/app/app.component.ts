@@ -22,6 +22,10 @@ export class AppComponent {
     const currentUrl = this.router.url;
     return currentUrl === '/login' || currentUrl === '/register' || currentUrl === '/recover';
   }
+  isLoginPage(): boolean {
+    const currentUrl = this.router.url;
+    return currentUrl !== '/login';
+}
   sideBarToggler(event: any) {
     this.sideBarOpen = !this.sideBarOpen;
   }
