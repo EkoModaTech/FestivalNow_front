@@ -1,15 +1,23 @@
-import { inject } from "@angular/core"
-import { AuthService } from "../service/auth.service"
-import { Router } from "@angular/router"
+import { Injectable } from '@angular/core';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
-export const AuthGuard = () => {
-    const authService = inject(AuthService)
-    const router = inject(Router)
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
 
-    if(authService.isLogged){
-        return true
+  constructor(private authService: AuthService, private router: Router) {}
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if (this.authService.isLoggedIn) {
+      return true; // Usuario autenticado, permite el acceso.
+    } else {
+      // Muestra una alerta en lugar de redirigir.
+      alert('Debes iniciar sesión para acceder a esta página.');
+
+      // Evita que la navegación continúe.
+      return false;
     }
-
-    return router.parseUrl("/login")
-
-} 
+  }
+}

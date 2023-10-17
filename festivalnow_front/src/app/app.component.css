@@ -5,7 +5,7 @@
 }
 mat-drawer{
     width: 350px;
-    background: linear-gradient(to bottom, #F15938, #FFB001);
+    background:#F15938;
 }
 mat-drawer-container{
     height: 100%;

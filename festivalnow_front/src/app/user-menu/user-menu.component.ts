@@ -17,12 +17,9 @@ export class UserMenuComponent {
     if (this.auth.isLoggedIn) {
       // El usuario ha iniciado sesión, muestra "Ver perfil"
       this.menuItems = [
-        { label: 'Ver perfil', link: '/edit' }
-        // Poner enlace para info del usuario
-        // Otros elementos de menú
+        { label: 'Ver perfil', link: '/setting' }
       ];
     } else {
-      // El usuario no ha iniciado sesión, muestra "Iniciar sesión"
       this.menuItems = [
         { label: 'Iniciar sesion', link: '/login' }
       ];

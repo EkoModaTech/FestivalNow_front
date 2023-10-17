@@ -17,22 +17,23 @@ import { CustomizeComponent } from './modules/request-event/customize/customize.
 import { CalendarComponent } from './modules/request-event/calendar/calendar.component';
 import { PresentationComponent } from './modules/about-us/presentation/presentation.component';
 import { ContactUsComponent } from './modules/contact/contact-us/contact-us.component';
+import { AuthGuard } from './shared/auth/auth.guard';
 const routes: Routes = [
   {path:'', redirectTo:'home',pathMatch:'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'PSE', component: PseComponent},
+  {path: 'PSE', component: PseComponent, canActivate:[AuthGuard]},
   {path: 'login',component: LoginComponent},
   {path: 'recover',component: RecoverPasswordComponent},
   {path: 'register',component:RegisterComponent},
-  {path: 'setting', component:SettingComponent},
+  {path: 'setting', component:SettingComponent, canActivate:[AuthGuard]},
   {path: 'edit',component:EditUserComponent},
   {path: 'general',component:GeneralEventComponent},
-  {path: 'event/:id',component:SpecificEventComponent},
-  {path: 'adminEvent',component:AdminEventComponent},
-  {path: 'clientEvent',component:ClientEventComponent},
-  {path: 'hostEvent',component:HostEventComponent},
-  {path: 'customize',component:CustomizeComponent},
-  {path: 'calendar',component:CalendarComponent},
+  {path: 'event/:id',component:SpecificEventComponent, canActivate:[AuthGuard]},
+  {path: 'adminEvent',component:AdminEventComponent, canActivate:[AuthGuard]},
+  {path: 'clientEvent',component:ClientEventComponent, canActivate:[AuthGuard]},
+  {path: 'hostEvent',component:HostEventComponent,canActivate:[AuthGuard]},
+  {path: 'customize',component:CustomizeComponent, canActivate:[AuthGuard]},
+  {path: 'calendar',component:CalendarComponent, canActivate:[AuthGuard]},
   {path: 'presentation',component:PresentationComponent},
   {path: 'contact',component:ContactUsComponent},
   {path: '**', component: NotFoundComponent }

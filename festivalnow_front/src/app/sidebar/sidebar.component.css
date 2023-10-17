@@ -10,16 +10,24 @@ a:hover {
 }
 
 .color{
-    color: white;
+    color: rgb(255, 255, 255);
 }
 mat-icon{
-    color: white;
+    color: rgb(255, 255, 255);
 }
 .inblock{
     display: inline-block;
 }
 .matSubheader {
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
     width: 100%;
 }
+.nolog{
+    padding-top: 250px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+  }

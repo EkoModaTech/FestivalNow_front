@@ -12,16 +12,15 @@ export class AuthService {
   private authenticationResponseSubject: BehaviorSubject<OIDCEntity>
   public isLoggedIn: boolean = false;
 
-  public get isLogged(){
-    return this.authenticationResponseSubject
+  public get isLogged() {
+    return this.authenticationResponseSubject;
   }
 
-  
   constructor(private http: HttpClient) {
     let oidc = localStorage.getItem('currentOIDC')
-    if(oidc === null){
+    if (oidc === null) {
       this.authenticationResponseSubject = new BehaviorSubject<OIDCEntity>(new OIDCEntity)
-    }else{
+    } else {
       this.authenticationResponseSubject = new BehaviorSubject<OIDCEntity>(JSON.parse(oidc))
     }
   }
@@ -45,25 +44,28 @@ export class AuthService {
   }
 
   signup(user: RegisterRequest) {
-    return this.http.post(`${environment.backendAPI}/user/`, user, {responseType: 'text'})
+    return this.http.post(`${environment.backendAPI}/user/`, user, { responseType: 'text' })
   }
 
   logout() {
-    return this.http.post(`${environment.backendAPI}/user/auth/logout`, {}).pipe(
+    const refreshToken = this.authenticationResponseSubject.value.refresh_token;
+  
+    return this.http.post(`${environment.backendAPI}/user/auth/logout`, { refreshToken: refreshToken }).pipe(
       map(v => {
-        this.removeToken()
+        this.removeToken();
         this.authenticationResponseSubject.next(new OIDCEntity);
         this.isLoggedIn = false;
       })
-    )
+    );
   }
+  
 
-  loginError(){
+  loginError() {
     this.authenticationResponseSubject.next(new OIDCEntity);
     this.isLoggedIn = false;
   }
 
-  private removeToken(){
+  private removeToken() {
     localStorage.removeItem("currentOIDC")
   }
 }

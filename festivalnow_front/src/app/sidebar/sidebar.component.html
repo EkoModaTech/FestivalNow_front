@@ -1,4 +1,11 @@
+<ng-container  *ngIf="!auth.isLoggedIn">
+    <div  class="nolog">
+        Para acceder a estas funcionalidades debes iniciar sesion....
+    </div>
+</ng-container>
+
 <ng-container *ngIf="auth.isLoggedIn">
+    <!-- Contenido del menú que se mostrará cuando el usuario haya iniciado sesión -->
     <mat-divider></mat-divider>
     <br>
     <h1 matSubheader class="matSubheader">Menú</h1>

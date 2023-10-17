@@ -5,8 +5,9 @@
   align-items: center;
   height: 110px;
   display: flex;
-  position:sticky;
+position:sticky;
 }
+
 
 .menu-enlaces {
   display: flex;
@@ -23,27 +24,26 @@
 }
 
 .logo {
-  margin-left: 50px;
-  height: 110px; 
-  display: flex;
-  align-items: center; 
-  justify-content: flex-start; 
+  margin-left: 30px;
 }
 
 .logo img {
   width: 100px;
   height: auto;
-  margin-left: 30px;
 }
 
 
 .menu-enlaces button {
-  color: white; 
+  color: white; /* Cambia el color del texto a blanco */
 }
-.custom-button {
-  transform: scale(1.8);
-
-}
-mat-icon{
+.logout-button mat-icon{
   color: white;
+}
+.logo mat-icon{
+  color: white;
+}
+.user{
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
 }
