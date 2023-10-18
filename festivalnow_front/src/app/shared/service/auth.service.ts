@@ -7,6 +7,7 @@ import { OIDCEntity } from '../model/oidc.entity';
 import jwtDecode from 'jwt-decode';
 
 interface MyToken {
+  /*
   exp: number;
   iat: number;
   jti: string;
@@ -19,6 +20,8 @@ interface MyToken {
   resource_access: Object;
   scope: string;
   sid: string;
+  */
+  resource_access: Object;
   email_verified: boolean;
   preferred_username: string;
   email: string;
@@ -62,7 +65,8 @@ export class AuthService {
         const usuario = {
           username: decodedToken.preferred_username,
           email: decodedToken.email,
-          email_verified: decodedToken.email_verified
+          email_verified: decodedToken.email_verified,
+          roles: decodedToken.resource_access
         }
 
         localStorage.setItem('usuario', JSON.stringify(usuario));
