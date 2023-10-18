@@ -18,6 +18,7 @@ import { CalendarComponent } from './modules/request-event/calendar/calendar.com
 import { PresentationComponent } from './modules/about-us/presentation/presentation.component';
 import { ContactUsComponent } from './modules/contact/contact-us/contact-us.component';
 import { AuthGuard } from './shared/auth/auth.guard';
+import { ProfileComponent } from './modules/authentication/profile/profile.component';
 const routes: Routes = [
   {path:'', redirectTo:'home',pathMatch:'full'},
   {path: 'home', component: HomeComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'register',component:RegisterComponent},
   {path: 'setting', component:SettingComponent, canActivate:[AuthGuard]},
   {path: 'edit',component:EditUserComponent},
+  {path: 'profile',component:ProfileComponent},
   {path: 'general',component:GeneralEventComponent},
   {path: 'event/:id',component:SpecificEventComponent},
   {path: 'adminEvent',component:AdminEventComponent, canActivate:[AuthGuard]},

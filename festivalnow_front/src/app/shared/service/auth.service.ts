@@ -4,6 +4,25 @@ import { BehaviorSubject, map } from 'rxjs';
 import { RegisterRequest } from 'src/app/models/auth/register.request';
 import { environment } from 'src/environments/environment';
 import { OIDCEntity } from '../model/oidc.entity';
+import jwtDecode from 'jwt-decode';
+
+interface MyToken {
+  exp: number;
+  iat: number;
+  jti: string;
+  iss: string;
+  aud: string;
+  sub: string;
+  typ: string;
+  azp: string;
+  realm_access: Object;
+  resource_access: Object;
+  scope: string;
+  sid: string;
+  email_verified: boolean;
+  preferred_username: string;
+  email: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +56,17 @@ export class AuthService {
       .pipe(map((oidc: OIDCEntity) => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentOIDC', JSON.stringify(oidc));
+
+        const jwtToken = oidc.access_token;
+        const decodedToken = jwtDecode<MyToken>(jwtToken);
+        const usuario = {
+          username: decodedToken.preferred_username,
+          email: decodedToken.email,
+          email_verified: decodedToken.email_verified
+        }
+
+        localStorage.setItem('usuario', JSON.stringify(usuario));
+
         this.authenticationResponseSubject.next(oidc);
         this.isLoggedIn = true;
         return oidc;
