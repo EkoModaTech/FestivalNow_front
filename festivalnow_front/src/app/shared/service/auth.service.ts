@@ -7,20 +7,6 @@ import { OIDCEntity } from '../model/oidc.entity';
 import jwtDecode from 'jwt-decode';
 
 interface MyToken {
-  /*
-  exp: number;
-  iat: number;
-  jti: string;
-  iss: string;
-  aud: string;
-  sub: string;
-  typ: string;
-  azp: string;
-  realm_access: Object;
-  resource_access: Object;
-  scope: string;
-  sid: string;
-  */
   resource_access: Object;
   email_verified: boolean;
   preferred_username: string;
