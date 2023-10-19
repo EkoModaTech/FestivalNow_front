@@ -25,6 +25,7 @@ import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+
 @NgModule({
   declarations: [
     AppComponent,

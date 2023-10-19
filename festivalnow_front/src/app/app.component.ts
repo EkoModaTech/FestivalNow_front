@@ -7,7 +7,7 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  sideBarOpen = true;
+  sideBarOpen = false;
   title = 'festivalnow_front';
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {

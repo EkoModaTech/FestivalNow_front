@@ -1,0 +1,57 @@
+.container {
+    max-width: 500px;
+    padding-left: 200px;
+    padding: 20px;
+    background-color: #db722c;
+    border-radius: 10px;
+    margin: 30px;
+    margin-left: 30%;
+    margin-bottom: 150px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* Estilos para las tablas con fondo negro */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: black; /* Fondo negro */
+  color: white; /* Texto en blanco */
+}
+
+/* Estilos para las celdas de encabezado */
+th {
+  border: 1px solid white; /* Borde blanco */
+  padding: 8px;
+  text-align: left;
+}
+
+/* Estilos para las celdas de datos */
+td {
+  border: 1px solid white; /* Borde blanco */
+  padding: 8px;
+  text-align: left;
+}
+
+/* Estilos para las filas impares (opcional, para mayor claridad) */
+tr:nth-child(odd) {
+  background-color: #f09c4e; /* Fondo gris oscuro para filas impares */
+}
+
+/* Estilos para los botones de acciones */
+button {
+  background-color: #ffffff; /* Fondo transparente */
+  color: rgb(0, 0, 0); /* Texto en blanco */
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.text-danger {
+  font-size: 8pt;
+  color: red;
+}
