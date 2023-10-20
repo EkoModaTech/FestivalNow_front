@@ -3,7 +3,7 @@
     <!--h2>IDENTITY</h2-->
     <div class="card">
         <div class="card-body">
-            <i class="fa fa-pen fa-xs edit"></i>
+            <i class="fa fa-pen fa-xs edit" (click)="showEditPassword = !showEditPassword"></i>
             <i class="fa fa-user fa-lg profile-icon"></i>
             <table>
                 <tbody>
@@ -23,9 +23,16 @@
                         <td>Bogotá, Colombia</td>
                     </tr>
                     <tr>
-                        <td>Role</td>
+                        <td>Rol</td>
                         <td>:</td>
-                        <td>Web Developer</td>
+                        <!--TODO: Cuando haya rol (Cliente, Admin, etc.) en el payload del token, ponerlo en vez de 'Cliente'.-->
+                        <td>Cliente</td>
+                    </tr>
+                    <tr *ngIf="showEditPassword">
+                        <td>Nueva contraseña</td>
+                        <td>:</td>
+                        <td><input type="text" id="newPassword" class="form-control" name="newPassword" [(ngModel)]="newPassword"></td>
+                        <td><button (click)="submitNewPassword()">Submit</button></td>
                     </tr>
                 </tbody>
             </table>
