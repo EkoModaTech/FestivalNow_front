@@ -30,14 +30,27 @@ type Event = {
 
 
 const MockEvent: any = {
+  id: "230802095436364",
   name: "FESTIVAL CORDILLERA",
+  date: "23 y 24 de septiembre de 2023",
+  ability: 100001,
   description: "a description",
   type: "a type",
-  city: "Bogotá",
   url: "https://cdn.eticket.co/imagenes/imgEventos/230802095436364_poster_cartel_combos.jpg",
+  state: "Activo",
+  direction: "Parque Simón Bolivar",
+  visivility: "Público",
+  city: {
+    "idCity": 1,
+    "name": "Provincia de Buenos Aires",
+    "department": null
+  },
+  logistics: "a logistics",
+  created_by: "a created_by",
+
+
+
   place_map_image: "https://api.eticket.com.co/v2/structures/mappingImage/14013",
-  "place": "Parque Simón Bolivar",
-  "date": "23 y 24 de septiembre de 2023",
   "hour": "13:00 HRS",
   "min_age": "18 años en todas las localidades",
   tickets_information:{
@@ -85,7 +98,7 @@ const MockEvent: any = {
 })
 export class SpecificEventComponent {
   
-  event?:any
+  event?:any = MockEvent
   loading: boolean = true
   error: boolean = false
   notFound: boolean = false
@@ -106,6 +119,7 @@ export class SpecificEventComponent {
       },
       error: (error: any) => {
           console.log("ERROR: ", error)
+
           this.error = error.error.error
           this.notFound = error.status === 404
           this.loading = false

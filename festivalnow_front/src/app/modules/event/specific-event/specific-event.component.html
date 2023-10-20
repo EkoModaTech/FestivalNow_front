@@ -6,8 +6,8 @@
         <p class="date">{{ event.date }}</p>
         <!-- <h2 class="short_place">{{ event.place }}</h2> -->
         <p class="short_place_details">{{ event.place_details }}</p>
-        <p class="short_place_address">{{ event.description }}</p>
-        <h2 class="short_place_address">{{ event.type }}</h2>
+        <p class="short_place_address">Descripcion:{{ event.description }}</p>
+        <h2 class="short_place_address">Tipo:{{ event.type }}</h2>
         <article class="ticktes_types_container">
           <!-- <p class="entrada">Entrada</p> -->
           <!-- <p class="value">{{ event.general.cost }}</p> -->
@@ -23,7 +23,8 @@
     </section>
     <section class="general_event_information">
       <h2>Información adicional del espectáculo</h2>
-      <article class="place">{{ event.place }}</article>
+      <article class="place">{{ event.direction }}</article>
+      <article class="place">{{ event.city?.name }}</article>
       <article class="date">{{ event.date }}</article>
       <article class="hour">{{ event.hour }}</article>
       <article class="min_age">{{ event.min_age }}</article>
@@ -54,10 +55,10 @@
         <p>{{ stage.description }}</p>
       </article>
     </section>
-    <section class="event_map_section">
+    <!-- <section class="event_map_section">
       <h2>{{ event.event_map_section.title }}</h2>
       <iframe class="event_map" [src]="mapUri" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </section>
+    </section> -->
 </div>
 <app-not-found *ngIf="error"></app-not-found>
 <div class="loading" *ngIf="loading">
