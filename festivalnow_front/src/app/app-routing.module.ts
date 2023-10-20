@@ -19,6 +19,7 @@ import { PresentationComponent } from './modules/about-us/presentation/presentat
 import { ContactUsComponent } from './modules/contact/contact-us/contact-us.component';
 import { AuthGuard } from './shared/auth/auth.guard';
 import { ProfileComponent } from './modules/authentication/profile/profile.component';
+import { EditComponent } from './modules/request-event/edit/edit.component';
 const routes: Routes = [
   {path:'', redirectTo:'home',pathMatch:'full'},
   {path: 'home', component: HomeComponent},
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path: 'calendar',component:CalendarComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT'] }},
   {path: 'presentation',component:PresentationComponent},
   {path: 'contact',component:ContactUsComponent},
+  {path: 'editEvent',component:EditComponent},
   {path: '**', component: NotFoundComponent }
 ];
 

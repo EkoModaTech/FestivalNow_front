@@ -15,10 +15,29 @@ export class EditComponent {
 
   };
 
+  isEditing: boolean = false;
+  isEditingMode: boolean =false;
+  isEditingModeActive: boolean = false;
   isURLValid: boolean = true;
 
+  toggleEditMode(): void{
+    this.isEditingMode = !this.isEditingMode;
+    this.isEditingModeActive = this.isEditingMode;
+  }
+
   editarEvento(): void{
-    this.validateImageURL();
+   
+    this.isEditing = true;
+
+    if(this.isEditingMode){
+      this.isEditingMode = false;
+      this.isEditingModeActive = false;
+      this.isEditing = false;
+    } else {
+      this.toggleEditMode();
+    }
+
+    /* this.validateImageURL();
 
     if (!this.isURLValid) {
       alert('Por favor, corrija los errores en el formulario.');
@@ -26,7 +45,7 @@ export class EditComponent {
     }
 
     //this.http.post(`${environment.backendAPI}/event/event/`,this.).subscribe();
-    
+    */
   }
 
   validateImageURL(): void {
