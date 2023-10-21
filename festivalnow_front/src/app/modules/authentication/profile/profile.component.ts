@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/service/user.service';
 
 @Component({
@@ -39,7 +39,7 @@ export class ProfileComponent {
         console.log(u)
       }
     )
-    
+
     // TODO: Show message alert ('Password has been updated').
 
     this.newPassword = ''

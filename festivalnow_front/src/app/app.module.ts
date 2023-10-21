@@ -37,7 +37,7 @@ import { LicenciasComponent } from './licencias/licencias.component';
     HeaderComponent,
     UserMenuComponent,
     FooterComponent,
-    PowerBIComponent
+    PowerBIComponent,
     SidebarComponent,
     ProveedoresComponent,
     LicenciasComponent
