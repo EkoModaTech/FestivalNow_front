@@ -34,6 +34,7 @@ export class EditComponent implements OnInit{
 
       });
 
+      console.log(this.actualizarEvento)
   }
 
   isEditing: boolean = false;

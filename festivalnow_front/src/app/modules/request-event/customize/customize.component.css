@@ -49,9 +49,26 @@ button {
   border: none;
   cursor: pointer;
   padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
 }
 
 .text-danger {
   font-size: 8pt;
   color: red;
+}
+
+.btn-primary {
+  background-color: #f09c4e;
+  border: 2px solid black;
+  color: black;
+}
+
+.btn-primary:hover {
+  background-color: #db722c;
+  color: #ffffff;
 }
