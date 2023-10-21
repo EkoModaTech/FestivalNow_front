@@ -42,7 +42,7 @@ export class AuthService {
   // Decodificar el token JWT y obtener los roles desde realm_access
   public setUserRoles(token: string): void {
     const decodedToken = jwtDecode<MyToken>(token);
-    const roles = decodedToken.realm_access['roles']; 
+    const roles = decodedToken.realm_access['roles'];
     if (roles) {
       this.userRoles = roles;
     }
@@ -91,6 +91,9 @@ export class AuthService {
         this.isLoggedIn = false;
       })
     );
+  }
+  public getUserRoles(): string[] {
+    return this.userRoles;
   }
 
   loginError() {

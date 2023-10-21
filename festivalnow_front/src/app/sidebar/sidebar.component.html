@@ -5,42 +5,46 @@
 </ng-container>
 
 <ng-container *ngIf="auth.isLoggedIn">
-    <!-- Contenido del menú que se mostrará cuando el usuario haya iniciado sesión -->
-    <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
     <br>
     <h1 matSubheader class="matSubheader">Menú</h1>
     <mat-divider></mat-divider>
     <br>
     <mat-nav-list>
-        <a mat-list-item routerLinkActive="list-item-active" routerLink="/clientEvent">
-            <div class="inblock">
-                <mat-icon>local_movies</mat-icon>
-            </div>
-            <div class="inblock">
-                <div class="color">
-                    Mis Boletos
-                </div>
-            </div>
+        <!-- Visible para roles: Admin, Usuario -->
+        <a *ngIf="userRoles.includes('admin') || userRoles.includes('usuario')" mat-list-item routerLinkActive="list-item-active" routerLink="/clientEvent">
+            <!-- ... contenido ... -->
+            Mis Boletos
         </a>
-        <a mat-list-item routerLinkActive="list-item-active" routerLink="/hostEvent">
-            <div class="inblock">
-                <mat-icon>events</mat-icon>
-            </div>
-            <div class="inblock">
-                <div class="color">
-                    Mis Eventos
-                </div>
-            </div>
+
+        <!-- Visible para roles: Admin, Anfitrión -->
+        <a *ngIf="userRoles.includes('admin') || userRoles.includes('anfitrion')" mat-list-item routerLinkActive="list-item-active" routerLink="/hostEvent">
+            <!-- ... contenido ... -->
+            Mis Eventos
         </a>
-        <a mat-list-item routerLinkActive="list-item-active" routerLink="/customize">
-            <div class="inblock">
-                <mat-icon>create</mat-icon>
-            </div>
-            <div class="inblock">
-                <div class="color">
-                    Crear Evento
-                </div>
-            </div>
+
+        <!-- Visible para roles: Admin, Anfitrión -->
+        <a *ngIf="userRoles.includes('admin') || userRoles.includes('anfitrion')" mat-list-item routerLinkActive="list-item-active" routerLink="/customize">
+            <!-- ... contenido ... -->
+            Crear Evento
+        </a>
+
+        <!-- Visible para roles: Admin, Empleado -->
+        <a *ngIf="userRoles.includes('admin') || userRoles.includes('empleado')" mat-list-item routerLinkActive="list-item-active" routerLink="/businessIntelligence">
+            <!-- ... contenido ... -->
+            Bussines Intelligence (PowerBi)
+        </a>
+
+        <!-- Visible solo para Admin -->
+        <a *ngIf="userRoles.includes('admin')" mat-list-item routerLinkActive="list-item-active" routerLink="/proveedores">
+            <!-- ... contenido ... -->
+            Proveedores
+        </a>
+
+        <!-- Visible solo para Admin -->
+        <a *ngIf="userRoles.includes('admin')" mat-list-item routerLinkActive="list-item-active" routerLink="/licencias">
+            <!-- ... contenido ... -->
+            Licencias
         </a>
     </mat-nav-list>
 </ng-container>

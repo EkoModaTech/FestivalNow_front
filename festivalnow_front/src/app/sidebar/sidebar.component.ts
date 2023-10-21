@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/service/auth.service';
 
 @Component({
@@ -6,6 +6,12 @@ import { AuthService } from '../shared/service/auth.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
+  userRoles: string[] = [];
+
   constructor(public auth: AuthService) {}
+
+  ngOnInit() {
+    this.userRoles = this.auth.getUserRoles();
+  }
 }
