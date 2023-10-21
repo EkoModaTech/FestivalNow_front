@@ -8,7 +8,12 @@
 a:hover {
     text-decoration: none;
 }
-
+mat-nav-list a.texto-blanco {
+  color: white !important;
+}
+.texto-blanco {
+  color: white !important;
+}
 .color{
     color: rgb(255, 255, 255);
 }
@@ -30,4 +35,8 @@ mat-icon{
     align-items: center;
     justify-content: center;
     color: rgb(255, 255, 255);
+  }
+
+  .mdc-list-it…rimary-text{
+    color: white !important;
   }
