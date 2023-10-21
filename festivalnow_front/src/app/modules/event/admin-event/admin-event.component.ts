@@ -6,39 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-event',
   styleUrls: ['./admin-event.component.css'],
-  template: 
-  `
-  <div class="container">
-    <h2>Eventos Administrativos</h2>
-    <table class="mat-elevation-z8">
-      <thead>
-        <tr>
-          <th>Fecha y Hora</th>
-          <th>Nombre del Evento</th>
-          <th>Tipo</th>
-          <th>Capacidad</th>
-          <th>Estado</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let evento of eventos">
-          <td>{{evento.date}}</td>
-          <td>{{evento.name}}</td>
-          <td>{{evento.type}}</td>
-          <td>{{evento.ability}}</td>
-          <td>{{evento.state}}</td>
-          <td>
-            <!-- Agrega aquí tus botones de acciones (Ver Detalle, Editar, Cambiar Estado) -->
-            <button (click)="verDetalle({evento})">Ver Detalle</button>
-            <button (click)="editarEvento({evento})">Editar</button>
-            <button (click)="cambiarEstado({evento})">Cambiar Estado</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-`,
+  templateUrl: './admin-event.component.html'
 })
 export class AdminEventComponent {
 
@@ -61,7 +29,7 @@ export class AdminEventComponent {
   }
 
   editarEvento(evento: any) {
-    this.router.navigate(['customize', {evento: JSON.stringify(evento)}]);
+    this.router.navigate(['editEvent', {evento: JSON.stringify(evento)}]);
   }
 
   cambiarEstado(evento: any) {
