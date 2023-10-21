@@ -19,8 +19,6 @@ export class AuthResponseInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401 || error.status === 403) {
-          localStorage.removeItem("currentOIDC");
-          alert('Hubo un error al crear el usuario');
           this.auth.loginError()      
         }
         return next.handle(req);

@@ -30,6 +30,7 @@ import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { LicenciasComponent } from './licencias/licencias.component';
+import { AuthResponseInterceptor } from './shared/interceptor/auth-response.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { LicenciasComponent } from './licencias/licencias.component';
     HeaderComponent,
     UserMenuComponent,
     FooterComponent,
-    PowerBIComponent
+    PowerBIComponent,
     SidebarComponent,
     ProveedoresComponent,
     LicenciasComponent
@@ -70,6 +71,11 @@ import { LicenciasComponent } from './licencias/licencias.component';
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
+    multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthResponseInterceptor,
     multi: true
   }],
   bootstrap: [AppComponent]

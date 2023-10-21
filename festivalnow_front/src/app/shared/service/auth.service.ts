@@ -94,12 +94,13 @@ export class AuthService {
   }
 
   loginError() {
-    alert()
     this.authenticationResponseSubject.next(new OIDCEntity);
     this.isLoggedIn = false;
+    this.removeToken()
   }
 
   private removeToken() {
     localStorage.removeItem("currentOIDC");
+    localStorage.removeItem("usuario");
   }
 }
