@@ -18,26 +18,35 @@ import { CalendarComponent } from './modules/request-event/calendar/calendar.com
 import { PresentationComponent } from './modules/about-us/presentation/presentation.component';
 import { ContactUsComponent } from './modules/contact/contact-us/contact-us.component';
 import { PowerBIComponent } from './power-bi/power-bi.component';
+import { AuthGuard } from './shared/auth/auth.guard';
+import { ProfileComponent } from './modules/authentication/profile/profile.component';
+import { EditComponent } from './modules/request-event/edit/edit.component';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { LicenciasComponent } from './licencias/licencias.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'home',pathMatch:'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'PSE', component: PseComponent},
+  {path: 'PSE', component: PseComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT'] }},
   {path: 'login',component: LoginComponent},
   {path: 'recover',component: RecoverPasswordComponent},
   {path: 'register',component:RegisterComponent},
-  {path: 'setting', component:SettingComponent},
+  {path: 'setting', component:SettingComponent, canActivate:[AuthGuard],  data: { roles: ['ADMIN'] }},
   {path: 'edit',component:EditUserComponent},
+  {path: 'profile',component:ProfileComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT', 'ADMIN'] }},
   {path: 'general',component:GeneralEventComponent},
   {path: 'event/:id',component:SpecificEventComponent},
-  {path: 'adminEvent',component:AdminEventComponent},
-  {path: 'clientEvent',component:ClientEventComponent},
-  {path: 'hostEvent',component:HostEventComponent},
-  {path: 'customize',component:CustomizeComponent},
-  {path: 'calendar',component:CalendarComponent},
+  {path: 'adminEvent',component:AdminEventComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT'] }},
+  {path: 'clientEvent',component:ClientEventComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT'] }},
+  {path: 'hostEvent',component:HostEventComponent,canActivate:[AuthGuard], data: { roles: ['CLIENT'] }},
+  {path: 'customize',component:CustomizeComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT'] }},
+  {path: 'calendar',component:CalendarComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT'] }},
   {path: 'presentation',component:PresentationComponent},
   {path: 'contact',component:ContactUsComponent},
   {path: 'report', component: PowerBIComponent},
+  {path: 'editEvent',component:EditComponent},
+  {path: 'proveedores',component:ProveedoresComponent},
+  {path: 'licencias',component:LicenciasComponent},
   {path: '**', component: NotFoundComponent }
 ];
 

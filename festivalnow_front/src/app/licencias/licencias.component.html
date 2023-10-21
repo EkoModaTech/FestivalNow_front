@@ -1,0 +1,44 @@
+<br>
+<div class="text-center">
+    <h1>Licencias</h1>
+</div>
+
+<div class="example-container mat-elevation-z8">
+    <div class="example-header custom-header">
+        <mat-form-field class="custom-form-field">
+            <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Licencia">
+        </mat-form-field>
+    </div>
+
+    <mat-table #table [dataSource]="dataSource">
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <!-- Tipo Column -->
+        <ng-container matColumnDef="tipo">
+            <mat-header-cell *matHeaderCellDef> Tipo </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.tipo}} </mat-cell>
+        </ng-container>
+
+        <!-- fechaExpiracion Column -->
+        <ng-container matColumnDef="fechaExpiracion">
+            <mat-header-cell *matHeaderCellDef> Fecha de Expiracion </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.fechaExpiracion}} </mat-cell>
+        </ng-container>
+
+        <!-- Activa Column -->
+        <ng-container matColumnDef="activa">
+            <mat-header-cell *matHeaderCellDef> Activa </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.activa}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

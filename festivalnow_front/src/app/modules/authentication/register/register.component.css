@@ -10,7 +10,8 @@ a{
     color: #ff5c33;
 }
 .row{
-    width: 100%;
+    width: 80%;
+    padding-top: 50px;
     margin-left: -40px;
     margin-right: -70px;
     border-radius: 20px;
@@ -26,11 +27,11 @@ a{
 	justify-content: center;
 	align-items: center;
     border-radius: 20px;
-    
 }
 
 .container.login-container {
-    height: 100%;
+    padding-top: 80px;
+    height: 80%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -38,7 +39,8 @@ a{
 }
 
 .login-form {
-	max-width: 100%;
+	max-width: 90%;
+    max-height: 100%;
 	border-radius: 10px;
 }
 .links{
@@ -88,9 +90,8 @@ label{
 
 .col-izq img {
 	width: 60%;
-	height: 15%;
+	height: 10%;
     margin-left: 20%;
-    padding-bottom: 2%;
 }
 
 .col-der img {
@@ -104,8 +105,3 @@ label{
 	align-items: center;
 	justify-content: center;
 }
-
-  
-  
-  
-  

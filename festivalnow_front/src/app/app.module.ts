@@ -13,9 +13,9 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu'; // Importa MatMenuModule
+import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { FooterComponent } from './footer/footer.component'; // Importa MatIconModule
+import { FooterComponent } from './footer/footer.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
@@ -23,6 +23,14 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { PowerBIComponent } from './power-bi/power-bi.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { LicenciasComponent } from './licencias/licencias.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +38,9 @@ import { PowerBIComponent } from './power-bi/power-bi.component';
     UserMenuComponent,
     FooterComponent,
     PowerBIComponent
+    SidebarComponent,
+    ProveedoresComponent,
+    LicenciasComponent
   ],
   imports: [
     BrowserModule,
@@ -37,8 +48,8 @@ import { PowerBIComponent } from './power-bi/power-bi.component';
     HomeModule,
     AuthenticationModule,
     MatButtonModule,
-    MatMenuModule, // Agrega MatMenuModule aquí
-    MatIconModule, // Agrega MatIconModule aquí
+    MatMenuModule,
+    MatIconModule,
     BuyModule,
     AboutUsModule,
     EventModule,
@@ -50,7 +61,11 @@ import { PowerBIComponent } from './power-bi/power-bi.component';
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    MatListModule,
+    MatPaginatorModule,
+    MatTableModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

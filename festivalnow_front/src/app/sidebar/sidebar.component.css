@@ -1,0 +1,33 @@
+:host{
+    .mat-icon{
+        vertical-align: middle;
+        margin-right: 20px;
+    }
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.color{
+    color: rgb(255, 255, 255);
+}
+mat-icon{
+    color: rgb(255, 255, 255);
+}
+.inblock{
+    display: inline-block;
+}
+.matSubheader {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    width: 100%;
+}
+.nolog{
+    padding-top: 250px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+  }

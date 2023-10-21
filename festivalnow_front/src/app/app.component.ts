@@ -7,6 +7,7 @@ import { Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  sideBarOpen = false;
   title = 'festivalnow_front';
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
@@ -20,5 +21,9 @@ export class AppComponent {
   isSpecialPage(): boolean {
     const currentUrl = this.router.url;
     return currentUrl === '/login' || currentUrl === '/register' || currentUrl === '/recover';
+  }
+
+  sideBarToggler(event: any) {
+    this.sideBarOpen = !this.sideBarOpen;
   }
 }

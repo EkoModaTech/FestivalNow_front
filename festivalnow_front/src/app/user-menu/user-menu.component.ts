@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../shared/service/auth.service';
 
 @Component({
   selector: 'app-user-menu',
@@ -6,9 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-menu.component.css']
 })
 export class UserMenuComponent {
-  menuItems = [
-    { label: 'Mis Boletos', link: '/clientEvent' },
-    { label: 'Mis eventos', link: '/hostEvent' },
-    { label: 'Iniciar sesion', link: '/login' }
-  ];
+  menuItems: any[] = [];
+
+  constructor(private auth: AuthService) {
+    this.updateMenuItems();
+  }
+
+  updateMenuItems() {
+    if (this.auth.isLoggedIn) {
+      // El usuario ha iniciado sesión, muestra "Ver perfil"
+      this.menuItems = [
+        { label: 'Ver perfil', link: '/profile' }
+      ];
+    } else {
+      this.menuItems = [
+        { label: 'Iniciar sesion', link: '/login' }
+      ];
+    }
+  }
 }

@@ -15,3 +15,9 @@
   height: 50px;
   font-size: 48px;
 }
+.nolog{
+  padding-top: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

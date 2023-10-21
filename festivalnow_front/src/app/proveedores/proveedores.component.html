@@ -1,0 +1,44 @@
+<br>
+<div class="text-center">
+    <h1>Proveedores</h1>
+</div>
+
+<div class="example-container mat-elevation-z8">
+    <div class="example-header custom-header">
+        <mat-form-field class="custom-form-field">
+            <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Proveedor">
+        </mat-form-field>
+    </div>
+   
+    <mat-table #table [dataSource]="dataSource">
+  
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+  
+      <!-- Address Column -->
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+      </ng-container>
+  
+      <!-- contact Column -->
+      <ng-container matColumnDef="contact">
+        <mat-header-cell *matHeaderCellDef> Contact </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.contact}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

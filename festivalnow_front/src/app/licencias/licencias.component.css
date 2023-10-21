@@ -1,0 +1,22 @@
+.example-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+}
+
+h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #f3845e;
+    font-size: 3em;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.custom-header {
+    background-color: white;
+}
+
+.custom-form-field {
+    width: 100%;
+}

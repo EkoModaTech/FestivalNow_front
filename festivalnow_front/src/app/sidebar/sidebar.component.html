@@ -1,0 +1,46 @@
+<ng-container  *ngIf="!auth.isLoggedIn">
+    <div  class="nolog">
+        Para acceder a estas funcionalidades debes iniciar sesion....
+    </div>
+</ng-container>
+
+<ng-container *ngIf="auth.isLoggedIn">
+    <!-- Contenido del menú que se mostrará cuando el usuario haya iniciado sesión -->
+    <mat-divider></mat-divider>
+    <br>
+    <h1 matSubheader class="matSubheader">Menú</h1>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-nav-list>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/clientEvent">
+            <div class="inblock">
+                <mat-icon>local_movies</mat-icon>
+            </div>
+            <div class="inblock">
+                <div class="color">
+                    Mis Boletos
+                </div>
+            </div>
+        </a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/hostEvent">
+            <div class="inblock">
+                <mat-icon>events</mat-icon>
+            </div>
+            <div class="inblock">
+                <div class="color">
+                    Mis Eventos
+                </div>
+            </div>
+        </a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/customize">
+            <div class="inblock">
+                <mat-icon>create</mat-icon>
+            </div>
+            <div class="inblock">
+                <div class="color">
+                    Crear Evento
+                </div>
+            </div>
+        </a>
+    </mat-nav-list>
+</ng-container>

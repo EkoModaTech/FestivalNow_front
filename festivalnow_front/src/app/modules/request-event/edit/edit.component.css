@@ -72,3 +72,14 @@ button {
   background-color: #db722c;
   color: #ffffff;
 }
+
+.btn-success {
+  background-color: rgb(78, 252, 78);
+  border: 2px solid black;
+  color: black;
+}
+
+.btn-success:hover {
+  background-color: rgb(12, 165, 12);
+  color: #ffffff;
+}
