@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NotFoundComponent } from 'src/app/home/not-found/not-found.component';
+import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/shared/service/auth.service';
 
-const URL = "http://ns.qa.10.43.101.226.nip.io/event/event/"
+const URL = environment.backendAPI+"/event/event/"
 
 type Event = {
   // Basic
@@ -30,14 +32,27 @@ type Event = {
 
 
 const MockEvent: any = {
-  name: "FESTIVAL CORDILLERA",
+  id: "230802095436364",
+  name: "Evento de prueba",
+  date: "Fecha de prueba",
+  ability: 100001,
   description: "a description",
   type: "a type",
-  city: "Bogotá",
   url: "https://cdn.eticket.co/imagenes/imgEventos/230802095436364_poster_cartel_combos.jpg",
+  state: "Activo",
+  direction: "Dirección de prueba",
+  visivility: "Público",
+  city: {
+    "idCity": 1,
+    "name": "Ciudad de prueba",
+    "department": null
+  },
+  logistics: "a logistics",
+  created_by: "a created_by",
+
+
+
   place_map_image: "https://api.eticket.com.co/v2/structures/mappingImage/14013",
-  "place": "Parque Simón Bolivar",
-  "date": "23 y 24 de septiembre de 2023",
   "hour": "13:00 HRS",
   "min_age": "18 años en todas las localidades",
   tickets_information:{
@@ -85,20 +100,27 @@ const MockEvent: any = {
 })
 export class SpecificEventComponent {
   
-  event?:any
+  event?:any = MockEvent
   loading: boolean = true
   error: boolean = false
   notFound: boolean = false
 
   mapUri?: SafeResourceUrl
 
-  constructor(public sanitizer: DomSanitizer,private route: ActivatedRoute, private http: HttpClient){
+  constructor(public sanitizer: DomSanitizer,private route: ActivatedRoute,private router: Router, private http: HttpClient, private auth: AuthService){
 
   }
   
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'Bearer ' + this.auth.token
+    })
+  };
   
   getEvent = async (id: string) => {
-    this.http.get(URL + id).subscribe({
+    this.http.get(URL + id, this.httpOptions).subscribe({
       next: (data: any) => {
         this.event = defaultObject(data, MockEvent)
         this.mapUri = this.sanitizer.bypassSecurityTrustResourceUrl(this.event.event_map_section.value)
@@ -106,8 +128,12 @@ export class SpecificEventComponent {
       },
       error: (error: any) => {
           console.log("ERROR: ", error)
+
           this.error = error.error.error
           this.notFound = error.status === 404
+          if(error.status === 403){
+            this.router.navigate(['/login'])
+          }
           this.loading = false
         },
       });
