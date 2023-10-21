@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NotFoundComponent } from 'src/app/home/not-found/not-found.component';
+import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/shared/service/auth.service';
 
-const URL = "http://ns.qa.10.43.101.226.nip.io/event/event/"
+const URL = environment.backendAPI+"/event/event/"
 
 type Event = {
   // Basic
@@ -31,18 +33,18 @@ type Event = {
 
 const MockEvent: any = {
   id: "230802095436364",
-  name: "FESTIVAL CORDILLERA",
-  date: "23 y 24 de septiembre de 2023",
+  name: "Evento de prueba",
+  date: "Fecha de prueba",
   ability: 100001,
   description: "a description",
   type: "a type",
   url: "https://cdn.eticket.co/imagenes/imgEventos/230802095436364_poster_cartel_combos.jpg",
   state: "Activo",
-  direction: "Parque Simón Bolivar",
+  direction: "Dirección de prueba",
   visivility: "Público",
   city: {
     "idCity": 1,
-    "name": "Provincia de Buenos Aires",
+    "name": "Ciudad de prueba",
     "department": null
   },
   logistics: "a logistics",
@@ -105,13 +107,20 @@ export class SpecificEventComponent {
 
   mapUri?: SafeResourceUrl
 
-  constructor(public sanitizer: DomSanitizer,private route: ActivatedRoute, private http: HttpClient){
+  constructor(public sanitizer: DomSanitizer,private route: ActivatedRoute,private router: Router, private http: HttpClient, private auth: AuthService){
 
   }
   
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'Bearer ' + this.auth.token
+    })
+  };
   
   getEvent = async (id: string) => {
-    this.http.get(URL + id).subscribe({
+    this.http.get(URL + id, this.httpOptions).subscribe({
       next: (data: any) => {
         this.event = defaultObject(data, MockEvent)
         this.mapUri = this.sanitizer.bypassSecurityTrustResourceUrl(this.event.event_map_section.value)
@@ -122,6 +131,9 @@ export class SpecificEventComponent {
 
           this.error = error.error.error
           this.notFound = error.status === 404
+          if(error.status === 403){
+            this.router.navigate(['/login'])
+          }
           this.loading = false
         },
       });
