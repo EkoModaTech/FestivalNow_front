@@ -17,6 +17,7 @@ import { CustomizeComponent } from './modules/request-event/customize/customize.
 import { CalendarComponent } from './modules/request-event/calendar/calendar.component';
 import { PresentationComponent } from './modules/about-us/presentation/presentation.component';
 import { ContactUsComponent } from './modules/contact/contact-us/contact-us.component';
+import { PowerBIComponent } from './power-bi/power-bi.component';
 import { AuthGuard } from './shared/auth/auth.guard';
 import { ProfileComponent } from './modules/authentication/profile/profile.component';
 import { EditComponent } from './modules/request-event/edit/edit.component';
@@ -42,6 +43,7 @@ const routes: Routes = [
   {path: 'calendar',component:CalendarComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT'] }},
   {path: 'presentation',component:PresentationComponent},
   {path: 'contact',component:ContactUsComponent},
+  {path: 'report', component: PowerBIComponent},
   {path: 'editEvent',component:EditComponent},
   {path: 'proveedores',component:ProveedoresComponent},
   {path: 'licencias',component:LicenciasComponent},
