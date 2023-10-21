@@ -13,37 +13,31 @@
     <mat-nav-list>
         <!-- Visible para roles: Admin, Usuario -->
         <a *ngIf="userRoles.includes('admin') || userRoles.includes('usuario')" mat-list-item routerLinkActive="list-item-active" routerLink="/clientEvent">
-            <!-- ... contenido ... -->
             Mis Boletos
         </a>
 
         <!-- Visible para roles: Admin, Anfitrión -->
         <a *ngIf="userRoles.includes('admin') || userRoles.includes('anfitrion')" mat-list-item routerLinkActive="list-item-active" routerLink="/hostEvent">
-            <!-- ... contenido ... -->
             Mis Eventos
         </a>
 
         <!-- Visible para roles: Admin, Anfitrión -->
         <a *ngIf="userRoles.includes('admin') || userRoles.includes('anfitrion')" mat-list-item routerLinkActive="list-item-active" routerLink="/customize">
-            <!-- ... contenido ... -->
             Crear Evento
         </a>
 
         <!-- Visible para roles: Admin, Empleado -->
         <a *ngIf="userRoles.includes('admin') || userRoles.includes('empleado')" mat-list-item routerLinkActive="list-item-active" routerLink="/businessIntelligence">
-            <!-- ... contenido ... -->
             Bussines Intelligence (PowerBi)
         </a>
 
         <!-- Visible solo para Admin -->
         <a *ngIf="userRoles.includes('admin')" mat-list-item routerLinkActive="list-item-active" routerLink="/proveedores">
-            <!-- ... contenido ... -->
             Proveedores
         </a>
 
         <!-- Visible solo para Admin -->
         <a *ngIf="userRoles.includes('admin')" mat-list-item routerLinkActive="list-item-active" routerLink="/licencias">
-            <!-- ... contenido ... -->
             Licencias
         </a>
     </mat-nav-list>
