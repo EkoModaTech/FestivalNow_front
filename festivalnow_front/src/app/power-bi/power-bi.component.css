@@ -1,0 +1,5 @@
+.iframe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;/* Esto asegura que el contenedor ocupe toda la altura de la ventana */
+}
