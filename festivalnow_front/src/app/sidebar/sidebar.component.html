@@ -13,32 +13,74 @@
     <mat-nav-list>
         <!-- Visible para roles: Admin,  CLIENT -->
         <a *ngIf="userRoles.includes('ADMIN') || userRoles.includes('CLIENT')" mat-list-item routerLinkActive="list-item-active" routerLink="/clientEvent" class="texto-blanco">
-            Mis Boletos
+          <div class="inblock">
+            <mat-icon>local_movies</mat-icon>
+          </div>
+          <div class="inblock">
+              <div class="color">
+                  Mis Boletos
+              </div>
+          </div>
         </a>
 
         <!-- Visible para roles: Admin, Anfitrión -->
         <a *ngIf="userRoles.includes('ADMIN') || userRoles.includes('HOST')" mat-list-item routerLinkActive="list-item-active" routerLink="/hostEvent" class="texto-blanco">
-            Mis Eventos
+          <div class="inblock">
+            <mat-icon>web_stories</mat-icon>
+          </div>
+          <div class="inblock">
+              <div class="color">
+                Mis Eventos
+              </div>
+          </div>
         </a>
 
         <!-- Visible para roles:  ADMIN, Anfitrión -->
         <a *ngIf="userRoles.includes('ADMIN') || userRoles.includes('HOST')" mat-list-item routerLinkActive="list-item-active" routerLink="/customize" class="texto-blanco">
-            Crear Evento
+          <div class="inblock">
+            <mat-icon>create</mat-icon>
+          </div>
+          <div class="inblock">
+              <div class="color">
+                Crear Evento
+              </div>
+          </div>
         </a>
 
         <!-- Visible para roles:  ADMIN, EMPLOYEE -->
         <a *ngIf="userRoles.includes('ADMIN') || userRoles.includes('EMPLOYEE')" mat-list-item routerLinkActive="list-item-active" routerLink="/report" class="texto-blanco">
-            Bussines Intelligence (PowerBi)
+          <div class="inblock">
+            <mat-icon>insights</mat-icon>
+          </div>
+          <div class="inblock">
+              <div class="color">
+                Bussines Intelligence (PowerBi)
+              </div>
+          </div>
         </a>
 
         <!-- Visible solo para  ADMIN -->
         <a *ngIf="userRoles.includes('ADMIN')" mat-list-item routerLinkActive="list-item-active" routerLink="/proveedores" class="texto-blanco">
-            Proveedores
+          <div class="inblock">
+            <mat-icon>how_to_reg</mat-icon>
+          </div>
+          <div class="inblock">
+              <div class="color">
+                Proveedores
+              </div>
+          </div>
         </a>
 
         <!-- Visible solo para  ADMIN -->
         <a *ngIf="userRoles.includes('ADMIN')" mat-list-item routerLinkActive="list-item-active" routerLink="/licencias" class="texto-blanco">
-            Licencias
+          <div class="inblock">
+            <mat-icon>file_copy</mat-icon>
+          </div>
+          <div class="inblock">
+              <div class="color">
+                Licencias
+              </div>
+          </div>
         </a>
     </mat-nav-list>
 </ng-container>

@@ -43,7 +43,7 @@ const routes: Routes = [
   {path: 'calendar',component:CalendarComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT'] }},
   {path: 'presentation',component:PresentationComponent},
   {path: 'contact',component:ContactUsComponent},
-  {path: 'report', component: PowerBIComponent},
+  {path: 'report', component: PowerBIComponent, canActivate:[AuthGuard], data: { roles: ['ADMIN', 'EMPLOYEE'] }},
   {path: 'editEvent',component:EditComponent},
   {path: 'proveedores',component:ProveedoresComponent},
   {path: 'licencias',component:LicenciasComponent},
