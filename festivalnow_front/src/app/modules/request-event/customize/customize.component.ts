@@ -1,29 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { Event } from 'src/app/models/event.interface';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-customize',
   templateUrl: './customize.component.html',
   styleUrls: ['./customize.component.css']
 })
-export class CustomizeComponent {
+export class CustomizeComponent implements OnInit{
 
-  constructor(private http: HttpClient) {}
+  ngOnInit(): void {
+    const usuarioString = localStorage.getItem('usuario');
+    console.log(usuarioString);
+    if (usuarioString) {
+      const usuario = JSON.parse(usuarioString);
+      this.nuevoEvento.createdBy = usuario.username;
+    }
+  }
 
-  nuevoEvento: any = {
+  constructor(private http: HttpClient, private eventService: EventService) {}
+
+  nuevoEvento: Event = {
+    idEvent: 0,
     name: '',
     date: '',
     ability: 0,
     description: '',
+    state: '',
     type: '',
-    city: {
-      idCity: 1
-    },
-   
-    imagenURL: ''
+    city: null,
+    url: '',
+    direction: '',
+    visibility: null,
+    createdBy: ''
   };
 
+  Validator: string = '';
   isURLValid: boolean = true;
 
   crearEvento(): void {
@@ -33,23 +46,26 @@ export class CustomizeComponent {
       alert('Por favor, corrija los errores en el formulario.');
       return;
     }
-
-
-    this.http.post(`${environment.backendAPI}/event/event/create`, this.nuevoEvento).subscribe(
+    if(this.Validator == 'Publico'){
+      this.nuevoEvento.visibility = false;
+    }
+    else if(this.Validator == 'Privado'){
+      this.nuevoEvento.visibility = true;
+    }
+    this.eventService.postEvento(this.nuevoEvento).subscribe(
       response => {
         console.log(response);
         alert('Evento creado con éxito!');
       },
       error => {
-        console.error(error); // Imprime el error en la consola para depuración
-        alert('Hubo un error al crear el evento. Detalles: ' + error.message); // Muestra una alerta con el mensaje de error
+        console.error(error);
+        alert('Hubo un error al crear el evento. Detalles: ' + error.message);
       }
     );
-    
   }
 
   validateImageURL(): void {
     const urlPattern = /^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)$/;
-    this.isURLValid = urlPattern.test(this.nuevoEvento.imagenURL);
+    this.isURLValid = this.nuevoEvento.url !== null && urlPattern.test(this.nuevoEvento.url);
   }
 }

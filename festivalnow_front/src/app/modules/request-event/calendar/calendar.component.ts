@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatCalendarCellCssClasses, MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Event } from 'src/app/models/event.interface';
 
 @Component({
   selector: 'app-calendar',
@@ -11,6 +12,7 @@ import { environment } from 'src/environments/environment';
 
 export class CalendarComponent implements OnInit{
 
+  @Input() nuevoEvento!: Event;
   selectedDate!: Date;
   disabledDates = [
     new Date(Date.UTC(2023, 9, 5)),  // Octubre 5
@@ -25,9 +27,8 @@ export class CalendarComponent implements OnInit{
   }
 
   addEvent(event: MatDatepickerInputEvent<Date>) {
-    if (event.value)
-    {
-      this.selectedDate = event.value;
+    if (event.value) {
+      this.nuevoEvento.date = event.value.toISOString(); // Assign the value to nuevoEvento.date
     }
   }
 

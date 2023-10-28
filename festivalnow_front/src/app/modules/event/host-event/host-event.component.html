@@ -1,31 +1,29 @@
 <div class="container">
-    <h2>Eventos del Anfitrión</h2>
-    <table class="mat-elevation-z8">
-      <thead>
-        <tr>
-          <th>Fecha y Hora</th>
-          <th>Nombre del Evento</th>
-          <th>Capacidad</th>
-          <th>Estado</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2023-10-15 18:00</td>
-          <td>Fiesta en el Jardín</td>
-          <td>200</td>
-          <td>Activo</td>
-          <td class="acciones">
-            <!-- Agrega aquí tus botones de acciones (Ver Detalle, Editar, Promocionar, Cambiar Estado) -->
-            <button >Ver Detalle</button> 
-            <button >Editar</button> 
-            <button >Promocionar</button> 
-            <button >Cambiar Estado</button> 
-          </td>
-        </tr>
-        <!-- Agrega más filas de datos aquí según tu necesidad -->
-      </tbody>
-    </table>
-  </div>
-  
+  <h2>Eventos del Anfitrión</h2>
+  <table class="mat-elevation-z8">
+    <thead>
+      <tr>
+        <th>Fecha y Hora</th>
+        <th>Nombre del Evento</th>
+        <th>Capacidad</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let evento of eventos">
+        <td>{{evento.date}}</td>
+        <td>{{evento.name}}</td>
+        <td>{{evento.ability}}</td>
+        <td>Activo</td>
+        <td>
+          <!-- Agrega aquí tus botones de acciones (Ver Detalle, Editar, Promocionar, Cambiar Estado) -->
+          <button (click)="verDetalle(evento)">Ver Detalle</button>
+          <button (click)="editarEvento(evento)">Editar</button>
+          <button (click)="promocionarEvento(evento)">Promocionar</button>
+          <button (click)="cambiarEstado(evento)">Cambiar Estado</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

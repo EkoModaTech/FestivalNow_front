@@ -39,7 +39,7 @@ const routes: Routes = [
   {path: 'adminEvent',component:AdminEventComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT','ADMIN'] }},
   {path: 'clientEvent',component:ClientEventComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT','ADMIN'] }},
   {path: 'hostEvent',component:HostEventComponent,canActivate:[AuthGuard], data: { roles: ['CLIENT','ADMIN'] }},
-  {path: 'customize',component:CustomizeComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT','ADMIN'] }},
+  {path: 'customize',component:CustomizeComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT','ADMIN', 'HOST'] }},
   {path: 'calendar',component:CalendarComponent, canActivate:[AuthGuard], data: { roles: ['CLIENT','ADMIN'] }},
   {path: 'presentation',component:PresentationComponent},
   {path: 'contact',component:ContactUsComponent},

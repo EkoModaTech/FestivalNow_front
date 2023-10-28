@@ -10,11 +10,13 @@ import { Event } from '../models/event.interface';
 export class EventService {
   private postEventApiUrl = environment.backendAPI + "/event/event/create";
   private putEventApiUrl = environment.backendAPI + "/event/event/update/";
-
   constructor(private http: HttpClient) { }
 
   getEventos(): Observable<any[]> {
     return this.http.get<any[]>(environment.backendAPI + "/event/event/list/public");
+  }
+  getEventosFiltrados(): Observable<any[]> {
+    return this.http.get<any[]>(environment.backendAPI + "/event/event/list");
   }
 
   createEvento(event: Event): Observable<Event> {
@@ -23,5 +25,10 @@ export class EventService {
 
   updateEvento(event: Event): Observable<Event> {
     return this.http.put<Event>(this.putEventApiUrl + event.idEvent, event);
+  }
+
+  postEvento(evento: Event): Observable<Event> {
+    const url = `${environment.backendAPI}/event/event/create`;
+    return this.http.post<Event>(url, evento);
   }
 }
