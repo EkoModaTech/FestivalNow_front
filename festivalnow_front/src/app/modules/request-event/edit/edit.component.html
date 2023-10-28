@@ -4,7 +4,7 @@
   
       <div class="form-group">
         <label for="imagenURL">URL de la Imagen:</label>
-        <input type="text" id="imagenURL" class="form-control" name="imagenURL" [(ngModel)]="actualizarEvento.evento.imagenURL" (blur)="validateImageURL()" [disabled]="!isEditing">
+        <input type="text" id="imagenURL" class="form-control" name="imagenURL" [(ngModel)]="actualizarEvento.imagenURL" (blur)="validateImageURL()" [disabled]="!isEditing">
         <div>
           <small *ngIf="!isURLValid" class="text-danger">Por favor, ingresa una URL válida para una imagen (.jpg, .jpeg, .png, etc.).</small>
         </div>
@@ -12,17 +12,17 @@
   
       <div class="form-group">
         <label for="name">Nombre del Evento:</label>
-        <input type="text" id="name" class="form-control" name="name" [(ngModel)]="actualizarEvento.evento.name" [disabled]="!isEditing" >
+        <input type="text" id="name" class="form-control" name="name" [(ngModel)]="actualizarEvento.name" [disabled]="!isEditing" >
       </div>
   
       <div class="form-group">
         <label for="description">Descripción:</label>
-        <textarea id="description" class="form-control" name="description" [(ngModel)]="actualizarEvento.evento.description" [disabled]="!isEditing"></textarea>
+        <textarea id="description" class="form-control" name="description" [(ngModel)]="actualizarEvento.description" [disabled]="!isEditing"></textarea>
       </div>
   
       <div class="form-group">
         <label for="tipoEvento">Tipo de Evento:</label>
-        <select id="tipoEvento" class="form-control" name="tipoEvento" [(ngModel)]="actualizarEvento.evento.type" [disabled]="!isEditing">
+        <select id="tipoEvento" class="form-control" name="tipoEvento" [(ngModel)]="actualizarEvento.type" [disabled]="!isEditing">
           <option value="Concierto">Concierto</option>
           <option value="Festival">Festival</option>
           <option value="Deportes">Deportes</option>
@@ -64,7 +64,7 @@
   
       <div class="form-group">
         <label for="ability">Capacidad:</label>
-        <input type="number" id="ability" class="form-control" name="ability" [(ngModel)]="actualizarEvento.evento.ability" [disabled]="!isEditing">
+        <input type="number" id="ability" class="form-control" name="ability" [(ngModel)]="actualizarEvento.ability" [disabled]="!isEditing">
       </div>
   
       <div class="form-group">
