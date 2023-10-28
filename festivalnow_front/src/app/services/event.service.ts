@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Event } from '../models/event.interface';
 
@@ -15,8 +15,11 @@ export class EventService {
   getEventos(): Observable<any[]> {
     return this.http.get<any[]>(environment.backendAPI + "/event/event/list/public");
   }
-  getEventosFiltrados(): Observable<any[]> {
-    return this.http.get<any[]>(environment.backendAPI + "/event/event/list");
+  getEventosFiltrados(search: string): Observable<any[]> {
+    return this.http.get<any[]>(environment.backendAPI + "/event/event/list")
+      .pipe(
+        map(eventos => eventos.filter(evento => evento.createdBy === search))
+      );
   }
 
   createEvento(event: Event): Observable<Event> {

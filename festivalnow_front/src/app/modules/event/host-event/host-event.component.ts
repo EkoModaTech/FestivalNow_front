@@ -18,11 +18,8 @@ export class HostEventComponent implements OnInit {
     const usuarioString = localStorage.getItem('usuario');
     if (usuarioString) {
       const usuario = JSON.parse(usuarioString);
-      console.log(usuario.username);
-
-      this.eventService.getEventos().subscribe(eventos => {
+      this.eventService.getEventosFiltrados(usuario.username).subscribe(eventos => {
         this.eventos = eventos;
-        console.log(eventos);
       });
     }
   }

@@ -12,7 +12,6 @@ export class CustomizeComponent implements OnInit{
 
   ngOnInit(): void {
     const usuarioString = localStorage.getItem('usuario');
-    console.log(usuarioString);
     if (usuarioString) {
       const usuario = JSON.parse(usuarioString);
       this.nuevoEvento.createdBy = usuario.username;
