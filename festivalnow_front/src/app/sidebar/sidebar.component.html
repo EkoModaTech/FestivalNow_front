@@ -82,5 +82,16 @@
               </div>
           </div>
         </a>
+
+        <a *ngIf="userRoles.includes('ADMIN')" mat-list-item routerLinkActive="list-item-active" routerLink="/setting" class="texto-blanco">
+          <div class="inblock">
+            <mat-icon>how_to_reg</mat-icon>
+          </div>
+          <div class="inblock">
+              <div class="color">
+                Administrador de Ususarios
+              </div>
+          </div>
+        </a>
     </mat-nav-list>
 </ng-container>
