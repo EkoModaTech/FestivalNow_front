@@ -7,6 +7,8 @@ export interface Event {
   state: string | null;
   type: string;
   city: string | null | any;
-  logistic: string | null;
   url: string | null;
+  direction: string | null;
+  visibility: boolean | null;
+  createdBy: string | null;
 }

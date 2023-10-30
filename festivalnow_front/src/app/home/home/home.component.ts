@@ -47,7 +47,7 @@ export class HomeComponent {
 
   get filteredCards() {
     return this.cards.filter(card =>
-      card.name.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
+      (card.name?.toLowerCase() ?? '').includes(this.searchTerm.toLowerCase()) &&
       this.types.filter(type => type.checked).every(type => card.type.includes(type.name))
     );
   }
