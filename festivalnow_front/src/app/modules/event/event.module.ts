@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from 'src/app/home/home.module';
 import { RouterModule, Routes } from '@angular/router';
+import { ConfirmarCompraDialogComponent } from './specific-event/Dialog/confirmar-compra-dialog/confirmar-compra-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RouterModule, Routes } from '@angular/router';
     SpecificEventComponent,
     AdminEventComponent,
     ClientEventComponent,
-    HostEventComponent
+    HostEventComponent,
+    ConfirmarCompraDialogComponent
   ],
   imports: [
     HomeModule,

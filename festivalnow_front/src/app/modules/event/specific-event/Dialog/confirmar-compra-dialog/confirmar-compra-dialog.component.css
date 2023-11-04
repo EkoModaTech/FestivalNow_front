@@ -1,0 +1,23 @@
+::ng-deep .orange-button {
+    background-color: #f05c44 !important;
+    color: white !important;
+}
+
+.close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+p {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+button {
+    font-size: 1.2em;
+}

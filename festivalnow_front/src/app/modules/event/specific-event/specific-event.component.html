@@ -15,7 +15,8 @@
       </section>
     </main>
     <div class="buy_container">
-      <button [routerLink]="['/PSE']" class="buy_button">COMPRAR BOLETOS</button>
+      <!--<button [routerLink]="['/PSE']" class="buy_button">COMPRAR BOLETOS</button>-->
+      <button class="buy_button" (click)="openDialog()">COMPRAR BOLETOS</button>
     </div>
     <section class="place_map">
       <h2>Mapa del lugar</h2>

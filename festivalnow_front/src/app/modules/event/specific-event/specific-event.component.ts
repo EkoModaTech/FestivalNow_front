@@ -5,7 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NotFoundComponent } from 'src/app/home/not-found/not-found.component';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/shared/service/auth.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmarCompraDialogComponent } from './Dialog/confirmar-compra-dialog/confirmar-compra-dialog.component';
 const URL = environment.backendAPI+"/event/event/"
 
 type Event = {
@@ -107,7 +108,12 @@ export class SpecificEventComponent {
 
   mapUri?: SafeResourceUrl
 
-  constructor(public sanitizer: DomSanitizer,private route: ActivatedRoute,private router: Router, private http: HttpClient, private auth: AuthService){
+  constructor(public sanitizer: DomSanitizer,
+    private route: ActivatedRoute,
+    private router: Router, 
+    private http: HttpClient,
+     private auth: AuthService,
+     public dialog: MatDialog){
 
   }
   
@@ -147,6 +153,9 @@ export class SpecificEventComponent {
         this.getEvent(id);
       }
     });
+  }
+  openDialog() {
+    this.dialog.open(ConfirmarCompraDialogComponent);
   }
 }
 
