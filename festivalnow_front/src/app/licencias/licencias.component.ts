@@ -1,6 +1,7 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { LicenseService } from 'src/app/services/license.service';
 import { Licencia } from '../models/licencia.interface';
 
 const ELEMENT_DATA: Licencia[] = [
@@ -32,10 +33,27 @@ const ELEMENT_DATA: Licencia[] = [
   styleUrls: ['./licencias.component.css']
 })
 export class LicenciasComponent {
+
+  constructor(private licenseService: LicenseService) { }
+
+  license_data: Licencia[] = []
+
   displayedColumns = ['id', 'tipo', 'fechaExpiracion', 'activa'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  
+  // TODO: Confirmación de endpoint GET de todas las licencias.
+  // dataSource = new MatTableDataSource(this.license_data);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngOnInit(): void {
+    this.licenseService.getLicencias().subscribe(licenses => {
+      this.license_data = licenses;
+
+      // Debug log
+      console.log(licenses);
+    });
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
