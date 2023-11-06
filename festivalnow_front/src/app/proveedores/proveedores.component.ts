@@ -1,7 +1,12 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Proveedor } from '../models/proveedor.interface';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from '../shared/service/auth.service';
+import { environment } from 'src/environments/environment';
+
+const PATH = environment.backendAPI+"/providers/"
 
 const ELEMENT_DATA: Proveedor[] = [
   {id: 1, name: 'Proveedor 1', address: '123 Main St', contact: '123-456-7890'},
@@ -31,11 +36,52 @@ const ELEMENT_DATA: Proveedor[] = [
   templateUrl: './proveedores.component.html',
   styleUrls: ['./proveedores.component.css']
 })
-export class ProveedoresComponent implements AfterViewInit {
+export class ProveedoresComponent implements AfterViewInit, OnInit {
+
+  loading: boolean = true
+  error: boolean = false
+  data: any = ELEMENT_DATA
   displayedColumns = ['id', 'name', 'address', 'contact'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(this.data);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(
+    private http: HttpClient,
+    private auth: AuthService,
+  ) {}
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'Bearer ' + this.auth.token
+    })
+  };
+
+
+  getProviders = async () => {
+    this.http.get(PATH, this.httpOptions).subscribe({
+      next: (data: any) => {
+        this.data = data
+        // this.event = defaultObject(data, MockEvent)
+        this.loading = false
+      },
+      error: (error: any) => {
+          console.log("ERROR: ", error)
+
+          this.error = error.error.error
+          // this.notFound = error.status === 404
+          // if(error.status === 403){
+          //   this.router.navigate(['/login'])
+          // }
+          this.loading = false
+        },
+      });
+  }
+
+  ngOnInit() {
+    this.getProviders();
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
