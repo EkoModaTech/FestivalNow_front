@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { EventService } from 'src/app/services/event.service';
 import { Event } from 'src/app/models/event.interface';
+import { AdsService } from 'src/app/services/ads.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,12 +21,13 @@ export class HomeComponent {
 
   cards: Event[] = [];
   types: any[] = [];
-
+  imageAds: string | null = 'https://www.vivirensarriguren.com/wp-content/uploads/2013/01/publicidad.jpg';
   searchTerm: string = '';
+  idAds: number = 0;
 
   @ViewChild('stripeContainer') stripeContainer!: ElementRef;
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService, private adsService: AdsService, private router: Router) { }
 
   ngOnInit(): void {
     this.eventService.getEventos().subscribe(eventos => {
@@ -34,6 +37,27 @@ export class HomeComponent {
       .filter((type, index, self) => self.indexOf(type) === index)
       .map(type => ({ name: type, checked: false }));
     });
+    this.adsService.getAds().subscribe(
+      (response) => {
+        this.idAds = response.idEvent;
+        console.log("El id del ads es: ", this.idAds);
+        if (this.idAds != 0) {
+          this.eventService.getImageUrl(this.idAds).subscribe(
+            (imageUrl) => {
+              this.imageAds = imageUrl;
+              console.log("El url del ads es: ", this.imageAds);
+            },
+            (error) => {
+              console.error('Error al obtener la URL de la imagen', error);
+            }
+          );
+        }
+      },
+      (error) => {
+        console.error('Error al obtener los anuncios', error);
+      }
+    );
+
   }
 
   scrollLeft() {
@@ -43,6 +67,10 @@ export class HomeComponent {
 
   scrollRight() {
     this.stripeContainer.nativeElement.scrollLeft += 200;
+  }
+
+  redireccionarAEvent(id: number) {
+    this.router.navigate(['/event', id]);
   }
 
   get filteredCards() {

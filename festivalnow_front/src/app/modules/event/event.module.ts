@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from 'src/app/home/home.module';
 import { RouterModule, Routes } from '@angular/router';
 import { ConfirmarCompraDialogComponent } from './specific-event/Dialog/confirmar-compra-dialog/confirmar-compra-dialog.component';
-
+import { SuccessDialogComponent } from './specific-event/Dialog/confirmar-publicidad-dialog/confirmar-publicidad-dialog.component';
 @NgModule({
   declarations: [
     GeneralEventComponent,
@@ -22,7 +22,8 @@ import { ConfirmarCompraDialogComponent } from './specific-event/Dialog/confirma
     AdminEventComponent,
     ClientEventComponent,
     HostEventComponent,
-    ConfirmarCompraDialogComponent
+    ConfirmarCompraDialogComponent,
+    SuccessDialogComponent
   ],
   imports: [
     HomeModule,

@@ -7,6 +7,9 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/shared/service/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmarCompraDialogComponent } from './Dialog/confirmar-compra-dialog/confirmar-compra-dialog.component';
+import { AdsService } from 'src/app/services/ads.service';
+import { SuccessDialogComponent } from './Dialog/confirmar-publicidad-dialog/confirmar-publicidad-dialog.component';
+import { RouterModule } from '@angular/router';
 const URL = environment.backendAPI+"/event/event/"
 
 type Event = {
@@ -100,23 +103,22 @@ const MockEvent: any = {
   styleUrls: ['./specific-event.component.css']
 })
 export class SpecificEventComponent {
-  
+
   event?:any = MockEvent
   loading: boolean = true
   error: boolean = false
   notFound: boolean = false
-
+  userRoles: string[] = [];
+  eventId: string = "";
   mapUri?: SafeResourceUrl
 
   constructor(public sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private router: Router, 
+    private router: Router,
     private http: HttpClient,
-     private auth: AuthService,
-     public dialog: MatDialog){
-
-  }
-  
+    private auth: AuthService,
+    private adsService: AdsService,
+    public dialog: MatDialog){ }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -124,7 +126,7 @@ export class SpecificEventComponent {
       'Authorization': 'Bearer ' + this.auth.token
     })
   };
-  
+
   getEvent = async (id: string) => {
     this.http.get(URL + id, this.httpOptions).subscribe({
       next: (data: any) => {
@@ -148,15 +150,43 @@ export class SpecificEventComponent {
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id');
-
       if (id) {
+        this.eventId = id;
         this.getEvent(id);
       }
     });
+    this.userRoles = this.auth.getUserRoles();
   }
   openDialog() {
     this.dialog.open(ConfirmarCompraDialogComponent);
   }
+  isAdminOrHost(): boolean {
+    const userRoles = this.auth.getUserRoles();
+    return userRoles.includes('ADMIN') || userRoles.includes('HOST');
+  }
+
+  createAds() {
+    this.adsService.postAds(this.eventId).subscribe(
+      (response) => {
+        if (response) {
+          console.log("El evento si se publicitó")
+          this.openSuccessDialog();
+        }
+      },
+      (error) => {
+        console.error('Error al crear la publicidad', error);
+      }
+    );
+  }
+
+  openSuccessDialog() {
+    const dialogRef = this.dialog.open(SuccessDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('El diálogo se cerró');
+    });
+  }
+
 }
 
 

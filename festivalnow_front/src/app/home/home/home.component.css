@@ -189,6 +189,10 @@ input[type="text"]::placeholder {
 .stripe-container, .slider-container{
     display: flex;
 }
+.ads-container {
+  padding-right: 90px;
+  padding-left: 90px;
+}
 
 .slider-container{
     transform: translateX(0);

@@ -20,25 +20,14 @@
 
 </section>
 
-
-<div class="mt-5 mb-5">
-    <div class="slider">
-        <div class="slider-container">
-            <div class="image"
-                style="background-image: url(https://ironmaidencolombiafc.files.wordpress.com/2017/11/flyer-tributo-tbos-lc-horizontal.png); ">
-            </div>
-            <div class="image"
-                style="background-image: url(https://es.concerts-metal.com/images/flyers/202211/1669650565.webp);">
-            </div>
-            <div class="image"
-                style="background-image: url(https://images.unsplash.com/photo-1510682657356-6ee07db8204b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80);">
-            </div>
-            <div class="image"
-                style="background-image: url(https://images.unsplash.com/photo-1470345961863-06d4b12d93b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2664&q=80);">
-            </div>
-        </div>
-    </div>
+<div class="ads-container">
+  <div class="image"
+       [ngStyle]="{ 'background-image': imageAds ? 'url(' + imageAds + ')' : '' }"
+       (click)="redireccionarAEvent(idAds)"
+       style="cursor: pointer;">
+  </div>
 </div>
+
 <section>
     <div class=" mt-5 mb-5">
         <div class="row justify-content-center">
