@@ -1,7 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../shared/service/auth.service';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

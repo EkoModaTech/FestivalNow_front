@@ -34,4 +34,12 @@ export class EventService {
     const url = `${environment.backendAPI}/event/event/create`;
     return this.http.post<Event>(url, evento);
   }
+
+  getImageUrl(eventId: number): Observable<string | null> {
+    console.log("Llega el id: ", eventId);
+    const url = `${environment.backendAPI}/event/event/${eventId}`;
+    return this.http.get<Event>(url).pipe(
+      map(evento => evento.url)
+    );
+  }
 }

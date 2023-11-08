@@ -15,7 +15,7 @@
       </section>
     </main>
     <div class="buy_container">
-      <!--<button [routerLink]="['/PSE']" class="buy_button">COMPRAR BOLETOS</button>-->
+      <button class="buy_button" (click)="createAds()" *ngIf="isAdminOrHost()">Publicitar Evento</button>
       <button class="buy_button" (click)="openDialog()">COMPRAR BOLETOS</button>
     </div>
     <section class="place_map">
@@ -56,10 +56,6 @@
         <p>{{ stage.description }}</p>
       </article>
     </section>
-    <!-- <section class="event_map_section">
-      <h2>{{ event.event_map_section.title }}</h2>
-      <iframe class="event_map" [src]="mapUri" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </section> -->
 </div>
 <app-not-found *ngIf="error"></app-not-found>
 <div class="loading" *ngIf="loading">
