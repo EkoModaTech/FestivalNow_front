@@ -89,9 +89,21 @@
           </div>
           <div class="inblock">
               <div class="color">
-                Administrador de Ususarios
+                Administrador de Usuarios
               </div>
           </div>
         </a>
+
+        <a *ngIf="userRoles.includes('ADMIN')" href="http://qa.10.43.101.226.nip.io/dms/" class="texto-blanco">
+          <div class="inblock">
+            <mat-icon>how_to_reg</mat-icon>
+          </div>
+          <div class="inblock">
+            <div class="color">
+              DMS
+            </div>
+          </div>
+        </a>
+        
     </mat-nav-list>
 </ng-container>
