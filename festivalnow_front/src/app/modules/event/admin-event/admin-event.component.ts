@@ -32,6 +32,12 @@ export class AdminEventComponent {
     this.router.navigate(['editEvent', {evento: JSON.stringify(evento)}]);
   }
 
+  eliminarEvento(evento: any) {
+    evento = evento.evento.idEvent
+    this.eliminarEvento(evento);
+    
+  }
+
   cambiarEstado(evento: any) {
     // Lógica para cambiar el estado del evento en el frontend (por ejemplo, cambiar un campo en el objeto 'evento')
     // TODO: Pantalla de cambio de Estado
