@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { User } from 'src/app/models/user.models'; // Ajusta la ruta según la ubicación de tu modelo
+import { User } from 'src/app/models/user.models'; 
 import { EditUserComponent } from '../edit-user/edit-user.component';
-
+import { AuthService } from 'src/app/shared/service/auth.service';
+import { UserService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-setting',
@@ -12,24 +13,24 @@ import { EditUserComponent } from '../edit-user/edit-user.component';
 })
 
 
-export class SettingComponent {
+export class SettingComponent implements OnInit{
 
-  users: User[] = [
-    { nombre: 'Usuario 1', rol: 'Rol 1' },
-    { nombre: 'Usuario 2', rol: 'Rol 2' },
-    { nombre: 'Usuario 3', rol: 'Rol 3' },
-    { nombre: 'Usuario 1', rol: 'Rol 1' },
-    { nombre: 'Usuario 2', rol: 'Rol 2' },
-    { nombre: 'Usuario 3', rol: 'Rol 3' },
-    { nombre: 'Usuario 1', rol: 'Rol 1' },
-    { nombre: 'Usuario 2', rol: 'Rol 2' },
-    { nombre: 'Usuario 3', rol: 'Rol 3' },
-    { nombre: 'Usuario 1', rol: 'Rol 1' },
-    { nombre: 'Usuario 2', rol: 'Rol 2' },
-    { nombre: 'Usuario 3', rol: 'Rol 3' }
-  ];  
+
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe((data: any[]) => {
+      console.log(data);
+      this.users = data.map((user: any) => ({
+        nombre: user.username,
+        rol: user.email
+      }));
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  users: User[] = [];  
   usuarioEditando: User | null = null;
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private auth: AuthService, private userService: UserService) {}
 
   editarUsuario(user: User) {
     // Abre el diálogo de edición
