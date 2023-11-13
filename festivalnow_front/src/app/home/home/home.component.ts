@@ -79,4 +79,7 @@ export class HomeComponent {
       this.types.filter(type => type.checked).every(type => card.type.includes(type.name))
     );
   }
+  navigateToGeneral() {
+    this.router.navigate(['/general']);
+  }
 }

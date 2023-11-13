@@ -8,10 +8,10 @@
         <div class="carousel-container justify-content-center">
             <button mat-icon-button (click)="scrollLeft()"><mat-icon>keyboard_arrow_left</mat-icon></button>
             <div #stripeContainer class="stripe-container">
-                <div class="image-container" *ngFor="let image of images">
-                    <img [src]="image.src" [alt]="image.alt">
-                    <p class="image-text">{{image.text}}</p>
-                </div>
+              <div class="image-container" *ngFor="let image of images" (click)="navigateToGeneral()">
+                <img [src]="image.src" [alt]="image.alt">
+                <p class="image-text">{{image.text}}</p>
+              </div>
             </div>
             <button mat-icon-button (click)="scrollRight()"><mat-icon>keyboard_arrow_right</mat-icon></button>
         </div>
