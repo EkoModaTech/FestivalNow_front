@@ -4,10 +4,6 @@
   cursor: not-allowed;
   pointer-events: none;
 }
-
 .calendar {
-  .mat-datepicker-content {
-    font-size: 12px;
-    width: 200px;
-  }
+  width: 100%;
 }

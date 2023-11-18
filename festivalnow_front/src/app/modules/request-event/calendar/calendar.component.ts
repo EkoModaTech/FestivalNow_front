@@ -3,6 +3,8 @@ import { MatCalendarCellCssClasses, MatDatepickerInputEvent } from '@angular/mat
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Event } from 'src/app/models/event.interface';
+import { FormControl} from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-calendar',
@@ -11,6 +13,7 @@ import { Event } from 'src/app/models/event.interface';
 })
 
 export class CalendarComponent implements OnInit{
+  colorControl = new FormControl('warn' as ThemePalette);
 
   @Input() nuevoEvento!: Event;
   selectedDate!: Date;

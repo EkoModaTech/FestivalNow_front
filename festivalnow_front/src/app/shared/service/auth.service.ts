@@ -59,6 +59,7 @@ export class AuthService {
         localStorage.setItem('currentOIDC', JSON.stringify(oidc));
 
         const jwtToken = oidc.access_token;
+        //console.log(jwtToken);
         this.setUserRoles(jwtToken);
 
         const decodedToken = jwtDecode<MyToken>(jwtToken);

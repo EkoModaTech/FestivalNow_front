@@ -1,73 +1,72 @@
 <div class="container">
-  <h2>Crear un Evento</h2>
-  <form (submit)="crearEvento()">
+  <h1 class="titulo">Crear un Evento</h1>
+  <form #form="ngForm" (submit)="crearEvento()">
 
-    <div class="form-group">
-      <label for="name">Nombre del Evento:</label>
-      <input type="text" id="name" class="form-control" name="name" [(ngModel)]="nuevoEvento.name">
-    </div>
+    <mat-form-field appearance="fill" [color]="colorControl.value!">
+      <mat-label>Nombre del Evento</mat-label>
+      <input matInput id="name" name="name" [(ngModel)]="nuevoEvento.name" required>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label for="ability">Capacidad:</label>
-      <input type="number" id="ability" class="form-control" name="ability" [(ngModel)]="nuevoEvento.ability">
-    </div>
+    <mat-form-field appearance="fill" [color]="colorControl.value!">
+      <mat-label>Capacidad</mat-label>
+      <input matInput type="number" id="ability" name="ability" [(ngModel)]="nuevoEvento.ability" required>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label for="description">Descripción:</label>
-      <textarea id="description" class="form-control" name="description" [(ngModel)]="nuevoEvento.description"></textarea>
-    </div>
+    <mat-form-field appearance="fill" [color]="colorControl.value!">
+      <mat-label>Estado del Evento</mat-label>
+      <input matInput id="state" name="state" [(ngModel)]="nuevoEvento.state" required>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label for="name">Estado del Evento:</label>
-      <input type="text" id="name" class="form-control" name="name" [(ngModel)]="nuevoEvento.state">
-    </div>
+    <mat-form-field appearance="fill" [color]="colorControl.value!">
+      <mat-label>URL de la Imagen</mat-label>
+      <input matInput type="text" id="imagenURL" name="imagenURL" [formControl]="urlControl" required>
+      <mat-error *ngIf="urlControl.invalid" class="my-error">
+        <mat-icon>error_outline</mat-icon> {{getErrorMessage()}}
+      </mat-error>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label for="tipoEvento">Tipo de Evento:</label>
-      <select id="tipoEvento" class="form-control" name="tipoEvento" [(ngModel)]="nuevoEvento.type">
-        <option value="Concierto">Concierto</option>
-        <option value="Festival">Festival</option>
-        <option value="Deportes">Deportes</option>
-        <option value="Boda">Bodas</option>
-      </select>
-    </div>
+    <mat-form-field appearance="fill" [color]="colorControl.value!">
+      <mat-label>Direccion</mat-label>
+      <input matInput type="text" id="direction" name="direction" [(ngModel)]="nuevoEvento.direction" required>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label for="city">Ciudad:</label>
-      <select id="city" class="form-control" name="city">
-        <option value="Medellín">Medellín</option>
-        <option value="Cali">Cali</option>
-        <option value="Bogotá">Bogotá</option>
-        <option value="Barranquilla">Barranquilla</option>
-      </select>
-    </div>
+    <mat-form-field appearance="fill" [color]="colorControl.value!">
+      <mat-label>Tipo de Evento</mat-label>
+      <mat-select id="tipoEvento" name="tipoEvento" [(ngModel)]="nuevoEvento.type" required>
+        <mat-option value="Concierto">Concierto</mat-option>
+        <mat-option value="Festival">Festival</mat-option>
+        <mat-option value="Deportes">Deportes</mat-option>
+        <mat-option value="Boda">Bodas</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label for="imagenURL">URL de la Imagen:</label>
-      <input type="text" id="imagenURL" class="form-control" name="imagenURL" [(ngModel)]="nuevoEvento.url" (blur)="validateImageURL()">
-      <div>
-        <small *ngIf="!isURLValid" class="text-danger">Por favor, ingresa una URL válida para una imagen (.jpg, .jpeg, .png, etc.).</small>
-      </div>
-    </div>
+    <mat-form-field appearance="fill" [color]="colorControl.value!">
+      <mat-label>Ciudad</mat-label>
+      <mat-select id="city" name="city" required>
+        <mat-option value="Medellín">Medellín</mat-option>
+        <mat-option value="Cali">Cali</mat-option>
+        <mat-option value="Bogotá">Bogotá</mat-option>
+        <mat-option value="Barranquilla">Barranquilla</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label for="ability">Direccion:</label>
-      <input type="text" id="direction" class="form-control" name="dierction" [(ngModel)]="nuevoEvento.direction">
-    </div>
+    <mat-form-field appearance="fill" [color]="colorControl.value!">
+      <mat-label>Visibilidad</mat-label>
+      <mat-select id="Visibilidad" name="Visibilidad" [(ngModel)]="Validator" required>
+        <mat-option value="Privado">Privado</mat-option>
+        <mat-option value="Publico">Publico</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    <div class="form-group">
-      <label for="Visibilidado">Visibilidad:</label>
-      <select id="Visibilidad" class="form-control" name="Visibilidad" [(ngModel)]="Validator">
-        <option value="Privado">Privado</option>
-        <option value="Publico">Publico</option>
-      </select>
-    </div>
+    <mat-form-field appearance="fill" [color]="colorControl.value!">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput id="description" name="description" [(ngModel)]="nuevoEvento.description" required></textarea>
+    </mat-form-field>
 
+    <app-calendar [(ngModel)]="nuevoEvento.date" [nuevoEvento]="nuevoEvento"></app-calendar>
+    
     <div class="form-group">
-      <app-calendar [(ngModel)]="nuevoEvento.date" [nuevoEvento]="nuevoEvento"></app-calendar>    
-    </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary">Crear Evento</button>
+      <button mat-raised-button class="orange-button" type="submit" [disabled]="form.invalid">Crear Evento</button>
     </div>
   </form>
 </div>

@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
-
+import { ThemePalette } from '@angular/material/core';
+import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit{
-
+  colorControl = new FormControl('warn' as ThemePalette);
   constructor(private route: ActivatedRoute, private http:HttpClient) {}
 
   actualizarEvento: any = {

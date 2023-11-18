@@ -2,7 +2,7 @@
   <img src="assets/Spinner.gif" alt="Loading..." />
 </div>
 
-<mat-form-field class="calendar" *ngIf="!loading">
+<mat-form-field appearance="fill"  class="calendar" *ngIf="!loading" [color]="colorControl.value!">
   <input matInput [matDatepicker]="picker" [matDatepickerFilter]="dateFilter" (dateChange)="addEvent($event)" placeholder="Selecciona una fecha">
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>

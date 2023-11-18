@@ -1,85 +1,30 @@
 .container {
-    max-width: 500px;
-    padding-left: 200px;
-    padding: 20px;
-    background-color: #db722c;
-    border-radius: 10px;
-    margin: 30px;
-    margin-left: 30%;
-    margin-bottom: 150px;
-  }
-
-  .form-group {
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  /* Estilos para las tablas con fondo negro */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: black; /* Fondo negro */
-  color: white; /* Texto en blanco */
-}
-
-/* Estilos para las celdas de encabezado */
-th {
-  border: 1px solid white; /* Borde blanco */
-  padding: 8px;
-  text-align: left;
-}
-
-/* Estilos para las celdas de datos */
-td {
-  border: 1px solid white; /* Borde blanco */
-  padding: 8px;
-  text-align: left;
-}
-
-/* Estilos para las filas impares (opcional, para mayor claridad) */
-tr:nth-child(odd) {
-  background-color: #f09c4e; /* Fondo gris oscuro para filas impares */
-}
-
-/* Estilos para los botones de acciones */
-button {
-  background-color: #ffffff; /* Fondo transparente */
-  color: rgb(0, 0, 0); /* Texto en blanco */
-  border: none;
-  cursor: pointer;
-  padding: 4px 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 10px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-}
-
-.text-danger {
-  font-size: 8pt;
-  color: red;
-}
-
-.btn-primary {
-  background-color: #f09c4e;
-  border: 2px solid black;
-  color: black;
-}
-
-.btn-primary:hover {
+  max-width: 500px;
+  padding-left: 200px;
+  padding: 20px;
   background-color: #db722c;
-  color: #ffffff;
+  border-radius: 10px;
+  margin: 30px;
+  margin-left: 30%;
+  margin-bottom: 150px;
 }
 
-.btn-success {
-  background-color: rgb(78, 252, 78);
-  border: 2px solid black;
-  color: black;
+form {
+  display: flex;
+  flex-direction: column;
 }
-
-.btn-success:hover {
-  background-color: rgb(12, 165, 12);
-  color: #ffffff;
+.my-error {
+  color: red !important;
+}
+::ng-deep .orange-button {
+  background-color: #f05c44 !important;
+  color: white !important;
+}
+::ng-deep .green-button {
+  background-color: #38a44c !important;
+  color: white !important;
+}
+.titulo{
+  text-align: center; 
+  color: white;
 }
