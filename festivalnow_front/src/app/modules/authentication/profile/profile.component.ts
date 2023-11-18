@@ -15,12 +15,16 @@ export class ProfileComponent {
 
   username = ''
   user_email = ''
+  user_role = ''
   newPassword = ''
 
   ngOnInit(): void {
     if (localStorage.getItem('usuario')) {
-      this.username = JSON.parse(localStorage.getItem('usuario')!).username
-      this.user_email = JSON.parse(localStorage.getItem('usuario')!).email
+      var decoded_token = JSON.parse(localStorage.getItem('usuario')!)
+      this.username = decoded_token.username
+      this.user_email = decoded_token.email
+      var roles = decoded_token.roles;
+      this.user_role = roles[roles.length - 1];
     }
     else {
       // Redirige a página de inicio de sesión

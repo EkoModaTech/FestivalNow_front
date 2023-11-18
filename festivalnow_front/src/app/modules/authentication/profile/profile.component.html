@@ -4,7 +4,6 @@
     <div class="card">
         <div class="card-body">
             <i class="fa fa-pen fa-xs edit" (click)="showEditPassword = !showEditPassword"></i>
-            <i class="fa fa-user fa-lg profile-icon"></i>
             <table>
                 <tbody>
                     <tr>
@@ -26,7 +25,7 @@
                         <td>Rol</td>
                         <td>:</td>
                         <!--TODO: Cuando haya rol (Cliente, Admin, etc.) en el payload del token, ponerlo en vez de 'Cliente'.-->
-                        <td>Cliente</td>
+                        <td>{{ user_role }}</td>
                     </tr>
                     <tr *ngIf="showEditPassword">
                         <td>Nueva contraseña</td>
