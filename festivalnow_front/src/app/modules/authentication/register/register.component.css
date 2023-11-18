@@ -8,6 +8,7 @@ body {
 }
 a{
     color: #ff5c33;
+    cursor: pointer;
 }
 .row{
     width: 80%;
@@ -63,7 +64,7 @@ a{
     padding: 3%;
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
-    
+
     background-color: #ffffff;
 }
 .col-der {

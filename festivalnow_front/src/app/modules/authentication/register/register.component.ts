@@ -9,7 +9,7 @@ import { RegisterRequest } from 'src/app/models/auth/register.request';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  
+
   user:RegisterRequest = new RegisterRequest
 
   constructor(private auth: AuthService, private router: Router) {}
@@ -33,6 +33,10 @@ export class RegisterComponent {
       .subscribe(_ => {
         this.router.navigate(['/login']);
       })
+  }
+
+  redirectToHome(): void {
+    this.router.navigate(['/home']);
   }
 
 }
