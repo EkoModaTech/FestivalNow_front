@@ -17,9 +17,13 @@ export class LoginComponent {
   iniciarSesion(): void {
     this.auth.login(this.username, this.password)
       .subscribe(u => {
-          this.auth.isLoggedIn = true; 
+          this.auth.isLoggedIn = true;
           this.router.navigate(["/home"])
         }
       )
+  }
+
+  redirectToHome(): void {
+    this.router.navigate(['/home']);
   }
 }

@@ -7,7 +7,8 @@ body {
     background: linear-gradient(to right, #ff6633, #ff7433, #ff8833, #ff8533, #ffa940);
 }
 a{
-    color: #ff5c33;
+      color: #ff5c33;
+      cursor: pointer;
 }
 .row{
     width: 100%;
@@ -26,7 +27,7 @@ a{
 	justify-content: center;
 	align-items: center;
     border-radius: 20px;
-    
+
 }
 
 .container.login-container {
@@ -61,7 +62,7 @@ a{
     padding: 3%;
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
-    
+
     background-color: #ffffff;
 }
 .col-der {
@@ -105,7 +106,6 @@ label{
 	justify-content: center;
 }
 
-  
-  
-  
-  
+
+
+
