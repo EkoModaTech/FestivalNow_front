@@ -41,7 +41,7 @@ import { AuthResponseInterceptor } from './shared/interceptor/auth-response.inte
     PowerBIComponent,
     SidebarComponent,
     ProveedoresComponent,
-    LicenciasComponent
+    LicenciasComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,11 +18,40 @@ export class RegisterComponent {
   password: string = '';
   confirmPassword: string = '';
   email: string = '';
+  error: boolean = false;
+  error_message: string = 'Error de conexion';
+
+  error_dict: {[key: number]: string} = {
+    400: 'Hubo un error al crear el usuario, intente de nuevo',
+    409: 'El usuario ya existe',
+    500: 'Error del servidor',
+  };
+
+  registerObserver = {
+    next: (data: any) => {
+      console.log(data);
+      this.router.navigate(['/login']);
+    },
+    error: (error: any) => {
+      let code: number | undefined = error.status ? Math.round(error.status / 100) * 100 : undefined;
+      code = error.status === 409 ? error.status : code;
+      if (code && code in this.error_dict) {
+        this.error_message = this.error_dict[code];
+      }
+      this.error = true;
+    },
+    complete: () => {
+      console.log('complete');
+    }
+  }
 
   registrarse(): void {
 
     if (this.password !== this.confirmPassword) {
-      return;
+      return alert('Las contraseñas no coinciden');
+    }
+    if (this.username === '' || this.password === '' || this.email === '') {
+      return alert('Los campos no pueden estar vacios');
     }
 
     this.user.username = this.username;
@@ -30,9 +59,7 @@ export class RegisterComponent {
     this.user.email = this.email;
 
     this.auth.signup(this.user)
-      .subscribe(_ => {
-        this.router.navigate(['/login']);
-      })
+      .subscribe(this.registerObserver)
   }
 
 }

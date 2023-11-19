@@ -12,6 +12,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatButtonModule }  from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthenticationModule } from '../authentication/authentication.module';
 @NgModule({
   declarations: [
     CustomizeComponent,
@@ -19,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
     EditComponent,
   ],
   imports: [
+    AuthenticationModule,
     CommonModule,
     MatDatepickerModule,
     MatInputModule,

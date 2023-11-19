@@ -64,7 +64,7 @@
     </mat-form-field>
 
     <app-calendar [(ngModel)]="nuevoEvento.date" [nuevoEvento]="nuevoEvento"></app-calendar>
-    
+    <app-error-banner *ngIf="error" message={{error_message}}></app-error-banner>
     <div class="form-group">
       <button mat-raised-button class="orange-button" type="submit" [disabled]="form.invalid">Crear Evento</button>
     </div>

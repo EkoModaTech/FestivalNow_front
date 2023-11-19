@@ -2,14 +2,12 @@ import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { NotFoundComponent } from 'src/app/home/not-found/not-found.component';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/shared/service/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmarCompraDialogComponent } from './Dialog/confirmar-compra-dialog/confirmar-compra-dialog.component';
 import { AdsService } from 'src/app/services/ads.service';
 import { SuccessDialogComponent } from './Dialog/confirmar-publicidad-dialog/confirmar-publicidad-dialog.component';
-import { RouterModule } from '@angular/router';
 const URL = environment.backendAPI+"/event/event/"
 
 type Event = {

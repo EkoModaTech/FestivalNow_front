@@ -10,6 +10,8 @@ import { TicketComponent } from './ticket/ticket.component';
 import { SettingComponent } from './setting/setting.component';
 import { ProviderComponent } from './provider/provider.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { ErrorBannerComponent} from '../error-banner/error-banner.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -21,12 +23,17 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     TicketComponent,
     SettingComponent,
     ProviderComponent,
-    EditUserComponent
+    EditUserComponent,
+    ErrorBannerComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    MatDialogModule
-  ]
+    MatDialogModule,
+    MatIconModule,
+  ],
+  exports: [
+    ErrorBannerComponent
+  ],
 })
 export class AuthenticationModule { }

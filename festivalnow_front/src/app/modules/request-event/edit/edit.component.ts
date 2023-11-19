@@ -11,7 +11,11 @@ import { FormControl } from '@angular/forms';
 })
 export class EditComponent implements OnInit{
   colorControl = new FormControl('warn' as ThemePalette);
+
+  error : boolean = false;
+  error_message : string = 'Error al editar el evento';
   constructor(private route: ActivatedRoute, private http:HttpClient) {}
+
 
   actualizarEvento: any = {
     idEvent: 0,
@@ -62,6 +66,7 @@ export class EditComponent implements OnInit{
 
   }
 
+
   actualizaEvento(): void {
     this.validateImageURL();
 
@@ -70,16 +75,16 @@ export class EditComponent implements OnInit{
       return;
     }
     
-    this.http.put(`${environment.backendAPI}/event/event/update`,this.actualizarEvento).subscribe(
-      (response)=>{
-        console.log(response);
-        alert('Evento actualizado')
+    this.http.put(`${environment.backendAPI}/event/event/update`,this.actualizarEvento).subscribe({
+      next: (data: any) => {
+        alert('Evento actualizado con éxito!');
+        this.isEditing = false;
       },
-      error => {
-        console.error(error);
-        alert('Hubo un error al actualizar un evento. Detalles: '+ error.message);
+      error: (error: any) => {
+        this.error = true;
+        alert('Hubo un error al actualizar el evento. Detalles: ' + error.message);
       }
-    );
+    });
   }
 
   validateImageURL(): void {

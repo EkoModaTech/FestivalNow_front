@@ -13,6 +13,8 @@ import { FormControl, Validators } from '@angular/forms';
 export class CustomizeComponent implements OnInit{
   colorControl = new FormControl('warn' as ThemePalette);
   urlControl = new FormControl('', [Validators.required, Validators.pattern(/^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)$/)]);
+  error : boolean = false;
+  error_message : string = 'Error al crear el evento';
 
   ngOnInit(): void {
     const usuarioString = localStorage.getItem('usuario');
@@ -57,17 +59,21 @@ export class CustomizeComponent implements OnInit{
     else if(this.Validator == 'Privado'){
       this.nuevoEvento.visibility = true;
     }
-    this.eventService.postEvento(this.nuevoEvento).subscribe(
-      response => {
-        console.log(response);
+
+    if (this.nuevoEvento.name === '' || this.nuevoEvento.date === '' || this.nuevoEvento.ability === 0 || this.nuevoEvento.description === '' || this.nuevoEvento.state === '' || this.nuevoEvento.type === '' || this.nuevoEvento.city === null || this.nuevoEvento.url === '' || this.nuevoEvento.direction === '' || this.nuevoEvento.visibility === null || this.nuevoEvento.createdBy === '') {
+      alert('Por favor, llene todos los campos.');
+      return;
+    }
+    this.eventService.postEvento(this.nuevoEvento).subscribe({
+      next: (data: any) => {
         alert('Evento creado con éxito!');
         this.resetForm();
       },
-      error => {
-        console.error(error);
+      error: (error: any) => {
+        this.error = true;
         alert('Hubo un error al crear el evento. Detalles: ' + error.message);
       }
-    );
+    });
   }
 
   validateImageURL(): void {

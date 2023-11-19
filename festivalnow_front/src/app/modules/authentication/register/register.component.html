@@ -34,7 +34,7 @@
                   <p class="error-message" *ngIf="password !== confirmPassword">Las contraseñas no coinciden</p>
                   
                   <button type="submit" class="btn btn-primary" (click)="registrarse()">Registrarse</button>
-
+                  <app-error-banner *ngIf="error" message={{error_message}}></app-error-banner>
                 </form>
                 <div class="links">
                     <a href="/login">Logueate</a>

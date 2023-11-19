@@ -24,6 +24,7 @@
                     <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" [(ngModel)]="password">
                   </div>
                   <button type="submit" class="btn btn-primary" (click)="iniciarSesion()">Iniciar Sesión</button>
+                  <app-error-banner *ngIf="error" message={{error_message}}></app-error-banner>
                 </form>
                 <div class="links">
                     <a href="/recover">¿Olvidaste tu contraseña?</a>

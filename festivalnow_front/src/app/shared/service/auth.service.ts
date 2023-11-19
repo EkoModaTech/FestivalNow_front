@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, catchError, map, of } from 'rxjs';
 import { RegisterRequest } from 'src/app/models/auth/register.request';
 import { environment } from 'src/environments/environment';
 import { OIDCEntity } from '../model/oidc.entity';
@@ -50,32 +50,42 @@ export class AuthService {
 
 
   login(username: string, password: string) {
-    return this.http.post<any>(`${environment.backendAPI}/user/auth/login`, {
+    let body: any = {
       "username": username,
       "password": password
-    })
-      .pipe(map((oidc: OIDCEntity) => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentOIDC', JSON.stringify(oidc));
+    }
 
-        const jwtToken = oidc.access_token;
-        //console.log(jwtToken);
-        this.setUserRoles(jwtToken);
+    return this.http
+      .post<any>(`${environment.backendAPI}/user/auth/login`,body)
+      .pipe(
+        map((token: OIDCEntity) => {
+          this.saveToken(token);
+          return of(token);
+        })
+      )
+  }
 
-        const decodedToken = jwtDecode<MyToken>(jwtToken);
-        const usuario = {
-          username: decodedToken.preferred_username,
-          email: decodedToken.email,
-          email_verified: decodedToken.email_verified,
-          roles: decodedToken.realm_access['roles']
-        }
+  private saveToken(token: OIDCEntity){
+    // store user details and jwt token in local storage to keep user logged in between page refreshes
+    localStorage.setItem('currentOIDC', JSON.stringify(token));
 
-        localStorage.setItem('usuario', JSON.stringify(usuario));
+    const jwtToken = token.access_token;
+    //console.log(jwtToken);
+    this.setUserRoles(jwtToken);
 
-        this.authenticationResponseSubject.next(oidc);
-        this.isLoggedIn = true;
-        return oidc;
-      }));
+    const decodedToken = jwtDecode<MyToken>(jwtToken);
+    const usuario = {
+      username: decodedToken.preferred_username,
+      email: decodedToken.email,
+      email_verified: decodedToken.email_verified,
+      roles: decodedToken.realm_access['roles']
+    }
+
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+
+    this.authenticationResponseSubject.next(token);
+    this.isLoggedIn = true;
+
   }
 
   signup(user: RegisterRequest) {
