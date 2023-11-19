@@ -60,10 +60,10 @@ export class CustomizeComponent implements OnInit{
       this.nuevoEvento.visibility = true;
     }
 
-    if (this.nuevoEvento.name === '' || this.nuevoEvento.date === '' || this.nuevoEvento.ability === 0 || this.nuevoEvento.description === '' || this.nuevoEvento.state === '' || this.nuevoEvento.type === '' || this.nuevoEvento.city === null || this.nuevoEvento.url === '' || this.nuevoEvento.direction === '' || this.nuevoEvento.visibility === null || this.nuevoEvento.createdBy === '') {
+    /*if (this.nuevoEvento.name === '' || this.nuevoEvento.date === '' || this.nuevoEvento.ability === 0 || this.nuevoEvento.description === '' || this.nuevoEvento.state === '' || this.nuevoEvento.type === '' || this.nuevoEvento.city === null || this.nuevoEvento.url === '' || this.nuevoEvento.direction === '' || this.nuevoEvento.visibility === null || this.nuevoEvento.createdBy === '') {
       alert('Por favor, llene todos los campos.');
       return;
-    }
+    }*/
 
     this.eventService.postEvento(this.nuevoEvento).subscribe({
       next: (data: any) => {
