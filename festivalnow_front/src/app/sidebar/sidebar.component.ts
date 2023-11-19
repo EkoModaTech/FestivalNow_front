@@ -14,4 +14,10 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     this.userRoles = this.auth.getUserRoles();
   }
+
+  abrirVentanaEmergente() {
+    if (this.userRoles.includes('ADMIN')) {
+      window.open('http://dms.10.43.101.226.nip.io', '_blank', 'width=800,height=600');
+    }
+  }
 }

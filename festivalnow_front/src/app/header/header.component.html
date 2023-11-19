@@ -11,10 +11,12 @@
     <button mat-button [routerLink]="['/presentation']">Quienes Somos</button>
     <button mat-button [routerLink]="['/general']">Eventos</button>
     <button mat-button [routerLink]="['/contact']">Contacto</button>
-  </div>
     <button mat-icon-button (click)="logout()" class="logout-button" *ngIf="isLoggedIn">
       <mat-icon>exit_to_app</mat-icon>
     </button>
-    <app-user-menu></app-user-menu>
+
+  </div>
+  <app-user-menu></app-user-menu>
+    
 
 </header>
