@@ -2,12 +2,11 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <div class="container mt-5 mb-5 h-100">
         <h1>Información del Ticket</h1>
-    <p><strong>ID:</strong> 45</p>
-    <p><strong>dato 1:</strong> dato 1</p>
-    <p><strong>dato 2:</strong> dato 2</p>
-    <p><strong>dato 3:</strong> dato 3</p>
-    <a [routerLink]="['/PSE']"><button mat-raised-button (click)="onNoClick()" class="orange-button">Confirmar Compra</button></a>
-</div>
-<button mat-icon-button mat-dialog-close aria-label="Close" type="button" class="close-button" (click)="onNoClick()">
-    <i class="material-icons">close</i>
-</button>
+        <p><strong>ID:</strong> {{ticket.idTicket}}</p>
+        <p><strong>Codigo:</strong> {{ticket.code}}</p>
+        <p><strong>Valor a pagar:</strong> ${{ticket.price}}</p>
+        <a [routerLink]="['/PSE']"><button mat-raised-button (click)="onNoClick()" class="orange-button">Confirmar Compra</button></a>
+      </div>
+      <button mat-icon-button mat-dialog-close aria-label="Close" type="button" class="close-button" (click)="onNoClick()">
+        <i class="material-icons">close</i>
+      </button>
