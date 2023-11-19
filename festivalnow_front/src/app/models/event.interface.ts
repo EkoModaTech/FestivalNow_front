@@ -4,7 +4,7 @@ export interface Event {
   date: string | null;
   ability: number;
   description: string;
-  state: string | null;
+  state: string | null| any;
   type: string;
   city: string | null | any;
   url: string | null;

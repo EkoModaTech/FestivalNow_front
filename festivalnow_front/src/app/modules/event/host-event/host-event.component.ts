@@ -32,10 +32,4 @@ export class HostEventComponent implements OnInit {
     console.log(evento);
     this.router.navigate(['editEvent', { evento: JSON.stringify(evento) }]);
   }
-
-  promocionarEvento(evento: any) {
-  }
-
-  cambiarEstado(evento: any) {
-  }
 }
