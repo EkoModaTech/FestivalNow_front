@@ -16,7 +16,7 @@
         <td>{{ticket.idEvent}}</td>
         <td>{{ticket.eventName}}</td>
         <td>{{ticket.idTicket}}</td>
-        <td>{{ticket.code}}</td>
+        <td>${{ticket.code}}</td>
         <td>{{ticket.price}}</td>
         <td>
           <button *ngIf="ticket.idEvent" (click)="verDetalleEvento(ticket.idEvent)">Ver Evento</button>
