@@ -156,7 +156,9 @@ export class SpecificEventComponent {
     this.userRoles = this.auth.getUserRoles();
   }
   openDialog() {
-    this.dialog.open(ConfirmarCompraDialogComponent);
+    this.dialog.open(ConfirmarCompraDialogComponent, {
+      data: { eventId: this.eventId }
+    });
   }
   isAdminOrHost(): boolean {
     const userRoles = this.auth.getUserRoles();
