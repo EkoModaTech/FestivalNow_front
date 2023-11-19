@@ -12,8 +12,13 @@
 	<div class="container login-container">
         <div class="row">
             <div class="col-izq">
+              <div class="links">
+                <a href="/home"> < Volver</a>
+              </div>
                 <form class="login-form">
-                  <img src="/assets/LogoFestiva.png" alt="Imagen">
+                  <a (click)="redirectToHome()">
+                    <img src="/assets/LogoFestiva.png" alt="Imagen">
+                  </a>
                   <h2>Registrarse!</h2>
                   <div class="form-group">
                     <label for="username">Ingresa tu usuario:</label>
@@ -32,7 +37,7 @@
                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirmar Contraseña" [(ngModel)]="confirmPassword">
                   </div>
                   <p class="error-message" *ngIf="password !== confirmPassword">Las contraseñas no coinciden</p>
-                  
+
                   <button type="submit" class="btn btn-primary" (click)="registrarse()">Registrarse</button>
                   <app-error-banner *ngIf="error" message={{error_message}}></app-error-banner>
                 </form>
@@ -45,7 +50,7 @@
             </div>
         </div>
     </div>
-    
+
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

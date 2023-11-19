@@ -31,6 +31,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { LicenciasComponent } from './licencias/licencias.component';
 import { AuthResponseInterceptor } from './shared/interceptor/auth-response.interceptor';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { AuthResponseInterceptor } from './shared/interceptor/auth-response.inte
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     HomeModule,
     AuthenticationModule,
     MatButtonModule,

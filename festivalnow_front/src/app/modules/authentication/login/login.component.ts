@@ -42,4 +42,8 @@ export class LoginComponent {
   iniciarSesion(): void {
     this.auth.login(this.username, this.password).subscribe(this.loginObserver)
   }
+
+  redirectToHome(): void {
+    this.router.navigate(['/home']);
+  }
 }
