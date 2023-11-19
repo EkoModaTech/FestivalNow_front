@@ -3,7 +3,7 @@
   <form #form="ngForm" (submit)="editarEvento()">
     <mat-form-field appearance="fill" [color]="colorControl.value!">
       <mat-label>URL de la Imagen</mat-label>
-      <input matInput type="text" id="imagenURL" name="imagenURL" [(ngModel)]="actualizarEvento.imagenURL"
+      <input matInput type="text" id="imagenURL" name="imagenURL" [(ngModel)]="actualizarEvento.url"
         (blur)="validateImageURL()" [disabled]="!isEditing">
       <mat-error *ngIf="!isURLValid">
         <mat-icon>error_outline</mat-icon> Por favor, ingresa una URL válida para una imagen (.jpg, .jpeg, .png, etc.).
@@ -64,8 +64,29 @@
         [disabled]="!isEditing"></textarea>
     </mat-form-field>
 
+    <mat-form-field appearance="fill" [color]="colorControl.value!">
+      <mat-label>Direccion</mat-label>
+      <input matInput type="text" id="direction" name="direction" [(ngModel)]="actualizarEvento.direction" [disabled]="!isEditing">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" [color]="colorControl.value!">
+      <mat-label>Visibilidad</mat-label>
+      <mat-select id="visibility" name="visibility" [disabled]="!isEditing">
+        <mat-option value="Privado">Privado</mat-option>
+        <mat-option value="Publico">Publico</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" [color]="colorControl.value!">
+      <mat-label>Estado</mat-label>
+      <mat-select id="state" name="state" [disabled]="!isEditing">
+        <mat-option value="Activo">Activo</mat-option>
+        <mat-option value="Inactivo">Inactivo</mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <div class="form-group">
-      <app-calendar></app-calendar>
+      <app-calendar [(ngModel)]="actualizarEvento.date"></app-calendar>
     </div>
     <app-error-banner *ngIf="error" message={{error_message}}></app-error-banner>
     <div class="form-group">

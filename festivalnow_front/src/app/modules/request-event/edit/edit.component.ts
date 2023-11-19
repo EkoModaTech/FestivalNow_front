@@ -24,10 +24,11 @@ export class EditComponent implements OnInit{
     ability: 0,
     description: '',
     type: '',
-    city: {
-      idCity: 1
-    },
-    imagenURL: ''
+    city: null,
+    url: '',
+    direction: '',
+    visibility: null,
+    createdBy: ''
    };
 
   ngOnInit(): void {
