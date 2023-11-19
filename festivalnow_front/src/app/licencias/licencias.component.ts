@@ -3,6 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { LicenseService } from 'src/app/services/license.service';
 import { Licencia } from '../models/licencia.interface';
+import { EventService } from '../services/event.service';
+import { Event } from '../models/event.interface';
+
 
 const ELEMENT_DATA: Licencia[] = [
   {id: 1, tipo: 'Tipo 1', fechaExpiracion: new Date('2022-12-31'), activa: true},
@@ -34,9 +37,10 @@ const ELEMENT_DATA: Licencia[] = [
 })
 export class LicenciasComponent {
 
-  constructor(private licenseService: LicenseService) { }
+  constructor(private licenseService: LicenseService, private eventService: EventService) { }
 
   license_data: Licencia[] = []
+  eventos: Event[] = []
 
   displayedColumns = ['id', 'tipo', 'fechaExpiracion', 'activa'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -47,20 +51,27 @@ export class LicenciasComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
-    this.licenseService.getLicencias().subscribe(licenses => {
-      this.license_data = licenses;
+    
+    const usuarioString = localStorage.getItem('usuario');
+    if (usuarioString) {
+      const usuario = JSON.parse(usuarioString);
+      this.eventService.getEventosFiltrados(usuario.username).subscribe(eventos => {
+        this.eventos = eventos;
+        
+        if (eventos.length > 0) {
+          this.onEventoChange(eventos[0].idEvent);
+        }
+      });
+    }
+  }
 
-      // Debug log
-      console.log(licenses);
-    });
+  onEventoChange(eventId: string) {
+    /*this.licenseService.getLicenciasPorEvento(eventId).subscribe(licenses => {
+      this.dataSource.data = licenses; // Actualiza el dataSource con las licencias del evento
+    });*/
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

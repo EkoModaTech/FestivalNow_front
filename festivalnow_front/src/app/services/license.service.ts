@@ -13,11 +13,13 @@ export class LicenseService {
 
   constructor(private http: HttpClient) { }
 
-  getLicencias(): Observable<Licencia[]> {
-    return this.http.get<Licencia[]>(environment.backendAPI + "/license");
-  }
   
-  createLicencia(licencia: Licencia): Observable<Event> {
-    return this.http.post<Event>(this.postLicenseApiUrl, licencia);
+  getLicenciasPorEvento(eventId: string): Observable<Licencia[]> {
+    console.log('ID: ', eventId);
+    const body = { "event_id": eventId };
+    const url = `${environment.backendAPI}/external/license`
+    return this.http.post<Licencia[]>(url, body);
+    console.log(this.http.post<Licencia[]>(url,body));
   }
+
 }

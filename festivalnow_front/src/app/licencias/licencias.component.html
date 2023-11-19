@@ -4,11 +4,14 @@
 </div>
 
 <div class="example-container mat-elevation-z8">
-    <div class="example-header custom-header">
-        <mat-form-field class="custom-form-field">
-            <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Licencia">
-        </mat-form-field>
-    </div>
+    
+    <ul>
+        <li>Seleccione un evento: </li>
+        <select>
+            <option value="" disabled selected>Selecciona un evento</option>
+            <option *ngFor="let evento of eventos" [value]="evento.idEvent">{{evento.name}}</option>
+        </select>    
+    </ul>
 
     <mat-table #table [dataSource]="dataSource">
 
@@ -35,10 +38,11 @@
             <mat-header-cell *matHeaderCellDef> Activa </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.activa}} </mat-cell>
         </ng-container>
-
+        
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
     <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+ 
 </div>
