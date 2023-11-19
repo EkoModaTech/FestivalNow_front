@@ -13,8 +13,8 @@ export class LicenseService {
 
   constructor(private http: HttpClient) { }
 
-  getLicencias(): Observable<any[]> {
-    return this.http.get<any[]>(environment.backendAPI + "/license");
+  getLicencias(): Observable<Licencia[]> {
+    return this.http.get<Licencia[]>(environment.backendAPI + "/license");
   }
   
   createLicencia(licencia: Licencia): Observable<Event> {

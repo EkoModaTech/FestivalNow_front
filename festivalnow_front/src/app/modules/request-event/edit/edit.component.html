@@ -31,7 +31,7 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" [color]="colorControl.value!">
+    <!--<mat-form-field appearance="fill" [color]="colorControl.value!">
       <mat-label>Departamento</mat-label>
       <mat-select id="departamento" name="departamento" [disabled]="!isEditing">
         <mat-option value="Antioquia">Antioquia</mat-option>
@@ -47,7 +47,7 @@
         <mat-option value="Cali">Cali</mat-option>
         <mat-option value="Bogotá">Bogotá</mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field>-->
 
     <mat-form-field appearance="fill" [color]="colorControl.value!">
       <mat-label>Entretenimiento</mat-label>
@@ -69,17 +69,17 @@
       <input matInput type="text" id="direction" name="direction" [(ngModel)]="actualizarEvento.direction" [disabled]="!isEditing">
     </mat-form-field>
 
-    <mat-form-field appearance="fill" [color]="colorControl.value!">
+    <!--<mat-form-field appearance="fill" [color]="colorControl.value!">
       <mat-label>Visibilidad</mat-label>
-      <mat-select id="visibility" name="visibility" [disabled]="!isEditing">
+      <mat-select id="visibilidad" name="visibilidad" [(ngModel)]="actualizarEvento.visibility" [disabled]="!isEditing">
         <mat-option value="Privado">Privado</mat-option>
         <mat-option value="Publico">Publico</mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field>-->
 
     <mat-form-field appearance="fill" [color]="colorControl.value!">
       <mat-label>Estado</mat-label>
-      <mat-select id="state" name="state" [disabled]="!isEditing">
+      <mat-select id="state" name="state" [(ngModel)]="actualizarEvento.state" [disabled]="!isEditing">
         <mat-option value="Activo">Activo</mat-option>
         <mat-option value="Inactivo">Inactivo</mat-option>
       </mat-select>
@@ -97,6 +97,11 @@
       <button mat-raised-button class="green-button" *ngIf="isEditingModeActive" type="button"
         (click)="actualizaEvento()">
         Actualizar Evento
+      </button>
+
+      <button mat-raised-button class="orange-button" *ngIf="isEditingModeActive" type="button"
+        (click)="eliminarEvento()">
+        eliminar Evento
       </button>
     </div>
   </form>

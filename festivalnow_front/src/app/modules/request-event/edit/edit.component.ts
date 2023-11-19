@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { EventService } from 'src/app/services/event.service';
 import { ActivatedRoute } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -11,10 +13,10 @@ import { FormControl } from '@angular/forms';
 })
 export class EditComponent implements OnInit{
   colorControl = new FormControl('warn' as ThemePalette);
-
+  urlControl = new FormControl('', [Validators.required, Validators.pattern(/^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)$/)]);
   error : boolean = false;
   error_message : string = 'Error al editar el evento';
-  constructor(private route: ActivatedRoute, private http:HttpClient) {}
+  constructor(private route: ActivatedRoute, private http:HttpClient, private eventService: EventService) {}
 
 
   actualizarEvento: any = {
@@ -28,7 +30,8 @@ export class EditComponent implements OnInit{
     url: '',
     direction: '',
     visibility: null,
-    createdBy: ''
+    createdBy: '',
+    logistic: null
    };
 
   ngOnInit(): void {
@@ -46,6 +49,7 @@ export class EditComponent implements OnInit{
   isEditing: boolean = false;
   isEditingMode: boolean =false;
   isEditingModeActive: boolean = false;
+  Validator: string = '';
   isURLValid: boolean = true;
 
   toggleEditMode(): void{
@@ -69,14 +73,15 @@ export class EditComponent implements OnInit{
 
 
   actualizaEvento(): void {
-    this.validateImageURL();
+    console.log('Datos a enviar', this.actualizarEvento);
+    this.isURLValid = true;
 
     if (!this.isURLValid) {
       alert('Por favor, corrija los errores en el formulario.');
       return;
     }
     
-    this.http.put(`${environment.backendAPI}/event/event/update`,this.actualizarEvento).subscribe({
+    this.http.put(`${environment.backendAPI}/event/event/update/` + this.actualizarEvento.idEvent ,this.actualizarEvento).subscribe({
       next: (data: any) => {
         alert('Evento actualizado con éxito!');
         this.isEditing = false;
@@ -86,10 +91,33 @@ export class EditComponent implements OnInit{
         alert('Hubo un error al actualizar el evento. Detalles: ' + error.message);
       }
     });
+    
+  }
+
+  eliminarEvento(): void{
+    this.http.delete(`${environment.backendAPI}/event/event/delete/` + this.actualizarEvento.idEvent).subscribe({
+      next: (data: any) => {
+        alert('Evento eliminado con éxito!');
+        this.isEditing = false;
+      },
+      error: (error: any) => {
+        this.error = true;
+        alert('Hubo un error al eliminar el evento. Detalles: ' + error.message);
+      }
+    });
   }
 
   validateImageURL(): void {
-    const urlPattern = /^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)$/;
-    this.isURLValid = urlPattern.test(this.actualizarEvento.imagenURL);
+    console.log('validando');
+    this.isURLValid = this.urlControl.valid;
+    console.log('Is URL valid? ', this.isURLValid);
+  }
+
+  getErrorMessage(){
+    if (this.urlControl.hasError('required')) {
+      return 'Debes ingresar una URL valida';
+    }
+
+    return this.urlControl.hasError('pattern') ? 'URL de imagen no válida' : '';
   }
 }
