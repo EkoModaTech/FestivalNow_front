@@ -4,11 +4,14 @@
 </div>
 
 <div class="example-container mat-elevation-z8">
-    <div class="example-header custom-header">
-        <mat-form-field class="custom-form-field">
-            <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Proveedor">
-        </mat-form-field>
-    </div>
+ 
+    <ul>
+      <li>Seleccione un evento: </li>
+      <select>
+          <option value="" disabled selected>Selecciona un evento</option>
+          <option *ngFor="let evento of eventos" [value]="evento.idEvent">{{evento.name}}</option>
+      </select>    
+    </ul>
    
     <mat-table #table [dataSource]="dataSource">
   

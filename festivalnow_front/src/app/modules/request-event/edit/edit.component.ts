@@ -5,6 +5,7 @@ import { EventService } from 'src/app/services/event.service';
 import { ActivatedRoute } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -16,7 +17,7 @@ export class EditComponent implements OnInit{
   urlControl = new FormControl('', [Validators.required, Validators.pattern(/^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)$/)]);
   error : boolean = false;
   error_message : string = 'Error al editar el evento';
-  constructor(private route: ActivatedRoute, private http:HttpClient, private eventService: EventService) {}
+  constructor(private route: ActivatedRoute, private http:HttpClient, private eventService: EventService, private router: Router) {}
 
 
   actualizarEvento: any = {
@@ -29,7 +30,7 @@ export class EditComponent implements OnInit{
     city: null,
     url: '',
     direction: '',
-    visibility: null,
+    visibility: true,
     createdBy: '',
     logistic: null
    };
@@ -42,6 +43,8 @@ export class EditComponent implements OnInit{
         }
 
       });
+
+      this.actualizarEvento.visibility = true;
 
       console.log(this.actualizarEvento)
   }
@@ -80,15 +83,23 @@ export class EditComponent implements OnInit{
       alert('Por favor, corrija los errores en el formulario.');
       return;
     }
+    if(this.Validator == 'Publico'){
+      this.actualizarEvento.visibility = false;
+    }
+    else if(this.Validator == 'Privado'){
+      this.actualizarEvento.visibility = true;
+    }
     
     this.http.put(`${environment.backendAPI}/event/event/update/` + this.actualizarEvento.idEvent ,this.actualizarEvento).subscribe({
       next: (data: any) => {
         alert('Evento actualizado con éxito!');
         this.isEditing = false;
+        this.router.navigate(['/hostEvent']);
       },
       error: (error: any) => {
         this.error = true;
         alert('Hubo un error al actualizar el evento. Detalles: ' + error.message);
+        console.error('Detalles: ', error);
       }
     });
     
@@ -99,6 +110,7 @@ export class EditComponent implements OnInit{
       next: (data: any) => {
         alert('Evento eliminado con éxito!');
         this.isEditing = false;
+        this.router.navigate(["/hostEvent"]);
       },
       error: (error: any) => {
         this.error = true;

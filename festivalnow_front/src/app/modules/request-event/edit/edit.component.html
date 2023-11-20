@@ -89,7 +89,7 @@
       <app-calendar [(ngModel)]="actualizarEvento.date"></app-calendar>
     </div>
     <app-error-banner *ngIf="error" message={{error_message}}></app-error-banner>
-    <div class="form-group">
+    <div class="button-container">
       <button mat-raised-button class="orange-button" type="button" (click)="editarEvento()">
         {{ isEditingMode ? 'Cancelar' : 'Editar Evento'}}
       </button>

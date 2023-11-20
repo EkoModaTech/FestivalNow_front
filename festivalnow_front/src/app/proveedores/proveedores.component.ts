@@ -5,6 +5,8 @@ import { Proveedor } from '../models/proveedor.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../shared/service/auth.service';
 import { environment } from 'src/environments/environment';
+import { Event } from '../models/event.interface';
+import { EventService } from '../services/event.service';
 
 const PATH = environment.backendAPI+"/providers/"
 
@@ -49,7 +51,10 @@ export class ProveedoresComponent implements AfterViewInit, OnInit {
   constructor(
     private http: HttpClient,
     private auth: AuthService,
+    private eventService: EventService
   ) {}
+
+    eventos: Event[] = [];
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -81,14 +86,28 @@ export class ProveedoresComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     this.getProviders();
+
+    const usuarioString = localStorage.getItem('usuario');
+    if (usuarioString) {
+      const usuario = JSON.parse(usuarioString);
+      this.eventService.getEventosFiltrados(usuario.username).subscribe(eventos => {
+        this.eventos = eventos;
+        
+        if (eventos.length > 0) {
+          this.onEventoChange(eventos[0].idEvent);
+        }
+      });
+    }
+  }
+
+
+  onEventoChange(eventId: String) {
+    console.log('Flag');
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+
 }
