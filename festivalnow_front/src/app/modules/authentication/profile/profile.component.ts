@@ -18,13 +18,21 @@ export class ProfileComponent {
   user_role = ''
   newPassword = ''
 
+  role_dict = [
+    "EMPLOYEE",
+    "ADMIN",
+    "HOST",
+    "CLIENT"
+  ]
+
   ngOnInit(): void {
     if (localStorage.getItem('usuario')) {
       var decoded_token = JSON.parse(localStorage.getItem('usuario')!)
       this.username = decoded_token.username
       this.user_email = decoded_token.email
       var roles = decoded_token.roles;
-      this.user_role = roles[roles.length - 1];
+      var indice = this.obtenerIndiceComun(this.role_dict, roles).indiceEnB
+      this.user_role = roles[indice];
     }
     else {
       // Redirige a página de inicio de sesión
@@ -49,5 +57,16 @@ export class ProfileComponent {
     this.newPassword = ''
     this.showEditPassword = false
 
+  }
+
+  obtenerIndiceComun(role_dict: String[], roles: String[]): any {
+    for (let i = 0; i < role_dict.length; i++) {
+      let elementoA = role_dict[i];  
+      let indiceEnB = roles.indexOf(elementoA);
+      if (indiceEnB !== -1) {
+        return { elemento: elementoA, indiceEnA: i, indiceEnB: indiceEnB };
+      }
+    }
+    return null;
   }
 }
