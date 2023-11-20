@@ -17,9 +17,8 @@ export class LicenseService {
   getLicenciasPorEvento(eventId: string): Observable<Licencia[]> {
     console.log('ID: ', eventId);
     const body = { "event_id": eventId };
-    const url = `${environment.backendAPI}/external/license`
+    const url = `${environment.backendAPI}/external/license`;
     return this.http.post<Licencia[]>(url, body);
-    console.log(this.http.post<Licencia[]>(url,body));
   }
 
 }

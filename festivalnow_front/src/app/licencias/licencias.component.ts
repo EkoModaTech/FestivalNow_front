@@ -67,8 +67,10 @@ export class LicenciasComponent {
 
   onEventoChange(eventId: string) {
     /*this.licenseService.getLicenciasPorEvento(eventId).subscribe(licenses => {
-      this.dataSource.data = licenses; // Actualiza el dataSource con las licencias del evento
-    });*/
+      this.license_data = licenses; // Actualiza el dataSource con las licencias del evento
+    });
+
+    console.log('Licencias: ',this.license_data);*/
   }
 
   ngAfterViewInit() {
